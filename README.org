@@ -35,9 +35,9 @@
 
 * Devices
 
-  [[https://github.com/janelia-modular-devices/modular_device_base.git]]
+  [[https://github.com/janelia-modular-devices/modular_device_base]]
 
-  [[https://github.com/janelia-modular-devices/device.git]]
+  [[https://github.com/janelia-modular-devices/device]]
 
 * More Detailed Modular Device Information
 
