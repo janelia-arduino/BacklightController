@@ -1,16 +1,18 @@
 // ----------------------------------------------------------------------------
-// 5x3.cpp
+// 5x3.h
 //
 //
 // Authors:
 // Peter Polidoro peterpolidoro@gmail.com
 // ----------------------------------------------------------------------------
-#include "5x3.h"
+#ifndef BACKLIGHT_CONTROLLER_5X3_CONSTANTS_H
+#define BACKLIGHT_CONTROLLER_5X3_CONSTANTS_H
+#include "Constants.h"
 
 
 #if defined(__MK64FX512__)
 
-namespace smart_vision_controller
+namespace backlight_controller
 {
 namespace constants
 {
@@ -19,6 +21,7 @@ namespace constants
 // Units
 
 // Properties
+// Property values must be long, double, bool, long[], double[], bool[], char[], ConstantString *, (ConstantString *)[]
 
 // Parameters
 
@@ -29,4 +32,5 @@ namespace constants
 // Errors
 }
 }
+#endif
 #endif

@@ -5,13 +5,13 @@
 // Authors:
 // Peter Polidoro peterpolidoro@gmail.com
 // ----------------------------------------------------------------------------
-#ifndef SMART_VISION_CONTROLLER_CONSTANTS_H
-#define SMART_VISION_CONTROLLER_CONSTANTS_H
+#ifndef BACKLIGHT_CONTROLLER_CONSTANTS_H
+#define BACKLIGHT_CONTROLLER_CONSTANTS_H
 #include <ConstantVariable.h>
 #include <Parent.h>
 
 
-namespace smart_vision_controller
+namespace backlight_controller
 {
 namespace constants
 {

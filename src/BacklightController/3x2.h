@@ -5,14 +5,14 @@
 // Authors:
 // Peter Polidoro peterpolidoro@gmail.com
 // ----------------------------------------------------------------------------
-#ifndef SMART_VISION_CONTROLLER_3X2_CONSTANTS_H
-#define SMART_VISION_CONTROLLER_3X2_CONSTANTS_H
+#ifndef BACKLIGHT_CONTROLLER_3X2_CONSTANTS_H
+#define BACKLIGHT_CONTROLLER_3X2_CONSTANTS_H
 #include "Constants.h"
 
 
 #if defined(__MK20DX256__)
 
-namespace smart_vision_controller
+namespace backlight_controller
 {
 namespace constants
 {

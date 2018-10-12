@@ -1,20 +1,20 @@
 // ----------------------------------------------------------------------------
-// SmartVisionController.cpp
+// BacklightController.cpp
 //
 //
 // Authors:
 // Peter Polidoro peterpolidoro@gmail.com
 // ----------------------------------------------------------------------------
-#include "../SmartVisionController.h"
+#include "../BacklightController.h"
 
 
-using namespace smart_vision_controller;
+using namespace backlight_controller;
 
-SmartVisionController::SmartVisionController()
+BacklightController::BacklightController()
 {
 }
 
-void SmartVisionController::setup()
+void BacklightController::setup()
 {
   // Parent Setup
   Parent::setup();

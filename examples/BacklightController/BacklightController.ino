@@ -1,7 +1,7 @@
-#include <SmartVisionController.h>
+#include <BacklightController.h>
 
 
-SmartVisionController dev;
+BacklightController dev;
 
 void setup()
 {

@@ -10,7 +10,7 @@
 
 #if defined(__MK20DX256__)
 
-namespace smart_vision_controller
+namespace backlight_controller
 {
 namespace constants
 {

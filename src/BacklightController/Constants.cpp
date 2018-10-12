@@ -8,13 +8,13 @@
 #include "Constants.h"
 
 
-namespace smart_vision_controller
+namespace backlight_controller
 {
 namespace constants
 {
-CONSTANT_STRING(device_name,"smart_vision_controller");
+CONSTANT_STRING(device_name,"backlight_controller");
 
-CONSTANT_STRING(firmware_name,"SmartVisionController");
+CONSTANT_STRING(firmware_name,"BacklightController");
 // Use semantic versioning http://semver.org/
 const modular_server::FirmwareInfo firmware_info =
 {
