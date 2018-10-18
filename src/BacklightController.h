@@ -16,24 +16,35 @@
 
 #include <ModularServer.h>
 #include <ModularDeviceBase.h>
-#include <Parent.h>
+#include <DigitalController.h>
 
 #include "BacklightController/Constants.h"
 
 
-class BacklightController : public Parent
+class BacklightController : public DigitalController
 {
 public:
   BacklightController();
   virtual void setup();
 
+  void enableAll();
+  void disableAll();
+
+protected:
+  virtual void setChannelOnAtHighFrequency(size_t channel,
+    long high_frequency_duty_cycle);
+
 private:
+  modular_server::Pin pins_[backlight_controller::constants::PIN_COUNT_MAX];
+
   modular_server::Property properties_[backlight_controller::constants::PROPERTY_COUNT_MAX];
   modular_server::Parameter parameters_[backlight_controller::constants::PARAMETER_COUNT_MAX];
   modular_server::Function functions_[backlight_controller::constants::FUNCTION_COUNT_MAX];
   modular_server::Callback callbacks_[backlight_controller::constants::CALLBACK_COUNT_MAX];
 
   // Handlers
+  void enableAllHandler();
+  void disableAllHandler();
 
 };
 

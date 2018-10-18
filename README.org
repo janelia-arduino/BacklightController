@@ -29,7 +29,7 @@
 
   [[https://github.com/janelia-arduino/ModularDeviceBase]]
 
-  [[https://github.com/janelia-arduino/Parent]]
+  [[https://github.com/janelia-arduino/DigitalController]]
 
 * Clients
 
@@ -37,7 +37,7 @@
 
   [[https://github.com/janelia-modular-devices/modular_device_base]]
 
-  [[https://github.com/janelia-modular-devices/device]]
+  [[https://github.com/janelia-modular-devices/backlight_controller]]
 
 * More Detailed Modular Device Information
 

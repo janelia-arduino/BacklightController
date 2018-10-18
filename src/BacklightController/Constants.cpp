@@ -24,6 +24,8 @@ const modular_server::FirmwareInfo firmware_info =
   .version_patch=0,
 };
 
+CONSTANT_STRING(hardware_name,"backlight_controller");
+
 // Pins
 
 // Units
