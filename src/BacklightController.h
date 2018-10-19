@@ -43,8 +43,8 @@ private:
   modular_server::Callback callbacks_[backlight_controller::constants::CALLBACK_COUNT_MAX];
 
   // Handlers
-  void enableAllHandler();
-  void disableAllHandler();
+  void enableAllHandler(modular_server::Pin * pin_ptr);
+  void disableAllHandler(modular_server::Pin * pin_ptr);
 
 };
 

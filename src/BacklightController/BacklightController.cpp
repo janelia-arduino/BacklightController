@@ -60,14 +60,16 @@ void BacklightController::setup()
   setChannelCountHandler();
 
   // Functions
-  modular_server::Function & enable_all_function = modular_server_.function(digital_controller::constants::enable_all_function_name);
-  enable_all_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::enableAllHandler));
-
-  modular_server::Function & disable_all_function = modular_server_.function(digital_controller::constants::disable_all_function_name);
-  disable_all_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::disableAllHandler));
-
 
   // Callbacks
+  modular_server::Callback & enable_all_callback = modular_server_.callback(digital_controller::constants::enable_all_callback_name);
+  enable_all_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::enableAllHandler));
+
+  modular_server::Callback & disable_all_callback = modular_server_.callback(digital_controller::constants::disable_all_callback_name);
+  disable_all_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::disableAllHandler));
+
+  enableAll();
+  setAllChannelsOff();
 }
 
 void BacklightController::enableAll()
@@ -106,12 +108,12 @@ void BacklightController::setChannelOnAtHighFrequency(size_t channel,
 // modular_server_.property(property_name).getElementValue(element_index,value) value type must match the property array element default type
 // modular_server_.property(property_name).setElementValue(element_index,value) value type must match the property array element default type
 
-void BacklightController::enableAllHandler()
+void BacklightController::enableAllHandler(modular_server::Pin * pin_ptr)
 {
   enableAll();
 }
 
-void BacklightController::disableAllHandler()
+void BacklightController::disableAllHandler(modular_server::Pin * pin_ptr)
 {
   disableAll();
 }

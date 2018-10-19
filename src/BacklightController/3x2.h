@@ -20,8 +20,16 @@ namespace constants
 enum{PIN_COUNT_MAX=1};
 
 enum {CHANNEL_COUNT=10};
+enum {IR_LIGHT_CHANNEL_COUNT=1};
+enum {VISIBLE_LIGHT_CHANNEL_COUNT=1};
+enum {HIGH_POWER_CHANNEL_COUNT=4};
+enum {LOW_POWER_CHANNEL_COUNT=4};
 
 extern const size_t channel_pins[CHANNEL_COUNT];
+extern const size_t ir_light_channels[IR_LIGHT_CHANNEL_COUNT];
+extern const size_t visible_light_channels[VISIBLE_LIGHT_CHANNEL_COUNT];
+extern const size_t high_power_channels[HIGH_POWER_CHANNEL_COUNT];
+extern const size_t low_power_channels[LOW_POWER_CHANNEL_COUNT];
 
 // Pins
 
