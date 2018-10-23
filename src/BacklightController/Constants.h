@@ -19,7 +19,7 @@ namespace constants
 enum{PROPERTY_COUNT_MAX=1};
 enum{PARAMETER_COUNT_MAX=1};
 enum{FUNCTION_COUNT_MAX=1};
-enum{CALLBACK_COUNT_MAX=1};
+enum{CALLBACK_COUNT_MAX=2};
 
 extern ConstantString device_name;
 
@@ -45,6 +45,8 @@ extern const size_t enable_all_pin;
 // Functions
 
 // Callbacks
+extern ConstantString set_all_ir_channels_on_callback_name;
+extern ConstantString set_all_ir_channels_off_callback_name;
 
 // Errors
 }

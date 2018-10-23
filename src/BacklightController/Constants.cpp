@@ -37,6 +37,8 @@ CONSTANT_STRING(hardware_name,"backlight_controller");
 // Functions
 
 // Callbacks
+CONSTANT_STRING(set_all_ir_channels_on_callback_name,"setAllIrChannelsOn");
+CONSTANT_STRING(set_all_ir_channels_off_callback_name,"setAllIrChannelsOff");
 
 // Errors
 }

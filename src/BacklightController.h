@@ -30,9 +30,22 @@ public:
   void enableAll();
   void disableAll();
 
+  void setAllIrLightChannelsOn();
+  void setAllIrLightChannelsOnAtPower(long power);
+  void setAllIrLightChannelsOff();
+
 protected:
   virtual void setChannelOnAtHighFrequency(size_t channel,
     long high_frequency_duty_cycle);
+
+  size_t irLightChannelToDigitalChannel(size_t ir_light_channel);
+  uint32_t getIrLightDigitalChannels();
+  size_t visibleLightChannelToDigitalChannel(size_t visible_light_channel);
+  uint32_t getVisibleLightDigitalChannels();
+  size_t highPowerChannelToDigitalChannel(size_t high_power_channel);
+  uint32_t getHighPowerDigitalChannels();
+  size_t lowPowerChannelToDigitalChannel(size_t low_power_channel);
+  uint32_t getLowPowerDigitalChannels();
 
 private:
   modular_server::Pin pins_[backlight_controller::constants::PIN_COUNT_MAX];
@@ -45,6 +58,8 @@ private:
   // Handlers
   void enableAllHandler(modular_server::Pin * pin_ptr);
   void disableAllHandler(modular_server::Pin * pin_ptr);
+  void setAllIrChannelsOnHandler(modular_server::Pin * pin_ptr);
+  void setAllIrChannelsOffHandler(modular_server::Pin * pin_ptr);
 
 };
 
