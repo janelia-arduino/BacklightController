@@ -46,7 +46,7 @@ const size_t channel_pins[CHANNEL_COUNT] =
   21,
 };
 
-const size_t ir_light_channels[IR_LIGHT_CHANNEL_COUNT] =
+const size_t ir_backlight_channels[IR_BACKLIGHT_CHANNEL_COUNT] =
 {
   8,
   10,
@@ -54,7 +54,7 @@ const size_t ir_light_channels[IR_LIGHT_CHANNEL_COUNT] =
   14,
 };
 
-const size_t visible_light_channels[VISIBLE_LIGHT_CHANNEL_COUNT] =
+const size_t visible_backlight_channels[VISIBLE_BACKLIGHT_CHANNEL_COUNT] =
 {
   9,
   11,
