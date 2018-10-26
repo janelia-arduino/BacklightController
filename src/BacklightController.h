@@ -41,14 +41,26 @@ public:
   void setAllVisibleBacklightChannelsOn();
   void setAllVisibleBacklightChannelsOnAtPower(long power);
   void setAllVisibleBacklightChannelsOff();
+  void setVisibleBacklightChannelOn(size_t visible_backlight_channel);
+  void setVisibleBacklightChannelOnAtPower(size_t visible_backlight_channel,
+    long power);
+  void setVisibleBacklightChannelOff(size_t visible_backlight_channel);
 
   void setAllHighPowerChannelsOn();
   void setAllHighPowerChannelsOnAtPower(long power);
   void setAllHighPowerChannelsOff();
+  void setHighPowerChannelOn(size_t high_power_channel);
+  void setHighPowerChannelOnAtPower(size_t high_power_channel,
+    long power);
+  void setHighPowerChannelOff(size_t high_power_channel);
 
   void setAllLowPowerChannelsOn();
   void setAllLowPowerChannelsOnAtPower(long power);
   void setAllLowPowerChannelsOff();
+  void setLowPowerChannelOn(size_t low_power_channel);
+  void setLowPowerChannelOnAtPower(size_t low_power_channel,
+    long power);
+  void setLowPowerChannelOff(size_t low_power_channel);
 
 protected:
   virtual void setChannelOnAtHighFrequency(size_t channel,
@@ -85,14 +97,23 @@ private:
   void setAllVisibleBacklightChannelsOnAtPowerHandler();
   void setAllVisibleBacklightChannelsOnHandler(modular_server::Pin * pin_ptr);
   void setAllVisibleBacklightChannelsOffHandler(modular_server::Pin * pin_ptr);
+  void setVisibleBacklightChannelOnHandler();
+  void setVisibleBacklightChannelOnAtPowerHandler();
+  void setVisibleBacklightChannelOffHandler();
 
   void setAllHighPowerChannelsOnAtPowerHandler();
   void setAllHighPowerChannelsOnHandler(modular_server::Pin * pin_ptr);
   void setAllHighPowerChannelsOffHandler(modular_server::Pin * pin_ptr);
+  void setHighPowerChannelOnHandler();
+  void setHighPowerChannelOnAtPowerHandler();
+  void setHighPowerChannelOffHandler();
 
   void setAllLowPowerChannelsOnAtPowerHandler();
   void setAllLowPowerChannelsOnHandler(modular_server::Pin * pin_ptr);
   void setAllLowPowerChannelsOffHandler(modular_server::Pin * pin_ptr);
+  void setLowPowerChannelOnHandler();
+  void setLowPowerChannelOnAtPowerHandler();
+  void setLowPowerChannelOffHandler();
 
 };
 
