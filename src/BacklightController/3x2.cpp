@@ -50,7 +50,7 @@ const size_t visible_backlight_channels[VISIBLE_BACKLIGHT_CHANNEL_COUNT] =
   9,
 };
 
-const size_t high_power_channels[HIGH_POWER_CHANNEL_COUNT] =
+const size_t high_voltage_channels[HIGH_VOLTAGE_CHANNEL_COUNT] =
 {
   0,
   1,
@@ -58,7 +58,7 @@ const size_t high_power_channels[HIGH_POWER_CHANNEL_COUNT] =
   3,
 };
 
-const size_t low_power_channels[LOW_POWER_CHANNEL_COUNT] =
+const size_t low_voltage_channels[LOW_VOLTAGE_CHANNEL_COUNT] =
 {
   4,
   5,
@@ -81,20 +81,20 @@ const long visible_backlight_power_max_default[VISIBLE_BACKLIGHT_CHANNEL_COUNT] 
   visible_backlight_power_max_element_default,
 };
 
-const long high_power_power_max_default[HIGH_POWER_CHANNEL_COUNT] =
+const long high_voltage_power_max_default[HIGH_VOLTAGE_CHANNEL_COUNT] =
 {
-  high_power_power_max_element_default,
-  high_power_power_max_element_default,
-  high_power_power_max_element_default,
-  high_power_power_max_element_default,
+  high_voltage_power_max_element_default,
+  high_voltage_power_max_element_default,
+  high_voltage_power_max_element_default,
+  high_voltage_power_max_element_default,
 };
 
-const long low_power_power_max_default[LOW_POWER_CHANNEL_COUNT] =
+const long low_voltage_power_max_default[LOW_VOLTAGE_CHANNEL_COUNT] =
 {
-  low_power_power_max_element_default,
-  low_power_power_max_element_default,
-  low_power_power_max_element_default,
-  low_power_power_max_element_default,
+  low_voltage_power_max_element_default,
+  low_voltage_power_max_element_default,
+  low_voltage_power_max_element_default,
+  low_voltage_power_max_element_default,
 };
 
 // Parameters
