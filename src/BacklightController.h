@@ -30,49 +30,61 @@ public:
   void enableAll();
   void disableAll();
 
-  void setAllIrBacklightChannelsOn();
-  void setAllIrBacklightChannelsOnAtPower(long power);
-  void setAllIrBacklightChannelsOff();
-  void setIrBacklightChannelOn(size_t ir_backlight_channel);
-  void setIrBacklightChannelOnAtPower(size_t ir_backlight_channel,
+  void setAllIrBacklightsOn();
+  void setAllIrBacklightsOnAtPower(long power);
+  void setAllIrBacklightsOff();
+  size_t getIrBacklightChannelCount();
+  void setIrBacklightOn(size_t ir_backlight_channel);
+  void setIrBacklightOnAtPower(size_t ir_backlight_channel,
     long power);
-  void setIrBacklightChannelOff(size_t ir_backlight_channel);
+  void setIrBacklightOff(size_t ir_backlight_channel);
+  long getIrBacklightPowerWhenOn(size_t ir_backlight_channel);
+  long getIrBacklightPower(size_t ir_backlight_channel);
 
-  void setAllVisibleBacklightChannelsOn();
-  void setAllVisibleBacklightChannelsOnAtPower(long power);
-  void setAllVisibleBacklightChannelsOff();
-  void setVisibleBacklightChannelOn(size_t visible_backlight_channel);
-  void setVisibleBacklightChannelOnAtPower(size_t visible_backlight_channel,
+  void setAllVisibleBacklightsOn();
+  void setAllVisibleBacklightsOnAtPower(long power);
+  void setAllVisibleBacklightsOff();
+  size_t getVisibleBacklightChannelCount();
+  void setVisibleBacklightOn(size_t visible_backlight_channel);
+  void setVisibleBacklightOnAtPower(size_t visible_backlight_channel,
     long power);
-  void setVisibleBacklightChannelOff(size_t visible_backlight_channel);
+  void setVisibleBacklightOff(size_t visible_backlight_channel);
+  long getVisibleBacklightPowerWhenOn(size_t visible_backlight_channel);
+  long getVisibleBacklightPower(size_t visible_backlight_channel);
 
-  void setAllHighVoltageChannelsOn();
-  void setAllHighVoltageChannelsOnAtPower(long power);
-  void setAllHighVoltageChannelsOff();
-  void setHighVoltageChannelOn(size_t high_voltage_channel);
-  void setHighVoltageChannelOnAtPower(size_t high_voltage_channel,
+  void setAllHighVoltagesOn();
+  void setAllHighVoltagesOnAtPower(long power);
+  void setAllHighVoltagesOff();
+  size_t getHighVoltageChannelCount();
+  void setHighVoltageOn(size_t high_voltage_channel);
+  void setHighVoltageOnAtPower(size_t high_voltage_channel,
     long power);
-  void setHighVoltageChannelOff(size_t high_voltage_channel);
+  void setHighVoltageOff(size_t high_voltage_channel);
+  long getHighVoltagePowerWhenOn(size_t high_voltage_channel);
+  long getHighVoltagePower(size_t high_voltage_channel);
 
-  void setAllLowVoltageChannelsOn();
-  void setAllLowVoltageChannelsOnAtPower(long power);
-  void setAllLowVoltageChannelsOff();
-  void setLowVoltageChannelOn(size_t low_voltage_channel);
-  void setLowVoltageChannelOnAtPower(size_t low_voltage_channel,
+  void setAllLowVoltagesOn();
+  void setAllLowVoltagesOnAtPower(long power);
+  void setAllLowVoltagesOff();
+  size_t getLowVoltageChannelCount();
+  void setLowVoltageOn(size_t low_voltage_channel);
+  void setLowVoltageOnAtPower(size_t low_voltage_channel,
     long power);
-  void setLowVoltageChannelOff(size_t low_voltage_channel);
+  void setLowVoltageOff(size_t low_voltage_channel);
+  long getLowVoltagePowerWhenOn(size_t low_voltage_channel);
+  long getLowVoltagePower(size_t low_voltage_channel);
 
 protected:
   virtual void setChannelOnAtHighFrequency(size_t channel,
     long high_frequency_duty_cycle);
 
-  size_t irBacklightChannelToDigitalChannel(size_t ir_backlight_channel);
+  size_t irBacklightToDigitalChannel(size_t ir_backlight_channel);
   uint32_t getIrBacklightDigitalChannels();
-  size_t visibleBacklightChannelToDigitalChannel(size_t visible_backlight_channel);
+  size_t visibleBacklightToDigitalChannel(size_t visible_backlight_channel);
   uint32_t getVisibleBacklightDigitalChannels();
-  size_t highVoltageChannelToDigitalChannel(size_t high_voltage_channel);
+  size_t highVoltageToDigitalChannel(size_t high_voltage_channel);
   uint32_t getHighVoltageDigitalChannels();
-  size_t lowVoltageChannelToDigitalChannel(size_t low_voltage_channel);
+  size_t lowVoltageToDigitalChannel(size_t low_voltage_channel);
   uint32_t getLowVoltageDigitalChannels();
 
 private:
@@ -88,37 +100,45 @@ private:
   void disableAllHandler(modular_server::Pin * pin_ptr);
 
   void setIrBacklightPowerMaxHandler(size_t ir_backlight_channel);
-  void setVisibleBacklightPowerMaxHandler(size_t channel);
-  void setHighVoltagePowerMaxHandler(size_t channel);
-  void setLowVoltagePowerMaxHandler(size_t channel);
+  void setVisibleBacklightPowerMaxHandler(size_t visibl_backlight_channel);
+  void setHighVoltagePowerMaxHandler(size_t high_voltage_channel);
+  void setLowVoltagePowerMaxHandler(size_t low_voltage_channel);
 
-  void setAllIrBacklightChannelsOnAtPowerHandler();
-  void setAllIrBacklightChannelsOnHandler(modular_server::Pin * pin_ptr);
-  void setAllIrBacklightChannelsOffHandler(modular_server::Pin * pin_ptr);
-  void setIrBacklightChannelOnHandler();
-  void setIrBacklightChannelOnAtPowerHandler();
-  void setIrBacklightChannelOffHandler();
+  void setAllIrBacklightsOnAtPowerHandler();
+  void setAllIrBacklightsOnHandler(modular_server::Pin * pin_ptr);
+  void setAllIrBacklightsOffHandler(modular_server::Pin * pin_ptr);
+  void setIrBacklightOnHandler();
+  void setIrBacklightOnAtPowerHandler();
+  void setIrBacklightOffHandler();
+  void getIrBacklightPowersWhenOnHandler();
+  void getIrBacklightPowersHandler();
 
-  void setAllVisibleBacklightChannelsOnAtPowerHandler();
-  void setAllVisibleBacklightChannelsOnHandler(modular_server::Pin * pin_ptr);
-  void setAllVisibleBacklightChannelsOffHandler(modular_server::Pin * pin_ptr);
-  void setVisibleBacklightChannelOnHandler();
-  void setVisibleBacklightChannelOnAtPowerHandler();
-  void setVisibleBacklightChannelOffHandler();
+  void setAllVisibleBacklightsOnAtPowerHandler();
+  void setAllVisibleBacklightsOnHandler(modular_server::Pin * pin_ptr);
+  void setAllVisibleBacklightsOffHandler(modular_server::Pin * pin_ptr);
+  void setVisibleBacklightOnHandler();
+  void setVisibleBacklightOnAtPowerHandler();
+  void setVisibleBacklightOffHandler();
+  void getVisibleBacklightPowersWhenOnHandler();
+  void getVisibleBacklightPowersHandler();
 
-  void setAllHighVoltageChannelsOnAtPowerHandler();
-  void setAllHighVoltageChannelsOnHandler(modular_server::Pin * pin_ptr);
-  void setAllHighVoltageChannelsOffHandler(modular_server::Pin * pin_ptr);
-  void setHighVoltageChannelOnHandler();
-  void setHighVoltageChannelOnAtPowerHandler();
-  void setHighVoltageChannelOffHandler();
+  void setAllHighVoltagesOnAtPowerHandler();
+  void setAllHighVoltagesOnHandler(modular_server::Pin * pin_ptr);
+  void setAllHighVoltagesOffHandler(modular_server::Pin * pin_ptr);
+  void setHighVoltageOnHandler();
+  void setHighVoltageOnAtPowerHandler();
+  void setHighVoltageOffHandler();
+  void getHighVoltagePowersWhenOnHandler();
+  void getHighVoltagePowersHandler();
 
-  void setAllLowVoltageChannelsOnAtPowerHandler();
-  void setAllLowVoltageChannelsOnHandler(modular_server::Pin * pin_ptr);
-  void setAllLowVoltageChannelsOffHandler(modular_server::Pin * pin_ptr);
-  void setLowVoltageChannelOnHandler();
-  void setLowVoltageChannelOnAtPowerHandler();
-  void setLowVoltageChannelOffHandler();
+  void setAllLowVoltagesOnAtPowerHandler();
+  void setAllLowVoltagesOnHandler(modular_server::Pin * pin_ptr);
+  void setAllLowVoltagesOffHandler(modular_server::Pin * pin_ptr);
+  void setLowVoltageOnHandler();
+  void setLowVoltageOnAtPowerHandler();
+  void setLowVoltageOffHandler();
+  void getLowVoltagePowersWhenOnHandler();
+  void getLowVoltagePowersHandler();
 
 };
 

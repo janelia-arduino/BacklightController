@@ -74,7 +74,7 @@ void BacklightController::setup()
   high_voltage_power_max_property.attachPostSetElementValueFunctor(makeFunctor((Functor1<size_t> *)0,*this,&BacklightController::setHighVoltagePowerMaxHandler));
 
   modular_server::Property & low_voltage_power_max_property = modular_server_.createProperty(constants::low_voltage_power_max_property_name,constants::low_voltage_power_max_default);
-  low_voltage_power_max_property.setRange(digital_controller::constants::power_min,digital_controller::constants::power_max);
+  low_voltage_power_max_property.setRange(digital_controller::constants::power_max,digital_controller::constants::power_max);
   low_voltage_power_max_property.setUnits(digital_controller::constants::percent_units);
   low_voltage_power_max_property.attachPostSetElementValueFunctor(makeFunctor((Functor1<size_t> *)0,*this,&BacklightController::setLowVoltagePowerMaxHandler));
 
@@ -96,73 +96,113 @@ void BacklightController::setup()
   setChannelCountHandler();
 
   // Functions
-  modular_server::Function & set_all_ir_backlight_channels_on_at_power_function = modular_server_.createFunction(backlight_controller::constants::set_all_ir_backlight_channels_on_at_power_function_name);
-  set_all_ir_backlight_channels_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setAllIrBacklightChannelsOnAtPowerHandler));
-  set_all_ir_backlight_channels_on_at_power_function.addParameter(power_parameter);
+  modular_server::Function & set_all_ir_backlights_on_at_power_function = modular_server_.createFunction(backlight_controller::constants::set_all_ir_backlights_on_at_power_function_name);
+  set_all_ir_backlights_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setAllIrBacklightsOnAtPowerHandler));
+  set_all_ir_backlights_on_at_power_function.addParameter(power_parameter);
 
-  modular_server::Function & set_ir_backlight_channel_on_function = modular_server_.createFunction(backlight_controller::constants::set_ir_backlight_channel_on_function_name);
-  set_ir_backlight_channel_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setIrBacklightChannelOnHandler));
-  set_ir_backlight_channel_on_function.addParameter(ir_backlight_channel_parameter);
+  modular_server::Function & set_ir_backlight_on_function = modular_server_.createFunction(backlight_controller::constants::set_ir_backlight_on_function_name);
+  set_ir_backlight_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setIrBacklightOnHandler));
+  set_ir_backlight_on_function.addParameter(ir_backlight_channel_parameter);
 
-  modular_server::Function & set_ir_backlight_channel_on_at_power_function = modular_server_.createFunction(backlight_controller::constants::set_ir_backlight_channel_on_at_power_function_name);
-  set_ir_backlight_channel_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setIrBacklightChannelOnAtPowerHandler));
-  set_ir_backlight_channel_on_at_power_function.addParameter(ir_backlight_channel_parameter);
-  set_ir_backlight_channel_on_at_power_function.addParameter(power_parameter);
+  modular_server::Function & set_ir_backlight_on_at_power_function = modular_server_.createFunction(backlight_controller::constants::set_ir_backlight_on_at_power_function_name);
+  set_ir_backlight_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setIrBacklightOnAtPowerHandler));
+  set_ir_backlight_on_at_power_function.addParameter(ir_backlight_channel_parameter);
+  set_ir_backlight_on_at_power_function.addParameter(power_parameter);
 
-  modular_server::Function & set_ir_backlight_channel_off_function = modular_server_.createFunction(backlight_controller::constants::set_ir_backlight_channel_off_function_name);
-  set_ir_backlight_channel_off_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setIrBacklightChannelOffHandler));
-  set_ir_backlight_channel_off_function.addParameter(ir_backlight_channel_parameter);
+  modular_server::Function & set_ir_backlight_off_function = modular_server_.createFunction(backlight_controller::constants::set_ir_backlight_off_function_name);
+  set_ir_backlight_off_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setIrBacklightOffHandler));
+  set_ir_backlight_off_function.addParameter(ir_backlight_channel_parameter);
 
-  modular_server::Function & set_all_visible_backlight_channels_on_at_power_function = modular_server_.createFunction(backlight_controller::constants::set_all_visible_backlight_channels_on_at_power_function_name);
-  set_all_visible_backlight_channels_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setAllVisibleBacklightChannelsOnAtPowerHandler));
-  set_all_visible_backlight_channels_on_at_power_function.addParameter(power_parameter);
+  modular_server::Function & get_ir_backlight_powers_when_on_function = modular_server_.createFunction(constants::get_ir_backlight_powers_when_on_function_name);
+  get_ir_backlight_powers_when_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getIrBacklightPowersWhenOnHandler));
+  get_ir_backlight_powers_when_on_function.setResultTypeArray();
+  get_ir_backlight_powers_when_on_function.setResultTypeLong();
 
-  modular_server::Function & set_visible_backlight_channel_on_function = modular_server_.createFunction(backlight_controller::constants::set_visible_backlight_channel_on_function_name);
-  set_visible_backlight_channel_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setVisibleBacklightChannelOnHandler));
-  set_visible_backlight_channel_on_function.addParameter(visible_backlight_channel_parameter);
+  modular_server::Function & get_ir_backlight_powers_function = modular_server_.createFunction(constants::get_ir_backlight_powers_function_name);
+  get_ir_backlight_powers_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getIrBacklightPowersHandler));
+  get_ir_backlight_powers_function.setResultTypeArray();
+  get_ir_backlight_powers_function.setResultTypeLong();
 
-  modular_server::Function & set_visible_backlight_channel_on_at_power_function = modular_server_.createFunction(backlight_controller::constants::set_visible_backlight_channel_on_at_power_function_name);
-  set_visible_backlight_channel_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setVisibleBacklightChannelOnAtPowerHandler));
-  set_visible_backlight_channel_on_at_power_function.addParameter(visible_backlight_channel_parameter);
-  set_visible_backlight_channel_on_at_power_function.addParameter(power_parameter);
+  modular_server::Function & set_all_visible_backlights_on_at_power_function = modular_server_.createFunction(backlight_controller::constants::set_all_visible_backlights_on_at_power_function_name);
+  set_all_visible_backlights_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setAllVisibleBacklightsOnAtPowerHandler));
+  set_all_visible_backlights_on_at_power_function.addParameter(power_parameter);
 
-  modular_server::Function & set_visible_backlight_channel_off_function = modular_server_.createFunction(backlight_controller::constants::set_visible_backlight_channel_off_function_name);
-  set_visible_backlight_channel_off_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setVisibleBacklightChannelOffHandler));
-  set_visible_backlight_channel_off_function.addParameter(visible_backlight_channel_parameter);
+  modular_server::Function & set_visible_backlight_on_function = modular_server_.createFunction(backlight_controller::constants::set_visible_backlight_on_function_name);
+  set_visible_backlight_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setVisibleBacklightOnHandler));
+  set_visible_backlight_on_function.addParameter(visible_backlight_channel_parameter);
 
-  modular_server::Function & set_all_high_voltage_channels_on_at_power_function = modular_server_.createFunction(backlight_controller::constants::set_all_high_voltage_channels_on_at_power_function_name);
-  set_all_high_voltage_channels_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setAllHighVoltageChannelsOnAtPowerHandler));
-  set_all_high_voltage_channels_on_at_power_function.addParameter(power_parameter);
+  modular_server::Function & set_visible_backlight_on_at_power_function = modular_server_.createFunction(backlight_controller::constants::set_visible_backlight_on_at_power_function_name);
+  set_visible_backlight_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setVisibleBacklightOnAtPowerHandler));
+  set_visible_backlight_on_at_power_function.addParameter(visible_backlight_channel_parameter);
+  set_visible_backlight_on_at_power_function.addParameter(power_parameter);
 
-  modular_server::Function & set_high_voltage_channel_on_function = modular_server_.createFunction(backlight_controller::constants::set_high_voltage_channel_on_function_name);
-  set_high_voltage_channel_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setHighVoltageChannelOnHandler));
-  set_high_voltage_channel_on_function.addParameter(high_voltage_channel_parameter);
+  modular_server::Function & set_visible_backlight_off_function = modular_server_.createFunction(backlight_controller::constants::set_visible_backlight_off_function_name);
+  set_visible_backlight_off_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setVisibleBacklightOffHandler));
+  set_visible_backlight_off_function.addParameter(visible_backlight_channel_parameter);
 
-  modular_server::Function & set_high_voltage_channel_on_at_power_function = modular_server_.createFunction(backlight_controller::constants::set_high_voltage_channel_on_at_power_function_name);
-  set_high_voltage_channel_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setHighVoltageChannelOnAtPowerHandler));
-  set_high_voltage_channel_on_at_power_function.addParameter(high_voltage_channel_parameter);
-  set_high_voltage_channel_on_at_power_function.addParameter(power_parameter);
+  modular_server::Function & get_visible_backlight_powers_when_on_function = modular_server_.createFunction(constants::get_visible_backlight_powers_when_on_function_name);
+  get_visible_backlight_powers_when_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getVisibleBacklightPowersWhenOnHandler));
+  get_visible_backlight_powers_when_on_function.setResultTypeArray();
+  get_visible_backlight_powers_when_on_function.setResultTypeLong();
 
-  modular_server::Function & set_high_voltage_channel_off_function = modular_server_.createFunction(backlight_controller::constants::set_high_voltage_channel_off_function_name);
-  set_high_voltage_channel_off_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setHighVoltageChannelOffHandler));
-  set_high_voltage_channel_off_function.addParameter(high_voltage_channel_parameter);
+  modular_server::Function & get_visible_backlight_powers_function = modular_server_.createFunction(constants::get_visible_backlight_powers_function_name);
+  get_visible_backlight_powers_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getVisibleBacklightPowersHandler));
+  get_visible_backlight_powers_function.setResultTypeArray();
+  get_visible_backlight_powers_function.setResultTypeLong();
 
-  modular_server::Function & set_all_low_voltage_channels_on_at_power_function = modular_server_.createFunction(backlight_controller::constants::set_all_low_voltage_channels_on_at_power_function_name);
-  set_all_low_voltage_channels_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setAllLowVoltageChannelsOnAtPowerHandler));
-  set_all_low_voltage_channels_on_at_power_function.addParameter(power_parameter);
+  modular_server::Function & set_all_high_voltages_on_at_power_function = modular_server_.createFunction(backlight_controller::constants::set_all_high_voltages_on_at_power_function_name);
+  set_all_high_voltages_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setAllHighVoltagesOnAtPowerHandler));
+  set_all_high_voltages_on_at_power_function.addParameter(power_parameter);
 
-  modular_server::Function & set_low_voltage_channel_on_function = modular_server_.createFunction(backlight_controller::constants::set_low_voltage_channel_on_function_name);
-  set_low_voltage_channel_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setLowVoltageChannelOnHandler));
-  set_low_voltage_channel_on_function.addParameter(low_voltage_channel_parameter);
+  modular_server::Function & set_high_voltage_on_function = modular_server_.createFunction(backlight_controller::constants::set_high_voltage_on_function_name);
+  set_high_voltage_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setHighVoltageOnHandler));
+  set_high_voltage_on_function.addParameter(high_voltage_channel_parameter);
 
-  modular_server::Function & set_low_voltage_channel_on_at_power_function = modular_server_.createFunction(backlight_controller::constants::set_low_voltage_channel_on_at_power_function_name);
-  set_low_voltage_channel_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setLowVoltageChannelOnAtPowerHandler));
-  set_low_voltage_channel_on_at_power_function.addParameter(low_voltage_channel_parameter);
-  set_low_voltage_channel_on_at_power_function.addParameter(power_parameter);
+  modular_server::Function & set_high_voltage_on_at_power_function = modular_server_.createFunction(backlight_controller::constants::set_high_voltage_on_at_power_function_name);
+  set_high_voltage_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setHighVoltageOnAtPowerHandler));
+  set_high_voltage_on_at_power_function.addParameter(high_voltage_channel_parameter);
+  set_high_voltage_on_at_power_function.addParameter(power_parameter);
 
-  modular_server::Function & set_low_voltage_channel_off_function = modular_server_.createFunction(backlight_controller::constants::set_low_voltage_channel_off_function_name);
-  set_low_voltage_channel_off_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setLowVoltageChannelOffHandler));
-  set_low_voltage_channel_off_function.addParameter(low_voltage_channel_parameter);
+  modular_server::Function & set_high_voltage_off_function = modular_server_.createFunction(backlight_controller::constants::set_high_voltage_off_function_name);
+  set_high_voltage_off_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setHighVoltageOffHandler));
+  set_high_voltage_off_function.addParameter(high_voltage_channel_parameter);
+
+  modular_server::Function & get_high_voltage_powers_when_on_function = modular_server_.createFunction(constants::get_high_voltage_powers_when_on_function_name);
+  get_high_voltage_powers_when_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getHighVoltagePowersWhenOnHandler));
+  get_high_voltage_powers_when_on_function.setResultTypeArray();
+  get_high_voltage_powers_when_on_function.setResultTypeLong();
+
+  modular_server::Function & get_high_voltage_powers_function = modular_server_.createFunction(constants::get_high_voltage_powers_function_name);
+  get_high_voltage_powers_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getHighVoltagePowersHandler));
+  get_high_voltage_powers_function.setResultTypeArray();
+  get_high_voltage_powers_function.setResultTypeLong();
+
+  modular_server::Function & set_all_low_voltages_on_at_power_function = modular_server_.createFunction(backlight_controller::constants::set_all_low_voltages_on_at_power_function_name);
+  set_all_low_voltages_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setAllLowVoltagesOnAtPowerHandler));
+  set_all_low_voltages_on_at_power_function.addParameter(power_parameter);
+
+  modular_server::Function & set_low_voltage_on_function = modular_server_.createFunction(backlight_controller::constants::set_low_voltage_on_function_name);
+  set_low_voltage_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setLowVoltageOnHandler));
+  set_low_voltage_on_function.addParameter(low_voltage_channel_parameter);
+
+  modular_server::Function & set_low_voltage_on_at_power_function = modular_server_.createFunction(backlight_controller::constants::set_low_voltage_on_at_power_function_name);
+  set_low_voltage_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setLowVoltageOnAtPowerHandler));
+  set_low_voltage_on_at_power_function.addParameter(low_voltage_channel_parameter);
+  set_low_voltage_on_at_power_function.addParameter(power_parameter);
+
+  modular_server::Function & set_low_voltage_off_function = modular_server_.createFunction(backlight_controller::constants::set_low_voltage_off_function_name);
+  set_low_voltage_off_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setLowVoltageOffHandler));
+  set_low_voltage_off_function.addParameter(low_voltage_channel_parameter);
+
+  modular_server::Function & get_low_voltage_powers_when_on_function = modular_server_.createFunction(constants::get_low_voltage_powers_when_on_function_name);
+  get_low_voltage_powers_when_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getLowVoltagePowersWhenOnHandler));
+  get_low_voltage_powers_when_on_function.setResultTypeArray();
+  get_low_voltage_powers_when_on_function.setResultTypeLong();
+
+  modular_server::Function & get_low_voltage_powers_function = modular_server_.createFunction(constants::get_low_voltage_powers_function_name);
+  get_low_voltage_powers_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getLowVoltagePowersHandler));
+  get_low_voltage_powers_function.setResultTypeArray();
+  get_low_voltage_powers_function.setResultTypeLong();
 
   // Callbacks
   modular_server::Callback & enable_all_callback = modular_server_.callback(digital_controller::constants::enable_all_callback_name);
@@ -171,31 +211,31 @@ void BacklightController::setup()
   modular_server::Callback & disable_all_callback = modular_server_.callback(digital_controller::constants::disable_all_callback_name);
   disable_all_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::disableAllHandler));
 
-  modular_server::Callback & set_all_ir_backlight_channels_on_callback = modular_server_.createCallback(backlight_controller::constants::set_all_ir_backlight_channels_on_callback_name);
-  set_all_ir_backlight_channels_on_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllIrBacklightChannelsOnHandler));
+  modular_server::Callback & set_all_ir_backlights_on_callback = modular_server_.createCallback(backlight_controller::constants::set_all_ir_backlights_on_callback_name);
+  set_all_ir_backlights_on_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllIrBacklightsOnHandler));
 
-  modular_server::Callback & set_all_ir_backlight_channels_off_callback = modular_server_.createCallback(backlight_controller::constants::set_all_ir_backlight_channels_off_callback_name);
-  set_all_ir_backlight_channels_off_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllIrBacklightChannelsOffHandler));
+  modular_server::Callback & set_all_ir_backlights_off_callback = modular_server_.createCallback(backlight_controller::constants::set_all_ir_backlights_off_callback_name);
+  set_all_ir_backlights_off_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllIrBacklightsOffHandler));
 
-  modular_server::Callback & set_all_visible_backlight_channels_on_callback = modular_server_.createCallback(backlight_controller::constants::set_all_visible_backlight_channels_on_callback_name);
-  set_all_visible_backlight_channels_on_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllVisibleBacklightChannelsOnHandler));
-  set_all_visible_backlight_channels_on_callback.attachTo(btn_a_pin,modular_server::constants::pin_mode_interrupt_falling);
+  modular_server::Callback & set_all_visible_backlights_on_callback = modular_server_.createCallback(backlight_controller::constants::set_all_visible_backlights_on_callback_name);
+  set_all_visible_backlights_on_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllVisibleBacklightsOnHandler));
+  set_all_visible_backlights_on_callback.attachTo(btn_a_pin,modular_server::constants::pin_mode_interrupt_falling);
 
-  modular_server::Callback & set_all_visible_backlight_channels_off_callback = modular_server_.createCallback(backlight_controller::constants::set_all_visible_backlight_channels_off_callback_name);
-  set_all_visible_backlight_channels_off_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllVisibleBacklightChannelsOffHandler));
-  set_all_visible_backlight_channels_off_callback.attachTo(btn_b_pin,modular_server::constants::pin_mode_interrupt_falling);
+  modular_server::Callback & set_all_visible_backlights_off_callback = modular_server_.createCallback(backlight_controller::constants::set_all_visible_backlights_off_callback_name);
+  set_all_visible_backlights_off_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllVisibleBacklightsOffHandler));
+  set_all_visible_backlights_off_callback.attachTo(btn_b_pin,modular_server::constants::pin_mode_interrupt_falling);
 
-  modular_server::Callback & set_all_high_voltage_channels_on_callback = modular_server_.createCallback(backlight_controller::constants::set_all_high_voltage_channels_on_callback_name);
-  set_all_high_voltage_channels_on_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllHighVoltageChannelsOnHandler));
+  modular_server::Callback & set_all_high_voltages_on_callback = modular_server_.createCallback(backlight_controller::constants::set_all_high_voltages_on_callback_name);
+  set_all_high_voltages_on_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllHighVoltagesOnHandler));
 
-  modular_server::Callback & set_all_high_voltage_channels_off_callback = modular_server_.createCallback(backlight_controller::constants::set_all_high_voltage_channels_off_callback_name);
-  set_all_high_voltage_channels_off_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllHighVoltageChannelsOffHandler));
+  modular_server::Callback & set_all_high_voltages_off_callback = modular_server_.createCallback(backlight_controller::constants::set_all_high_voltages_off_callback_name);
+  set_all_high_voltages_off_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllHighVoltagesOffHandler));
 
-  modular_server::Callback & set_all_low_voltage_channels_on_callback = modular_server_.createCallback(backlight_controller::constants::set_all_low_voltage_channels_on_callback_name);
-  set_all_low_voltage_channels_on_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllLowVoltageChannelsOnHandler));
+  modular_server::Callback & set_all_low_voltages_on_callback = modular_server_.createCallback(backlight_controller::constants::set_all_low_voltages_on_callback_name);
+  set_all_low_voltages_on_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllLowVoltagesOnHandler));
 
-  modular_server::Callback & set_all_low_voltage_channels_off_callback = modular_server_.createCallback(backlight_controller::constants::set_all_low_voltage_channels_off_callback_name);
-  set_all_low_voltage_channels_off_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllLowVoltageChannelsOffHandler));
+  modular_server::Callback & set_all_low_voltages_off_callback = modular_server_.createCallback(backlight_controller::constants::set_all_low_voltages_off_callback_name);
+  set_all_low_voltages_off_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllLowVoltagesOffHandler));
 
   enableAll();
   setAllChannelsOff();
@@ -213,139 +253,197 @@ void BacklightController::disableAll()
   DigitalController::disableAll();
 }
 
-void BacklightController::setAllIrBacklightChannelsOn()
+void BacklightController::setAllIrBacklightsOn()
 {
   setChannelsOn(getIrBacklightDigitalChannels());
 }
 
-void BacklightController::setAllIrBacklightChannelsOnAtPower(long power)
+void BacklightController::setAllIrBacklightsOnAtPower(long power)
 {
   setChannelsOnAtPower(getIrBacklightDigitalChannels(),power);
 }
 
-void BacklightController::setAllIrBacklightChannelsOff()
+void BacklightController::setAllIrBacklightsOff()
 {
   setChannelsOff(getIrBacklightDigitalChannels());
 }
 
-void BacklightController::setIrBacklightChannelOn(size_t ir_backlight_channel)
+size_t BacklightController::getIrBacklightChannelCount()
 {
-  setChannelOn(irBacklightChannelToDigitalChannel(ir_backlight_channel));
+  return constants::IR_BACKLIGHT_CHANNEL_COUNT;
 }
 
-void BacklightController::setIrBacklightChannelOnAtPower(size_t ir_backlight_channel,
+void BacklightController::setIrBacklightOn(size_t ir_backlight_channel)
+{
+  setChannelOn(irBacklightToDigitalChannel(ir_backlight_channel));
+}
+
+void BacklightController::setIrBacklightOnAtPower(size_t ir_backlight_channel,
   long power)
 {
-  setChannelOnAtPower(irBacklightChannelToDigitalChannel(ir_backlight_channel),power);
+  setChannelOnAtPower(irBacklightToDigitalChannel(ir_backlight_channel),power);
 }
 
-void BacklightController::setIrBacklightChannelOff(size_t ir_backlight_channel)
+void BacklightController::setIrBacklightOff(size_t ir_backlight_channel)
 {
-  setChannelOff(irBacklightChannelToDigitalChannel(ir_backlight_channel));
+  setChannelOff(irBacklightToDigitalChannel(ir_backlight_channel));
 }
 
-void BacklightController::setAllVisibleBacklightChannelsOn()
+long BacklightController::getIrBacklightPowerWhenOn(size_t ir_backlight_channel)
+{
+  return getPowerWhenOn(irBacklightToDigitalChannel(ir_backlight_channel));
+}
+
+long BacklightController::getIrBacklightPower(size_t ir_backlight_channel)
+{
+  return getPower(irBacklightToDigitalChannel(ir_backlight_channel));
+}
+
+void BacklightController::setAllVisibleBacklightsOn()
 {
   setChannelsOn(getVisibleBacklightDigitalChannels());
 }
 
-void BacklightController::setAllVisibleBacklightChannelsOnAtPower(long power)
+void BacklightController::setAllVisibleBacklightsOnAtPower(long power)
 {
   setChannelsOnAtPower(getVisibleBacklightDigitalChannels(),power);
 }
 
-void BacklightController::setAllVisibleBacklightChannelsOff()
+void BacklightController::setAllVisibleBacklightsOff()
 {
   setChannelsOff(getVisibleBacklightDigitalChannels());
 }
 
-void BacklightController::setVisibleBacklightChannelOn(size_t visible_backlight_channel)
+size_t BacklightController::getVisibleBacklightChannelCount()
 {
-  setChannelOn(visibleBacklightChannelToDigitalChannel(visible_backlight_channel));
+  return constants::VISIBLE_BACKLIGHT_CHANNEL_COUNT;
 }
 
-void BacklightController::setVisibleBacklightChannelOnAtPower(size_t visible_backlight_channel,
+void BacklightController::setVisibleBacklightOn(size_t visible_backlight_channel)
+{
+  setChannelOn(visibleBacklightToDigitalChannel(visible_backlight_channel));
+}
+
+void BacklightController::setVisibleBacklightOnAtPower(size_t visible_backlight_channel,
   long power)
 {
-  setChannelOnAtPower(visibleBacklightChannelToDigitalChannel(visible_backlight_channel),power);
+  setChannelOnAtPower(visibleBacklightToDigitalChannel(visible_backlight_channel),power);
 }
 
-void BacklightController::setVisibleBacklightChannelOff(size_t visible_backlight_channel)
+void BacklightController::setVisibleBacklightOff(size_t visible_backlight_channel)
 {
-  setChannelOff(visibleBacklightChannelToDigitalChannel(visible_backlight_channel));
+  setChannelOff(visibleBacklightToDigitalChannel(visible_backlight_channel));
 }
 
-void BacklightController::setAllHighVoltageChannelsOn()
+long BacklightController::getVisibleBacklightPowerWhenOn(size_t visible_backlight_channel)
+{
+  return getPowerWhenOn(visibleBacklightToDigitalChannel(visible_backlight_channel));
+}
+
+long BacklightController::getVisibleBacklightPower(size_t visible_backlight_channel)
+{
+  return getPower(visibleBacklightToDigitalChannel(visible_backlight_channel));
+}
+
+void BacklightController::setAllHighVoltagesOn()
 {
   setChannelsOn(getHighVoltageDigitalChannels());
 }
 
-void BacklightController::setAllHighVoltageChannelsOnAtPower(long power)
+void BacklightController::setAllHighVoltagesOnAtPower(long power)
 {
   setChannelsOnAtPower(getHighVoltageDigitalChannels(),power);
 }
 
-void BacklightController::setAllHighVoltageChannelsOff()
+void BacklightController::setAllHighVoltagesOff()
 {
   setChannelsOff(getHighVoltageDigitalChannels());
 }
 
-void BacklightController::setHighVoltageChannelOn(size_t high_voltage_channel)
+size_t BacklightController::getHighVoltageChannelCount()
 {
-  setChannelOn(highVoltageChannelToDigitalChannel(high_voltage_channel));
+  return constants::HIGH_VOLTAGE_CHANNEL_COUNT;
 }
 
-void BacklightController::setHighVoltageChannelOnAtPower(size_t high_voltage_channel,
+void BacklightController::setHighVoltageOn(size_t high_voltage_channel)
+{
+  setChannelOn(highVoltageToDigitalChannel(high_voltage_channel));
+}
+
+void BacklightController::setHighVoltageOnAtPower(size_t high_voltage_channel,
   long power)
 {
-  setChannelOnAtPower(highVoltageChannelToDigitalChannel(high_voltage_channel),power);
+  setChannelOnAtPower(highVoltageToDigitalChannel(high_voltage_channel),power);
 }
 
-void BacklightController::setHighVoltageChannelOff(size_t high_voltage_channel)
+void BacklightController::setHighVoltageOff(size_t high_voltage_channel)
 {
-  setChannelOff(highVoltageChannelToDigitalChannel(high_voltage_channel));
+  setChannelOff(highVoltageToDigitalChannel(high_voltage_channel));
 }
 
-void BacklightController::setAllLowVoltageChannelsOn()
+long BacklightController::getHighVoltagePowerWhenOn(size_t high_voltage_channel)
+{
+  return getPowerWhenOn(highVoltageToDigitalChannel(high_voltage_channel));
+}
+
+long BacklightController::getHighVoltagePower(size_t high_voltage_channel)
+{
+  return getPower(highVoltageToDigitalChannel(high_voltage_channel));
+}
+
+void BacklightController::setAllLowVoltagesOn()
 {
   setChannelsOn(getLowVoltageDigitalChannels());
 }
 
-void BacklightController::setAllLowVoltageChannelsOnAtPower(long power)
+void BacklightController::setAllLowVoltagesOnAtPower(long power)
 {
   setChannelsOnAtPower(getLowVoltageDigitalChannels(),power);
 }
 
-void BacklightController::setAllLowVoltageChannelsOff()
+void BacklightController::setAllLowVoltagesOff()
 {
   setChannelsOff(getLowVoltageDigitalChannels());
 }
 
-void BacklightController::setLowVoltageChannelOn(size_t low_voltage_channel)
+size_t BacklightController::getLowVoltageChannelCount()
 {
-  setChannelOn(lowVoltageChannelToDigitalChannel(low_voltage_channel));
+  return constants::LOW_VOLTAGE_CHANNEL_COUNT;
 }
 
-void BacklightController::setLowVoltageChannelOnAtPower(size_t low_voltage_channel,
+void BacklightController::setLowVoltageOn(size_t low_voltage_channel)
+{
+  setChannelOn(lowVoltageToDigitalChannel(low_voltage_channel));
+}
+
+void BacklightController::setLowVoltageOnAtPower(size_t low_voltage_channel,
   long power)
 {
-  setChannelOnAtPower(lowVoltageChannelToDigitalChannel(low_voltage_channel),power);
+  setChannelOnAtPower(lowVoltageToDigitalChannel(low_voltage_channel),power);
 }
 
-void BacklightController::setLowVoltageChannelOff(size_t low_voltage_channel)
+void BacklightController::setLowVoltageOff(size_t low_voltage_channel)
 {
-  setChannelOff(lowVoltageChannelToDigitalChannel(low_voltage_channel));
+  setChannelOff(lowVoltageToDigitalChannel(low_voltage_channel));
+}
+
+long BacklightController::getLowVoltagePowerWhenOn(size_t low_voltage_channel)
+{
+  return getPowerWhenOn(lowVoltageToDigitalChannel(low_voltage_channel));
+}
+
+long BacklightController::getLowVoltagePower(size_t low_voltage_channel)
+{
+  return getPower(lowVoltageToDigitalChannel(low_voltage_channel));
 }
 
 void BacklightController::setChannelOnAtHighFrequency(size_t channel,
   long high_frequency_duty_cycle)
 {
-  Serial << "channel = " << channel << "\n";
-  Serial << "analogWrite(" << constants::channel_pins[channel] << "," << high_frequency_duty_cycle << ")\n";
   analogWrite(constants::channel_pins[channel],high_frequency_duty_cycle);
 }
 
-size_t BacklightController::irBacklightChannelToDigitalChannel(size_t ir_backlight_channel)
+size_t BacklightController::irBacklightToDigitalChannel(size_t ir_backlight_channel)
 {
   if (ir_backlight_channel >= constants::IR_BACKLIGHT_CHANNEL_COUNT)
   {
@@ -361,13 +459,13 @@ uint32_t BacklightController::getIrBacklightDigitalChannels()
   size_t channel;
   for (size_t ir_backlight_channel=0; ir_backlight_channel<constants::IR_BACKLIGHT_CHANNEL_COUNT; ++ir_backlight_channel)
   {
-    channel = irBacklightChannelToDigitalChannel(ir_backlight_channel);
+    channel = irBacklightToDigitalChannel(ir_backlight_channel);
     channels |= (bit << channel);
   }
   return channels;
 }
 
-size_t BacklightController::visibleBacklightChannelToDigitalChannel(size_t visible_backlight_channel)
+size_t BacklightController::visibleBacklightToDigitalChannel(size_t visible_backlight_channel)
 {
   if (visible_backlight_channel >= constants::VISIBLE_BACKLIGHT_CHANNEL_COUNT)
   {
@@ -383,13 +481,13 @@ uint32_t BacklightController::getVisibleBacklightDigitalChannels()
   size_t channel;
   for (size_t visible_backlight_channel=0; visible_backlight_channel<constants::VISIBLE_BACKLIGHT_CHANNEL_COUNT; ++visible_backlight_channel)
   {
-    channel = visibleBacklightChannelToDigitalChannel(visible_backlight_channel);
+    channel = visibleBacklightToDigitalChannel(visible_backlight_channel);
     channels |= (bit << channel);
   }
   return channels;
 }
 
-size_t BacklightController::highVoltageChannelToDigitalChannel(size_t high_voltage_channel)
+size_t BacklightController::highVoltageToDigitalChannel(size_t high_voltage_channel)
 {
   if (high_voltage_channel >= constants::HIGH_VOLTAGE_CHANNEL_COUNT)
   {
@@ -405,13 +503,13 @@ uint32_t BacklightController::getHighVoltageDigitalChannels()
   size_t channel;
   for (size_t high_voltage_channel=0; high_voltage_channel<constants::HIGH_VOLTAGE_CHANNEL_COUNT; ++high_voltage_channel)
   {
-    channel = highVoltageChannelToDigitalChannel(high_voltage_channel);
+    channel = highVoltageToDigitalChannel(high_voltage_channel);
     channels |= (bit << channel);
   }
   return channels;
 }
 
-size_t BacklightController::lowVoltageChannelToDigitalChannel(size_t low_voltage_channel)
+size_t BacklightController::lowVoltageToDigitalChannel(size_t low_voltage_channel)
 {
   if (low_voltage_channel >= constants::LOW_VOLTAGE_CHANNEL_COUNT)
   {
@@ -427,7 +525,7 @@ uint32_t BacklightController::getLowVoltageDigitalChannels()
   size_t channel;
   for (size_t low_voltage_channel=0; low_voltage_channel<constants::LOW_VOLTAGE_CHANNEL_COUNT; ++low_voltage_channel)
   {
-    channel = lowVoltageChannelToDigitalChannel(low_voltage_channel);
+    channel = lowVoltageToDigitalChannel(low_voltage_channel);
     channels |= (bit << channel);
   }
   return channels;
@@ -467,7 +565,7 @@ void BacklightController::setIrBacklightPowerMaxHandler(size_t ir_backlight_chan
   modular_server::Property & ir_backlight_power_max_property = modular_server_.property(constants::ir_backlight_power_max_property_name);
   ir_backlight_power_max_property.getElementValue(ir_backlight_channel,power_max);
 
-  size_t digital_channel = irBacklightChannelToDigitalChannel(ir_backlight_channel);
+  size_t digital_channel = irBacklightToDigitalChannel(ir_backlight_channel);
 
   modular_server::Property & power_max_property = modular_server_.property(digital_controller::constants::power_max_property_name);
   power_max_property.setElementValue(digital_channel,power_max);
@@ -479,7 +577,7 @@ void BacklightController::setVisibleBacklightPowerMaxHandler(size_t visible_back
   modular_server::Property & visible_backlight_power_max_property = modular_server_.property(constants::visible_backlight_power_max_property_name);
   visible_backlight_power_max_property.getElementValue(visible_backlight_channel,power_max);
 
-  size_t digital_channel = visibleBacklightChannelToDigitalChannel(visible_backlight_channel);
+  size_t digital_channel = visibleBacklightToDigitalChannel(visible_backlight_channel);
 
   modular_server::Property & power_max_property = modular_server_.property(digital_controller::constants::power_max_property_name);
   power_max_property.setElementValue(digital_channel,power_max);
@@ -491,7 +589,7 @@ void BacklightController::setHighVoltagePowerMaxHandler(size_t high_voltage_chan
   modular_server::Property & high_voltage_power_max_property = modular_server_.property(constants::high_voltage_power_max_property_name);
   high_voltage_power_max_property.getElementValue(high_voltage_channel,power_max);
 
-  size_t digital_channel = highVoltageChannelToDigitalChannel(high_voltage_channel);
+  size_t digital_channel = highVoltageToDigitalChannel(high_voltage_channel);
 
   modular_server::Property & power_max_property = modular_server_.property(digital_controller::constants::power_max_property_name);
   power_max_property.setElementValue(digital_channel,power_max);
@@ -503,39 +601,39 @@ void BacklightController::setLowVoltagePowerMaxHandler(size_t low_voltage_channe
   modular_server::Property & low_voltage_power_max_property = modular_server_.property(constants::low_voltage_power_max_property_name);
   low_voltage_power_max_property.getElementValue(low_voltage_channel,power_max);
 
-  size_t digital_channel = lowVoltageChannelToDigitalChannel(low_voltage_channel);
+  size_t digital_channel = lowVoltageToDigitalChannel(low_voltage_channel);
 
   modular_server::Property & power_max_property = modular_server_.property(digital_controller::constants::power_max_property_name);
   power_max_property.setElementValue(digital_channel,power_max);
 }
 
-void BacklightController::setAllIrBacklightChannelsOnAtPowerHandler()
+void BacklightController::setAllIrBacklightsOnAtPowerHandler()
 {
   long power;
   modular_server_.parameter(digital_controller::constants::power_parameter_name).getValue(power);
 
-  setAllIrBacklightChannelsOnAtPower(power);
+  setAllIrBacklightsOnAtPower(power);
 }
 
-void BacklightController::setAllIrBacklightChannelsOnHandler(modular_server::Pin * pin_ptr)
+void BacklightController::setAllIrBacklightsOnHandler(modular_server::Pin * pin_ptr)
 {
-  setAllIrBacklightChannelsOn();
+  setAllIrBacklightsOn();
 }
 
-void BacklightController::setAllIrBacklightChannelsOffHandler(modular_server::Pin * pin_ptr)
+void BacklightController::setAllIrBacklightsOffHandler(modular_server::Pin * pin_ptr)
 {
-  setAllIrBacklightChannelsOff();
+  setAllIrBacklightsOff();
 }
 
-void BacklightController::setIrBacklightChannelOnHandler()
+void BacklightController::setIrBacklightOnHandler()
 {
   long ir_backlight_channel;
   modular_server_.parameter(constants::ir_backlight_channel_parameter_name).getValue(ir_backlight_channel);
 
-  setIrBacklightChannelOn(ir_backlight_channel);
+  setIrBacklightOn(ir_backlight_channel);
 }
 
-void BacklightController::setIrBacklightChannelOnAtPowerHandler()
+void BacklightController::setIrBacklightOnAtPowerHandler()
 {
   long ir_backlight_channel;
   modular_server_.parameter(constants::ir_backlight_channel_parameter_name).getValue(ir_backlight_channel);
@@ -543,44 +641,70 @@ void BacklightController::setIrBacklightChannelOnAtPowerHandler()
   long power;
   modular_server_.parameter(digital_controller::constants::power_parameter_name).getValue(power);
 
-  setIrBacklightChannelOnAtPower(ir_backlight_channel,power);
+  setIrBacklightOnAtPower(ir_backlight_channel,power);
 }
 
-void BacklightController::setIrBacklightChannelOffHandler()
+void BacklightController::setIrBacklightOffHandler()
 {
   long ir_backlight_channel;
   modular_server_.parameter(constants::ir_backlight_channel_parameter_name).getValue(ir_backlight_channel);
 
-  setIrBacklightChannelOff(ir_backlight_channel);
+  setIrBacklightOff(ir_backlight_channel);
 }
 
-void BacklightController::setAllVisibleBacklightChannelsOnAtPowerHandler()
+void BacklightController::getIrBacklightPowersWhenOnHandler()
+{
+  modular_server_.response().writeResultKey();
+  modular_server_.response().beginArray();
+  long power;
+  for (size_t channel=0; channel<getIrBacklightChannelCount(); ++channel)
+  {
+    power = getIrBacklightPowerWhenOn(channel);
+    modular_server_.response().write(power);
+  }
+  modular_server_.response().endArray();
+}
+
+void BacklightController::getIrBacklightPowersHandler()
+{
+  modular_server_.response().writeResultKey();
+  modular_server_.response().beginArray();
+  long power;
+  for (size_t channel=0; channel<getIrBacklightChannelCount(); ++channel)
+  {
+    power = getIrBacklightPower(channel);
+    modular_server_.response().write(power);
+  }
+  modular_server_.response().endArray();
+}
+
+void BacklightController::setAllVisibleBacklightsOnAtPowerHandler()
 {
   long power;
   modular_server_.parameter(digital_controller::constants::power_parameter_name).getValue(power);
 
-  setAllVisibleBacklightChannelsOnAtPower(power);
+  setAllVisibleBacklightsOnAtPower(power);
 }
 
-void BacklightController::setAllVisibleBacklightChannelsOnHandler(modular_server::Pin * pin_ptr)
+void BacklightController::setAllVisibleBacklightsOnHandler(modular_server::Pin * pin_ptr)
 {
-  setAllVisibleBacklightChannelsOn();
+  setAllVisibleBacklightsOn();
 }
 
-void BacklightController::setAllVisibleBacklightChannelsOffHandler(modular_server::Pin * pin_ptr)
+void BacklightController::setAllVisibleBacklightsOffHandler(modular_server::Pin * pin_ptr)
 {
-  setAllVisibleBacklightChannelsOff();
+  setAllVisibleBacklightsOff();
 }
 
-void BacklightController::setVisibleBacklightChannelOnHandler()
+void BacklightController::setVisibleBacklightOnHandler()
 {
   long visible_backlight_channel;
   modular_server_.parameter(constants::visible_backlight_channel_parameter_name).getValue(visible_backlight_channel);
 
-  setVisibleBacklightChannelOn(visible_backlight_channel);
+  setVisibleBacklightOn(visible_backlight_channel);
 }
 
-void BacklightController::setVisibleBacklightChannelOnAtPowerHandler()
+void BacklightController::setVisibleBacklightOnAtPowerHandler()
 {
   long visible_backlight_channel;
   modular_server_.parameter(constants::visible_backlight_channel_parameter_name).getValue(visible_backlight_channel);
@@ -588,44 +712,70 @@ void BacklightController::setVisibleBacklightChannelOnAtPowerHandler()
   long power;
   modular_server_.parameter(digital_controller::constants::power_parameter_name).getValue(power);
 
-  setVisibleBacklightChannelOnAtPower(visible_backlight_channel,power);
+  setVisibleBacklightOnAtPower(visible_backlight_channel,power);
 }
 
-void BacklightController::setVisibleBacklightChannelOffHandler()
+void BacklightController::setVisibleBacklightOffHandler()
 {
   long visible_backlight_channel;
   modular_server_.parameter(constants::visible_backlight_channel_parameter_name).getValue(visible_backlight_channel);
 
-  setVisibleBacklightChannelOff(visible_backlight_channel);
+  setVisibleBacklightOff(visible_backlight_channel);
 }
 
-void BacklightController::setAllHighVoltageChannelsOnAtPowerHandler()
+void BacklightController::getVisibleBacklightPowersWhenOnHandler()
+{
+  modular_server_.response().writeResultKey();
+  modular_server_.response().beginArray();
+  long power;
+  for (size_t channel=0; channel<getVisibleBacklightChannelCount(); ++channel)
+  {
+    power = getVisibleBacklightPowerWhenOn(channel);
+    modular_server_.response().write(power);
+  }
+  modular_server_.response().endArray();
+}
+
+void BacklightController::getVisibleBacklightPowersHandler()
+{
+  modular_server_.response().writeResultKey();
+  modular_server_.response().beginArray();
+  long power;
+  for (size_t channel=0; channel<getVisibleBacklightChannelCount(); ++channel)
+  {
+    power = getVisibleBacklightPower(channel);
+    modular_server_.response().write(power);
+  }
+  modular_server_.response().endArray();
+}
+
+void BacklightController::setAllHighVoltagesOnAtPowerHandler()
 {
   long power;
   modular_server_.parameter(digital_controller::constants::power_parameter_name).getValue(power);
 
-  setAllHighVoltageChannelsOnAtPower(power);
+  setAllHighVoltagesOnAtPower(power);
 }
 
-void BacklightController::setAllHighVoltageChannelsOnHandler(modular_server::Pin * pin_ptr)
+void BacklightController::setAllHighVoltagesOnHandler(modular_server::Pin * pin_ptr)
 {
-  setAllHighVoltageChannelsOn();
+  setAllHighVoltagesOn();
 }
 
-void BacklightController::setAllHighVoltageChannelsOffHandler(modular_server::Pin * pin_ptr)
+void BacklightController::setAllHighVoltagesOffHandler(modular_server::Pin * pin_ptr)
 {
-  setAllHighVoltageChannelsOff();
+  setAllHighVoltagesOff();
 }
 
-void BacklightController::setHighVoltageChannelOnHandler()
+void BacklightController::setHighVoltageOnHandler()
 {
   long high_voltage_channel;
   modular_server_.parameter(constants::high_voltage_channel_parameter_name).getValue(high_voltage_channel);
 
-  setHighVoltageChannelOn(high_voltage_channel);
+  setHighVoltageOn(high_voltage_channel);
 }
 
-void BacklightController::setHighVoltageChannelOnAtPowerHandler()
+void BacklightController::setHighVoltageOnAtPowerHandler()
 {
   long high_voltage_channel;
   modular_server_.parameter(constants::high_voltage_channel_parameter_name).getValue(high_voltage_channel);
@@ -633,44 +783,70 @@ void BacklightController::setHighVoltageChannelOnAtPowerHandler()
   long power;
   modular_server_.parameter(digital_controller::constants::power_parameter_name).getValue(power);
 
-  setHighVoltageChannelOnAtPower(high_voltage_channel,power);
+  setHighVoltageOnAtPower(high_voltage_channel,power);
 }
 
-void BacklightController::setHighVoltageChannelOffHandler()
+void BacklightController::setHighVoltageOffHandler()
 {
   long high_voltage_channel;
   modular_server_.parameter(constants::high_voltage_channel_parameter_name).getValue(high_voltage_channel);
 
-  setHighVoltageChannelOff(high_voltage_channel);
+  setHighVoltageOff(high_voltage_channel);
 }
 
-void BacklightController::setAllLowVoltageChannelsOnAtPowerHandler()
+void BacklightController::getHighVoltagePowersWhenOnHandler()
+{
+  modular_server_.response().writeResultKey();
+  modular_server_.response().beginArray();
+  long power;
+  for (size_t channel=0; channel<getHighVoltageChannelCount(); ++channel)
+  {
+    power = getHighVoltagePowerWhenOn(channel);
+    modular_server_.response().write(power);
+  }
+  modular_server_.response().endArray();
+}
+
+void BacklightController::getHighVoltagePowersHandler()
+{
+  modular_server_.response().writeResultKey();
+  modular_server_.response().beginArray();
+  long power;
+  for (size_t channel=0; channel<getHighVoltageChannelCount(); ++channel)
+  {
+    power = getHighVoltagePower(channel);
+    modular_server_.response().write(power);
+  }
+  modular_server_.response().endArray();
+}
+
+void BacklightController::setAllLowVoltagesOnAtPowerHandler()
 {
   long power;
   modular_server_.parameter(digital_controller::constants::power_parameter_name).getValue(power);
 
-  setAllLowVoltageChannelsOnAtPower(power);
+  setAllLowVoltagesOnAtPower(power);
 }
 
-void BacklightController::setAllLowVoltageChannelsOnHandler(modular_server::Pin * pin_ptr)
+void BacklightController::setAllLowVoltagesOnHandler(modular_server::Pin * pin_ptr)
 {
-  setAllLowVoltageChannelsOn();
+  setAllLowVoltagesOn();
 }
 
-void BacklightController::setAllLowVoltageChannelsOffHandler(modular_server::Pin * pin_ptr)
+void BacklightController::setAllLowVoltagesOffHandler(modular_server::Pin * pin_ptr)
 {
-  setAllLowVoltageChannelsOff();
+  setAllLowVoltagesOff();
 }
 
-void BacklightController::setLowVoltageChannelOnHandler()
+void BacklightController::setLowVoltageOnHandler()
 {
   long low_voltage_channel;
   modular_server_.parameter(constants::low_voltage_channel_parameter_name).getValue(low_voltage_channel);
 
-  setLowVoltageChannelOn(low_voltage_channel);
+  setLowVoltageOn(low_voltage_channel);
 }
 
-void BacklightController::setLowVoltageChannelOnAtPowerHandler()
+void BacklightController::setLowVoltageOnAtPowerHandler()
 {
   long low_voltage_channel;
   modular_server_.parameter(constants::low_voltage_channel_parameter_name).getValue(low_voltage_channel);
@@ -678,13 +854,39 @@ void BacklightController::setLowVoltageChannelOnAtPowerHandler()
   long power;
   modular_server_.parameter(digital_controller::constants::power_parameter_name).getValue(power);
 
-  setLowVoltageChannelOnAtPower(low_voltage_channel,power);
+  setLowVoltageOnAtPower(low_voltage_channel,power);
 }
 
-void BacklightController::setLowVoltageChannelOffHandler()
+void BacklightController::setLowVoltageOffHandler()
 {
   long low_voltage_channel;
   modular_server_.parameter(constants::low_voltage_channel_parameter_name).getValue(low_voltage_channel);
 
-  setLowVoltageChannelOff(low_voltage_channel);
+  setLowVoltageOff(low_voltage_channel);
+}
+
+void BacklightController::getLowVoltagePowersWhenOnHandler()
+{
+  modular_server_.response().writeResultKey();
+  modular_server_.response().beginArray();
+  long power;
+  for (size_t channel=0; channel<getLowVoltageChannelCount(); ++channel)
+  {
+    power = getLowVoltagePowerWhenOn(channel);
+    modular_server_.response().write(power);
+  }
+  modular_server_.response().endArray();
+}
+
+void BacklightController::getLowVoltagePowersHandler()
+{
+  modular_server_.response().writeResultKey();
+  modular_server_.response().beginArray();
+  long power;
+  for (size_t channel=0; channel<getLowVoltageChannelCount(); ++channel)
+  {
+    power = getLowVoltagePower(channel);
+    modular_server_.response().write(power);
+  }
+  modular_server_.response().endArray();
 }
