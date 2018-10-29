@@ -58,6 +58,26 @@ void BacklightController::setup()
   channel_count_property.setRange(constants::channel_count,constants::channel_count);
   channel_count_property.reenableFunctors();
 
+  modular_server::Property & ir_backlight_power_max_property = modular_server_.createProperty(constants::ir_backlight_power_max_property_name,constants::ir_backlight_power_max_default);
+  ir_backlight_power_max_property.setRange(digital_controller::constants::power_min,digital_controller::constants::power_max);
+  ir_backlight_power_max_property.setUnits(digital_controller::constants::percent_units);
+  ir_backlight_power_max_property.attachPostSetElementValueFunctor(makeFunctor((Functor1<size_t> *)0,*this,&BacklightController::setIrBacklightPowerMaxHandler));
+
+  modular_server::Property & visible_backlight_power_max_property = modular_server_.createProperty(constants::visible_backlight_power_max_property_name,constants::visible_backlight_power_max_default);
+  visible_backlight_power_max_property.setRange(digital_controller::constants::power_min,digital_controller::constants::power_max);
+  visible_backlight_power_max_property.setUnits(digital_controller::constants::percent_units);
+  visible_backlight_power_max_property.attachPostSetElementValueFunctor(makeFunctor((Functor1<size_t> *)0,*this,&BacklightController::setVisibleBacklightPowerMaxHandler));
+
+  modular_server::Property & high_power_power_max_property = modular_server_.createProperty(constants::high_power_power_max_property_name,constants::high_power_power_max_default);
+  high_power_power_max_property.setRange(digital_controller::constants::power_min,digital_controller::constants::power_max);
+  high_power_power_max_property.setUnits(digital_controller::constants::percent_units);
+  high_power_power_max_property.attachPostSetElementValueFunctor(makeFunctor((Functor1<size_t> *)0,*this,&BacklightController::setHighPowerPowerMaxHandler));
+
+  modular_server::Property & low_power_power_max_property = modular_server_.createProperty(constants::low_power_power_max_property_name,constants::low_power_power_max_default);
+  low_power_power_max_property.setRange(digital_controller::constants::power_min,digital_controller::constants::power_max);
+  low_power_power_max_property.setUnits(digital_controller::constants::percent_units);
+  low_power_power_max_property.attachPostSetElementValueFunctor(makeFunctor((Functor1<size_t> *)0,*this,&BacklightController::setLowPowerPowerMaxHandler));
+
   // Parameters
   modular_server::Parameter & power_parameter = modular_server_.parameter(digital_controller::constants::power_parameter_name);
 
@@ -320,6 +340,8 @@ void BacklightController::setLowPowerChannelOff(size_t low_power_channel)
 void BacklightController::setChannelOnAtHighFrequency(size_t channel,
   long high_frequency_duty_cycle)
 {
+  Serial << "channel = " << channel << "\n";
+  Serial << "analogWrite(" << constants::channel_pins[channel] << "," << high_frequency_duty_cycle << ")\n";
   analogWrite(constants::channel_pins[channel],high_frequency_duty_cycle);
 }
 
@@ -437,6 +459,54 @@ void BacklightController::enableAllHandler(modular_server::Pin * pin_ptr)
 void BacklightController::disableAllHandler(modular_server::Pin * pin_ptr)
 {
   disableAll();
+}
+
+void BacklightController::setIrBacklightPowerMaxHandler(size_t ir_backlight_channel)
+{
+  long power_max;
+  modular_server::Property & ir_backlight_power_max_property = modular_server_.property(constants::ir_backlight_power_max_property_name);
+  ir_backlight_power_max_property.getElementValue(ir_backlight_channel,power_max);
+
+  size_t digital_channel = irBacklightChannelToDigitalChannel(ir_backlight_channel);
+
+  modular_server::Property & power_max_property = modular_server_.property(digital_controller::constants::power_max_property_name);
+  power_max_property.setElementValue(digital_channel,power_max);
+}
+
+void BacklightController::setVisibleBacklightPowerMaxHandler(size_t visible_backlight_channel)
+{
+  long power_max;
+  modular_server::Property & visible_backlight_power_max_property = modular_server_.property(constants::visible_backlight_power_max_property_name);
+  visible_backlight_power_max_property.getElementValue(visible_backlight_channel,power_max);
+
+  size_t digital_channel = visibleBacklightChannelToDigitalChannel(visible_backlight_channel);
+
+  modular_server::Property & power_max_property = modular_server_.property(digital_controller::constants::power_max_property_name);
+  power_max_property.setElementValue(digital_channel,power_max);
+}
+
+void BacklightController::setHighPowerPowerMaxHandler(size_t high_power_channel)
+{
+  long power_max;
+  modular_server::Property & high_power_power_max_property = modular_server_.property(constants::high_power_power_max_property_name);
+  high_power_power_max_property.getElementValue(high_power_channel,power_max);
+
+  size_t digital_channel = highPowerChannelToDigitalChannel(high_power_channel);
+
+  modular_server::Property & power_max_property = modular_server_.property(digital_controller::constants::power_max_property_name);
+  power_max_property.setElementValue(digital_channel,power_max);
+}
+
+void BacklightController::setLowPowerPowerMaxHandler(size_t low_power_channel)
+{
+  long power_max;
+  modular_server::Property & low_power_power_max_property = modular_server_.property(constants::low_power_power_max_property_name);
+  low_power_power_max_property.getElementValue(low_power_channel,power_max);
+
+  size_t digital_channel = lowPowerChannelToDigitalChannel(low_power_channel);
+
+  modular_server::Property & power_max_property = modular_server_.property(digital_controller::constants::power_max_property_name);
+  power_max_property.setElementValue(digital_channel,power_max);
 }
 
 void BacklightController::setAllIrBacklightChannelsOnAtPowerHandler()

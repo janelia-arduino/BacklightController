@@ -38,6 +38,13 @@ extern const size_t low_power_channels[LOW_POWER_CHANNEL_COUNT];
 
 // Properties
 // Property values must be long, double, bool, long[], double[], bool[], char[], ConstantString *, (ConstantString *)[]
+extern const long ir_backlight_power_max_default[IR_BACKLIGHT_CHANNEL_COUNT];
+
+extern const long visible_backlight_power_max_default[VISIBLE_BACKLIGHT_CHANNEL_COUNT];
+
+extern const long high_power_power_max_default[HIGH_POWER_CHANNEL_COUNT];
+
+extern const long low_power_power_max_default[LOW_POWER_CHANNEL_COUNT];
 
 // Parameters
 

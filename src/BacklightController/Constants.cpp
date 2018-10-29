@@ -31,6 +31,17 @@ CONSTANT_STRING(hardware_name,"backlight_controller");
 // Units
 
 // Properties
+CONSTANT_STRING(ir_backlight_power_max_property_name,"irBacklightPowerMax");
+const long ir_backlight_power_max_element_default = 100;
+
+CONSTANT_STRING(visible_backlight_power_max_property_name,"visibleBacklightPowerMax");
+const long visible_backlight_power_max_element_default = 100;
+
+CONSTANT_STRING(high_power_power_max_property_name,"highPowerPowerMax");
+const long high_power_power_max_element_default = 100;
+
+CONSTANT_STRING(low_power_power_max_property_name,"lowPowerPowerMax");
+const long low_power_power_max_element_default = 100;
 
 // Parameters
 CONSTANT_STRING(ir_backlight_channel_parameter_name,"ir_backlight_channel");

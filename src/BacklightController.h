@@ -87,6 +87,11 @@ private:
   void enableAllHandler(modular_server::Pin * pin_ptr);
   void disableAllHandler(modular_server::Pin * pin_ptr);
 
+  void setIrBacklightPowerMaxHandler(size_t ir_backlight_channel);
+  void setVisibleBacklightPowerMaxHandler(size_t channel);
+  void setHighPowerPowerMaxHandler(size_t channel);
+  void setLowPowerPowerMaxHandler(size_t channel);
+
   void setAllIrBacklightChannelsOnAtPowerHandler();
   void setAllIrBacklightChannelsOnHandler(modular_server::Pin * pin_ptr);
   void setAllIrBacklightChannelsOffHandler(modular_server::Pin * pin_ptr);

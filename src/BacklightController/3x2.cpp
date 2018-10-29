@@ -71,6 +71,31 @@ const size_t low_power_channels[LOW_POWER_CHANNEL_COUNT] =
 // Units
 
 // Properties
+const long ir_backlight_power_max_default[IR_BACKLIGHT_CHANNEL_COUNT] =
+{
+  ir_backlight_power_max_element_default,
+};
+
+const long visible_backlight_power_max_default[VISIBLE_BACKLIGHT_CHANNEL_COUNT] =
+{
+  visible_backlight_power_max_element_default,
+};
+
+const long high_power_power_max_default[HIGH_POWER_CHANNEL_COUNT] =
+{
+  high_power_power_max_element_default,
+  high_power_power_max_element_default,
+  high_power_power_max_element_default,
+  high_power_power_max_element_default,
+};
+
+const long low_power_power_max_default[LOW_POWER_CHANNEL_COUNT] =
+{
+  low_power_power_max_element_default,
+  low_power_power_max_element_default,
+  low_power_power_max_element_default,
+  low_power_power_max_element_default,
+};
 
 // Parameters
 

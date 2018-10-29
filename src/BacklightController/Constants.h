@@ -16,7 +16,7 @@ namespace backlight_controller
 namespace constants
 {
 //MAX values must be >= 1, >= created/copied count, < RAM limit
-enum{PROPERTY_COUNT_MAX=1};
+enum{PROPERTY_COUNT_MAX=4};
 enum{PARAMETER_COUNT_MAX=4};
 enum{FUNCTION_COUNT_MAX=16};
 enum{CALLBACK_COUNT_MAX=8};
@@ -39,15 +39,26 @@ extern const size_t enable_all_pin;
 
 // Properties
 // Property values must be long, double, bool, long[], double[], bool[], char[], ConstantString *, (ConstantString *)[]
+extern ConstantString ir_backlight_power_max_property_name;
+
+extern ConstantString visible_backlight_power_max_property_name;
+
+extern ConstantString high_power_power_max_property_name;
+
+extern ConstantString low_power_power_max_property_name;
 
 // Parameters
 extern ConstantString ir_backlight_channel_parameter_name;
+extern const long ir_backlight_power_max_element_default;
 
 extern ConstantString visible_backlight_channel_parameter_name;
+extern const long visible_backlight_power_max_element_default;
 
 extern ConstantString high_power_channel_parameter_name;
+extern const long high_power_power_max_element_default;
 
 extern ConstantString low_power_channel_parameter_name;
+extern const long low_power_power_max_element_default;
 
 // Functions
 extern ConstantString set_all_ir_backlight_channels_on_at_power_function_name;
