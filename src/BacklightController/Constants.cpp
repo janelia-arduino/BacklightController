@@ -44,13 +44,13 @@ CONSTANT_STRING(low_voltage_power_max_property_name,"lowVoltagePowerMax");
 const long low_voltage_power_max_element_default = 100;
 
 // Parameters
-CONSTANT_STRING(ir_backlight_channel_parameter_name,"ir_backlight_channel");
+CONSTANT_STRING(ir_backlight_parameter_name,"ir_backlight");
 
-CONSTANT_STRING(visible_backlight_channel_parameter_name,"visible_backlight_channel");
+CONSTANT_STRING(visible_backlight_parameter_name,"visible_backlight");
 
-CONSTANT_STRING(high_voltage_channel_parameter_name,"high_voltage_channel");
+CONSTANT_STRING(high_voltage_parameter_name,"high_voltage");
 
-CONSTANT_STRING(low_voltage_channel_parameter_name,"low_voltage_channel");
+CONSTANT_STRING(low_voltage_parameter_name,"low_voltage");
 
 // Functions
 CONSTANT_STRING(set_all_ir_backlights_on_at_power_function_name,"setAllIrBacklightsOnAtPower");

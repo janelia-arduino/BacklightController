@@ -51,10 +51,10 @@
           "getLowVoltagePowers"
         ],
         "parameters": [
-          "ir_backlight_channel",
-          "visible_backlight_channel",
-          "high_voltage_channel",
-          "low_voltage_channel"
+          "ir_backlight",
+          "visible_backlight",
+          "high_voltage",
+          "low_voltage"
         ],
         "properties": [
           "irBacklightPowerMax",

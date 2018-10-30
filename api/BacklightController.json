@@ -15,20 +15,20 @@
       {
         "name": "setIrBacklightOn",
         "parameters": [
-          "ir_backlight_channel"
+          "ir_backlight"
         ]
       },
       {
         "name": "setIrBacklightOnAtPower",
         "parameters": [
-          "ir_backlight_channel",
+          "ir_backlight",
           "power"
         ]
       },
       {
         "name": "setIrBacklightOff",
         "parameters": [
-          "ir_backlight_channel"
+          "ir_backlight"
         ]
       },
       {
@@ -54,20 +54,20 @@
       {
         "name": "setVisibleBacklightOn",
         "parameters": [
-          "visible_backlight_channel"
+          "visible_backlight"
         ]
       },
       {
         "name": "setVisibleBacklightOnAtPower",
         "parameters": [
-          "visible_backlight_channel",
+          "visible_backlight",
           "power"
         ]
       },
       {
         "name": "setVisibleBacklightOff",
         "parameters": [
-          "visible_backlight_channel"
+          "visible_backlight"
         ]
       },
       {
@@ -93,20 +93,20 @@
       {
         "name": "setHighVoltageOn",
         "parameters": [
-          "high_voltage_channel"
+          "high_voltage"
         ]
       },
       {
         "name": "setHighVoltageOnAtPower",
         "parameters": [
-          "high_voltage_channel",
+          "high_voltage",
           "power"
         ]
       },
       {
         "name": "setHighVoltageOff",
         "parameters": [
-          "high_voltage_channel"
+          "high_voltage"
         ]
       },
       {
@@ -132,20 +132,20 @@
       {
         "name": "setLowVoltageOn",
         "parameters": [
-          "low_voltage_channel"
+          "low_voltage"
         ]
       },
       {
         "name": "setLowVoltageOnAtPower",
         "parameters": [
-          "low_voltage_channel",
+          "low_voltage",
           "power"
         ]
       },
       {
         "name": "setLowVoltageOff",
         "parameters": [
-          "low_voltage_channel"
+          "low_voltage"
         ]
       },
       {
@@ -165,19 +165,19 @@
     ],
     "parameters": [
       {
-        "name": "ir_backlight_channel",
+        "name": "ir_backlight",
         "type": "long"
       },
       {
-        "name": "visible_backlight_channel",
+        "name": "visible_backlight",
         "type": "long"
       },
       {
-        "name": "high_voltage_channel",
+        "name": "high_voltage",
         "type": "long"
       },
       {
-        "name": "low_voltage_channel",
+        "name": "low_voltage",
         "type": "long"
       }
     ],

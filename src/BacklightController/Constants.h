@@ -48,16 +48,16 @@ extern ConstantString high_voltage_power_max_property_name;
 extern ConstantString low_voltage_power_max_property_name;
 
 // Parameters
-extern ConstantString ir_backlight_channel_parameter_name;
+extern ConstantString ir_backlight_parameter_name;
 extern const long ir_backlight_power_max_element_default;
 
-extern ConstantString visible_backlight_channel_parameter_name;
+extern ConstantString visible_backlight_parameter_name;
 extern const long visible_backlight_power_max_element_default;
 
-extern ConstantString high_voltage_channel_parameter_name;
+extern ConstantString high_voltage_parameter_name;
 extern const long high_voltage_power_max_element_default;
 
-extern ConstantString low_voltage_channel_parameter_name;
+extern ConstantString low_voltage_parameter_name;
 extern const long low_voltage_power_max_element_default;
 
 // Functions
