@@ -1,0 +1,921 @@
+{
+  "id": "getApi",
+  "result": {
+    "firmware": [
+      "BacklightController"
+    ],
+    "verbosity": "GENERAL",
+    "functions": [
+      {
+        "name": "setAllIrBacklightsOnAtPower",
+        "parameters": [
+          "power"
+        ]
+      },
+      {
+        "name": "setIrBacklightOn",
+        "parameters": [
+          "ir_backlight_channel"
+        ]
+      },
+      {
+        "name": "setIrBacklightOnAtPower",
+        "parameters": [
+          "ir_backlight_channel",
+          "power"
+        ]
+      },
+      {
+        "name": "setIrBacklightOff",
+        "parameters": [
+          "ir_backlight_channel"
+        ]
+      },
+      {
+        "name": "getIrBacklightPowersWhenOn",
+        "result_info": {
+          "type": "array",
+          "array_element_type": "long"
+        }
+      },
+      {
+        "name": "getIrBacklightPowers",
+        "result_info": {
+          "type": "array",
+          "array_element_type": "long"
+        }
+      },
+      {
+        "name": "setAllVisibleBacklightsOnAtPower",
+        "parameters": [
+          "power"
+        ]
+      },
+      {
+        "name": "setVisibleBacklightOn",
+        "parameters": [
+          "visible_backlight_channel"
+        ]
+      },
+      {
+        "name": "setVisibleBacklightOnAtPower",
+        "parameters": [
+          "visible_backlight_channel",
+          "power"
+        ]
+      },
+      {
+        "name": "setVisibleBacklightOff",
+        "parameters": [
+          "visible_backlight_channel"
+        ]
+      },
+      {
+        "name": "getVisibleBacklightPowersWhenOn",
+        "result_info": {
+          "type": "array",
+          "array_element_type": "long"
+        }
+      },
+      {
+        "name": "getVisibleBacklightPowers",
+        "result_info": {
+          "type": "array",
+          "array_element_type": "long"
+        }
+      },
+      {
+        "name": "setAllHighVoltagesOnAtPower",
+        "parameters": [
+          "power"
+        ]
+      },
+      {
+        "name": "setHighVoltageOn",
+        "parameters": [
+          "high_voltage_channel"
+        ]
+      },
+      {
+        "name": "setHighVoltageOnAtPower",
+        "parameters": [
+          "high_voltage_channel",
+          "power"
+        ]
+      },
+      {
+        "name": "setHighVoltageOff",
+        "parameters": [
+          "high_voltage_channel"
+        ]
+      },
+      {
+        "name": "getHighVoltagePowersWhenOn",
+        "result_info": {
+          "type": "array",
+          "array_element_type": "long"
+        }
+      },
+      {
+        "name": "getHighVoltagePowers",
+        "result_info": {
+          "type": "array",
+          "array_element_type": "long"
+        }
+      },
+      {
+        "name": "setAllLowVoltagesOnAtPower",
+        "parameters": [
+          "power"
+        ]
+      },
+      {
+        "name": "setLowVoltageOn",
+        "parameters": [
+          "low_voltage_channel"
+        ]
+      },
+      {
+        "name": "setLowVoltageOnAtPower",
+        "parameters": [
+          "low_voltage_channel",
+          "power"
+        ]
+      },
+      {
+        "name": "setLowVoltageOff",
+        "parameters": [
+          "low_voltage_channel"
+        ]
+      },
+      {
+        "name": "getLowVoltagePowersWhenOn",
+        "result_info": {
+          "type": "array",
+          "array_element_type": "long"
+        }
+      },
+      {
+        "name": "getLowVoltagePowers",
+        "result_info": {
+          "type": "array",
+          "array_element_type": "long"
+        }
+      }
+    ],
+    "parameters": [
+      {
+        "name": "ir_backlight_channel",
+        "type": "long"
+      },
+      {
+        "name": "visible_backlight_channel",
+        "type": "long"
+      },
+      {
+        "name": "high_voltage_channel",
+        "type": "long"
+      },
+      {
+        "name": "low_voltage_channel",
+        "type": "long"
+      }
+    ],
+    "properties": [
+      {
+        "name": "irBacklightPowerMax",
+        "type": "array",
+        "array_element_type": "long",
+        "functions": [
+          {
+            "name": "getValue",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "setValue",
+            "parameters": [
+              "value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getDefaultValue",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "setValueToDefault",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getElementValue",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setElementValue",
+            "parameters": [
+              "element_index",
+              "element_value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getDefaultElementValue",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setElementValueToDefault",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "setAllElementValues",
+            "parameters": [
+              "element_value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getArrayLength",
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setArrayLength",
+            "parameters": [
+              "array_length"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "array",
+            "array_element_type": "long"
+          },
+          {
+            "name": "element_index",
+            "type": "long"
+          },
+          {
+            "name": "element_value",
+            "type": "long"
+          },
+          {
+            "name": "array_length",
+            "type": "long"
+          }
+        ]
+      },
+      {
+        "name": "visibleBacklightPowerMax",
+        "type": "array",
+        "array_element_type": "long",
+        "functions": [
+          {
+            "name": "getValue",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "setValue",
+            "parameters": [
+              "value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getDefaultValue",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "setValueToDefault",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getElementValue",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setElementValue",
+            "parameters": [
+              "element_index",
+              "element_value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getDefaultElementValue",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setElementValueToDefault",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "setAllElementValues",
+            "parameters": [
+              "element_value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getArrayLength",
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setArrayLength",
+            "parameters": [
+              "array_length"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "array",
+            "array_element_type": "long"
+          },
+          {
+            "name": "element_index",
+            "type": "long"
+          },
+          {
+            "name": "element_value",
+            "type": "long"
+          },
+          {
+            "name": "array_length",
+            "type": "long"
+          }
+        ]
+      },
+      {
+        "name": "highVoltagePowerMax",
+        "type": "array",
+        "array_element_type": "long",
+        "functions": [
+          {
+            "name": "getValue",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "setValue",
+            "parameters": [
+              "value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getDefaultValue",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "setValueToDefault",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getElementValue",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setElementValue",
+            "parameters": [
+              "element_index",
+              "element_value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getDefaultElementValue",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setElementValueToDefault",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "setAllElementValues",
+            "parameters": [
+              "element_value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getArrayLength",
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setArrayLength",
+            "parameters": [
+              "array_length"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "array",
+            "array_element_type": "long"
+          },
+          {
+            "name": "element_index",
+            "type": "long"
+          },
+          {
+            "name": "element_value",
+            "type": "long"
+          },
+          {
+            "name": "array_length",
+            "type": "long"
+          }
+        ]
+      },
+      {
+        "name": "lowVoltagePowerMax",
+        "type": "array",
+        "array_element_type": "long",
+        "functions": [
+          {
+            "name": "getValue",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "setValue",
+            "parameters": [
+              "value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getDefaultValue",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "setValueToDefault",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getElementValue",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setElementValue",
+            "parameters": [
+              "element_index",
+              "element_value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getDefaultElementValue",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setElementValueToDefault",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "setAllElementValues",
+            "parameters": [
+              "element_value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getArrayLength",
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setArrayLength",
+            "parameters": [
+              "array_length"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "array",
+            "array_element_type": "long"
+          },
+          {
+            "name": "element_index",
+            "type": "long"
+          },
+          {
+            "name": "element_value",
+            "type": "long"
+          },
+          {
+            "name": "array_length",
+            "type": "long"
+          }
+        ]
+      }
+    ],
+    "callbacks": [
+      {
+        "name": "setAllIrBacklightsOn",
+        "functions": [
+          {
+            "name": "trigger"
+          },
+          {
+            "name": "attachTo",
+            "parameters": [
+              "pin_name",
+              "pin_mode"
+            ]
+          },
+          {
+            "name": "detachFrom",
+            "parameters": [
+              "pin_name"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pin_name",
+            "type": "string"
+          },
+          {
+            "name": "pin_mode",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "setAllIrBacklightsOff",
+        "functions": [
+          {
+            "name": "trigger"
+          },
+          {
+            "name": "attachTo",
+            "parameters": [
+              "pin_name",
+              "pin_mode"
+            ]
+          },
+          {
+            "name": "detachFrom",
+            "parameters": [
+              "pin_name"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pin_name",
+            "type": "string"
+          },
+          {
+            "name": "pin_mode",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "setAllVisibleBacklightsOn",
+        "functions": [
+          {
+            "name": "trigger"
+          },
+          {
+            "name": "attachTo",
+            "parameters": [
+              "pin_name",
+              "pin_mode"
+            ]
+          },
+          {
+            "name": "detachFrom",
+            "parameters": [
+              "pin_name"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pin_name",
+            "type": "string"
+          },
+          {
+            "name": "pin_mode",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "setAllVisibleBacklightsOff",
+        "functions": [
+          {
+            "name": "trigger"
+          },
+          {
+            "name": "attachTo",
+            "parameters": [
+              "pin_name",
+              "pin_mode"
+            ]
+          },
+          {
+            "name": "detachFrom",
+            "parameters": [
+              "pin_name"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pin_name",
+            "type": "string"
+          },
+          {
+            "name": "pin_mode",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "setAllHighVoltagesOn",
+        "functions": [
+          {
+            "name": "trigger"
+          },
+          {
+            "name": "attachTo",
+            "parameters": [
+              "pin_name",
+              "pin_mode"
+            ]
+          },
+          {
+            "name": "detachFrom",
+            "parameters": [
+              "pin_name"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pin_name",
+            "type": "string"
+          },
+          {
+            "name": "pin_mode",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "setAllHighVoltagesOff",
+        "functions": [
+          {
+            "name": "trigger"
+          },
+          {
+            "name": "attachTo",
+            "parameters": [
+              "pin_name",
+              "pin_mode"
+            ]
+          },
+          {
+            "name": "detachFrom",
+            "parameters": [
+              "pin_name"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pin_name",
+            "type": "string"
+          },
+          {
+            "name": "pin_mode",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "setAllLowVoltagesOn",
+        "functions": [
+          {
+            "name": "trigger"
+          },
+          {
+            "name": "attachTo",
+            "parameters": [
+              "pin_name",
+              "pin_mode"
+            ]
+          },
+          {
+            "name": "detachFrom",
+            "parameters": [
+              "pin_name"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pin_name",
+            "type": "string"
+          },
+          {
+            "name": "pin_mode",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "setAllLowVoltagesOff",
+        "functions": [
+          {
+            "name": "trigger"
+          },
+          {
+            "name": "attachTo",
+            "parameters": [
+              "pin_name",
+              "pin_mode"
+            ]
+          },
+          {
+            "name": "detachFrom",
+            "parameters": [
+              "pin_name"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pin_name",
+            "type": "string"
+          },
+          {
+            "name": "pin_mode",
+            "type": "string"
+          }
+        ]
+      }
+    ]
+  }
+}

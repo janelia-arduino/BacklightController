@@ -17,6 +17,63 @@
 * API NAMES
 
   #+BEGIN_SRC js
+    {
+      "id": "getApi",
+      "result": {
+        "firmware": [
+          "BacklightController"
+        ],
+        "verbosity": "NAMES",
+        "functions": [
+          "setAllIrBacklightsOnAtPower",
+          "setIrBacklightOn",
+          "setIrBacklightOnAtPower",
+          "setIrBacklightOff",
+          "getIrBacklightPowersWhenOn",
+          "getIrBacklightPowers",
+          "setAllVisibleBacklightsOnAtPower",
+          "setVisibleBacklightOn",
+          "setVisibleBacklightOnAtPower",
+          "setVisibleBacklightOff",
+          "getVisibleBacklightPowersWhenOn",
+          "getVisibleBacklightPowers",
+          "setAllHighVoltagesOnAtPower",
+          "setHighVoltageOn",
+          "setHighVoltageOnAtPower",
+          "setHighVoltageOff",
+          "getHighVoltagePowersWhenOn",
+          "getHighVoltagePowers",
+          "setAllLowVoltagesOnAtPower",
+          "setLowVoltageOn",
+          "setLowVoltageOnAtPower",
+          "setLowVoltageOff",
+          "getLowVoltagePowersWhenOn",
+          "getLowVoltagePowers"
+        ],
+        "parameters": [
+          "ir_backlight_channel",
+          "visible_backlight_channel",
+          "high_voltage_channel",
+          "low_voltage_channel"
+        ],
+        "properties": [
+          "irBacklightPowerMax",
+          "visibleBacklightPowerMax",
+          "highVoltagePowerMax",
+          "lowVoltagePowerMax"
+        ],
+        "callbacks": [
+          "setAllIrBacklightsOn",
+          "setAllIrBacklightsOff",
+          "setAllVisibleBacklightsOn",
+          "setAllVisibleBacklightsOff",
+          "setAllHighVoltagesOn",
+          "setAllHighVoltagesOff",
+          "setAllLowVoltagesOn",
+          "setAllLowVoltagesOff"
+        ]
+      }
+    }
   #+END_SRC
 
 * API GENERAL
