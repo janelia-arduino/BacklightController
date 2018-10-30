@@ -46,7 +46,7 @@ const size_t channel_pins[CHANNEL_COUNT] =
   21,
 };
 
-const size_t ir_backlight_channels[IR_BACKLIGHT_CHANNEL_COUNT] =
+const size_t ir_backlight_channels[IR_BACKLIGHT_COUNT] =
 {
   8,
   10,
@@ -54,7 +54,7 @@ const size_t ir_backlight_channels[IR_BACKLIGHT_CHANNEL_COUNT] =
   14,
 };
 
-const size_t visible_backlight_channels[VISIBLE_BACKLIGHT_CHANNEL_COUNT] =
+const size_t visible_backlight_channels[VISIBLE_BACKLIGHT_COUNT] =
 {
   9,
   11,
@@ -62,7 +62,7 @@ const size_t visible_backlight_channels[VISIBLE_BACKLIGHT_CHANNEL_COUNT] =
   15,
 };
 
-const size_t high_voltage_channels[HIGH_VOLTAGE_CHANNEL_COUNT] =
+const size_t high_voltage_channels[HIGH_VOLTAGE_COUNT] =
 {
   0,
   1,
@@ -70,7 +70,7 @@ const size_t high_voltage_channels[HIGH_VOLTAGE_CHANNEL_COUNT] =
   3,
 };
 
-const size_t low_voltage_channels[LOW_VOLTAGE_CHANNEL_COUNT] =
+const size_t low_voltage_channels[LOW_VOLTAGE_COUNT] =
 {
   4,
   5,
@@ -83,7 +83,7 @@ const size_t low_voltage_channels[LOW_VOLTAGE_CHANNEL_COUNT] =
 // Units
 
 // Properties
-const long ir_backlight_power_max_default[IR_BACKLIGHT_CHANNEL_COUNT] =
+const long ir_backlight_power_max_default[IR_BACKLIGHT_COUNT] =
 {
   ir_backlight_power_max_element_default,
   ir_backlight_power_max_element_default,
@@ -91,7 +91,7 @@ const long ir_backlight_power_max_default[IR_BACKLIGHT_CHANNEL_COUNT] =
   ir_backlight_power_max_element_default,
 };
 
-const long visible_backlight_power_max_default[VISIBLE_BACKLIGHT_CHANNEL_COUNT] =
+const long visible_backlight_power_max_default[VISIBLE_BACKLIGHT_COUNT] =
 {
   visible_backlight_power_max_element_default,
   visible_backlight_power_max_element_default,
@@ -99,7 +99,7 @@ const long visible_backlight_power_max_default[VISIBLE_BACKLIGHT_CHANNEL_COUNT] 
   visible_backlight_power_max_element_default,
 };
 
-const long high_voltage_power_max_default[HIGH_VOLTAGE_CHANNEL_COUNT] =
+const long high_voltage_power_max_default[HIGH_VOLTAGE_COUNT] =
 {
   high_voltage_power_max_element_default,
   high_voltage_power_max_element_default,
@@ -107,7 +107,7 @@ const long high_voltage_power_max_default[HIGH_VOLTAGE_CHANNEL_COUNT] =
   high_voltage_power_max_element_default,
 };
 
-const long low_voltage_power_max_default[LOW_VOLTAGE_CHANNEL_COUNT] =
+const long low_voltage_power_max_default[LOW_VOLTAGE_COUNT] =
 {
   low_voltage_power_max_element_default,
   low_voltage_power_max_element_default,

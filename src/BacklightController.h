@@ -30,10 +30,10 @@ public:
   void enableAll();
   void disableAll();
 
-  void setAllIrBacklightsOn();
   void setAllIrBacklightsOnAtPower(long power);
+  void setAllIrBacklightsOn();
   void setAllIrBacklightsOff();
-  size_t getIrBacklightChannelCount();
+  size_t getIrBacklightCount();
   void setIrBacklightOn(size_t ir_backlight_channel);
   void setIrBacklightOnAtPower(size_t ir_backlight_channel,
     long power);
@@ -41,10 +41,10 @@ public:
   long getIrBacklightPowerWhenOn(size_t ir_backlight_channel);
   long getIrBacklightPower(size_t ir_backlight_channel);
 
-  void setAllVisibleBacklightsOn();
   void setAllVisibleBacklightsOnAtPower(long power);
+  void setAllVisibleBacklightsOn();
   void setAllVisibleBacklightsOff();
-  size_t getVisibleBacklightChannelCount();
+  size_t getVisibleBacklightCount();
   void setVisibleBacklightOn(size_t visible_backlight_channel);
   void setVisibleBacklightOnAtPower(size_t visible_backlight_channel,
     long power);
@@ -52,10 +52,10 @@ public:
   long getVisibleBacklightPowerWhenOn(size_t visible_backlight_channel);
   long getVisibleBacklightPower(size_t visible_backlight_channel);
 
-  void setAllHighVoltagesOn();
   void setAllHighVoltagesOnAtPower(long power);
+  void setAllHighVoltagesOn();
   void setAllHighVoltagesOff();
-  size_t getHighVoltageChannelCount();
+  size_t getHighVoltageCount();
   void setHighVoltageOn(size_t high_voltage_channel);
   void setHighVoltageOnAtPower(size_t high_voltage_channel,
     long power);
@@ -63,10 +63,10 @@ public:
   long getHighVoltagePowerWhenOn(size_t high_voltage_channel);
   long getHighVoltagePower(size_t high_voltage_channel);
 
-  void setAllLowVoltagesOn();
   void setAllLowVoltagesOnAtPower(long power);
+  void setAllLowVoltagesOn();
   void setAllLowVoltagesOff();
-  size_t getLowVoltageChannelCount();
+  size_t getLowVoltageCount();
   void setLowVoltageOn(size_t low_voltage_channel);
   void setLowVoltageOnAtPower(size_t low_voltage_channel,
     long power);
