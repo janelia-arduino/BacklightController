@@ -18,7 +18,7 @@ namespace constants
 //MAX values must be >= 1, >= created/copied count, < RAM limit
 enum{PROPERTY_COUNT_MAX=4};
 enum{PARAMETER_COUNT_MAX=4};
-enum{FUNCTION_COUNT_MAX=24};
+enum{FUNCTION_COUNT_MAX=28};
 enum{CALLBACK_COUNT_MAX=12};
 
 extern ConstantString device_name;
@@ -65,24 +65,28 @@ extern ConstantString set_all_ir_backlights_on_at_power_function_name;
 extern ConstantString set_ir_backlight_on_function_name;
 extern ConstantString set_ir_backlight_on_at_power_function_name;
 extern ConstantString set_ir_backlight_off_function_name;
+extern ConstantString toggle_ir_backlight_function_name;
 extern ConstantString get_ir_backlight_powers_when_on_function_name;
 extern ConstantString get_ir_backlight_powers_function_name;
 extern ConstantString set_all_visible_backlights_on_at_power_function_name;
 extern ConstantString set_visible_backlight_on_function_name;
 extern ConstantString set_visible_backlight_on_at_power_function_name;
 extern ConstantString set_visible_backlight_off_function_name;
+extern ConstantString toggle_visible_backlight_function_name;
 extern ConstantString get_visible_backlight_powers_when_on_function_name;
 extern ConstantString get_visible_backlight_powers_function_name;
 extern ConstantString set_all_high_voltages_on_at_power_function_name;
 extern ConstantString set_high_voltage_on_function_name;
 extern ConstantString set_high_voltage_on_at_power_function_name;
 extern ConstantString set_high_voltage_off_function_name;
+extern ConstantString toggle_high_voltage_function_name;
 extern ConstantString get_high_voltage_powers_when_on_function_name;
 extern ConstantString get_high_voltage_powers_function_name;
 extern ConstantString set_all_low_voltages_on_at_power_function_name;
 extern ConstantString set_low_voltage_on_function_name;
 extern ConstantString set_low_voltage_on_at_power_function_name;
 extern ConstantString set_low_voltage_off_function_name;
+extern ConstantString toggle_low_voltage_function_name;
 extern ConstantString get_low_voltage_powers_when_on_function_name;
 extern ConstantString get_low_voltage_powers_function_name;
 

@@ -113,6 +113,10 @@ void BacklightController::setup()
   set_ir_backlight_off_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setIrBacklightOffHandler));
   set_ir_backlight_off_function.addParameter(ir_backlight_parameter);
 
+  modular_server::Function & toggle_ir_backlight_function = modular_server_.createFunction(backlight_controller::constants::toggle_ir_backlight_function_name);
+  toggle_ir_backlight_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::toggleIrBacklightHandler));
+  toggle_ir_backlight_function.addParameter(ir_backlight_parameter);
+
   modular_server::Function & get_ir_backlight_powers_when_on_function = modular_server_.createFunction(constants::get_ir_backlight_powers_when_on_function_name);
   get_ir_backlight_powers_when_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getIrBacklightPowersWhenOnHandler));
   get_ir_backlight_powers_when_on_function.setResultTypeArray();
@@ -139,6 +143,10 @@ void BacklightController::setup()
   modular_server::Function & set_visible_backlight_off_function = modular_server_.createFunction(backlight_controller::constants::set_visible_backlight_off_function_name);
   set_visible_backlight_off_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setVisibleBacklightOffHandler));
   set_visible_backlight_off_function.addParameter(visible_backlight_parameter);
+
+  modular_server::Function & toggle_visible_backlight_function = modular_server_.createFunction(backlight_controller::constants::toggle_visible_backlight_function_name);
+  toggle_visible_backlight_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::toggleVisibleBacklightHandler));
+  toggle_visible_backlight_function.addParameter(visible_backlight_parameter);
 
   modular_server::Function & get_visible_backlight_powers_when_on_function = modular_server_.createFunction(constants::get_visible_backlight_powers_when_on_function_name);
   get_visible_backlight_powers_when_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getVisibleBacklightPowersWhenOnHandler));
@@ -167,6 +175,10 @@ void BacklightController::setup()
   set_high_voltage_off_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setHighVoltageOffHandler));
   set_high_voltage_off_function.addParameter(high_voltage_parameter);
 
+  modular_server::Function & toggle_high_voltage_function = modular_server_.createFunction(backlight_controller::constants::toggle_high_voltage_function_name);
+  toggle_high_voltage_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::toggleHighVoltageHandler));
+  toggle_high_voltage_function.addParameter(high_voltage_parameter);
+
   modular_server::Function & get_high_voltage_powers_when_on_function = modular_server_.createFunction(constants::get_high_voltage_powers_when_on_function_name);
   get_high_voltage_powers_when_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getHighVoltagePowersWhenOnHandler));
   get_high_voltage_powers_when_on_function.setResultTypeArray();
@@ -193,6 +205,10 @@ void BacklightController::setup()
   modular_server::Function & set_low_voltage_off_function = modular_server_.createFunction(backlight_controller::constants::set_low_voltage_off_function_name);
   set_low_voltage_off_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setLowVoltageOffHandler));
   set_low_voltage_off_function.addParameter(low_voltage_parameter);
+
+  modular_server::Function & toggle_low_voltage_function = modular_server_.createFunction(backlight_controller::constants::toggle_low_voltage_function_name);
+  toggle_low_voltage_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::toggleLowVoltageHandler));
+  toggle_low_voltage_function.addParameter(low_voltage_parameter);
 
   modular_server::Function & get_low_voltage_powers_when_on_function = modular_server_.createFunction(constants::get_low_voltage_powers_when_on_function_name);
   get_low_voltage_powers_when_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getLowVoltagePowersWhenOnHandler));
@@ -306,6 +322,11 @@ void BacklightController::setIrBacklightOff(size_t ir_backlight)
   setChannelOff(irBacklightToDigitalChannel(ir_backlight));
 }
 
+void BacklightController::toggleIrBacklight(size_t ir_backlight)
+{
+  toggleChannel(irBacklightToDigitalChannel(ir_backlight));
+}
+
 long BacklightController::getIrBacklightPowerWhenOn(size_t ir_backlight)
 {
   return getPowerWhenOn(irBacklightToDigitalChannel(ir_backlight));
@@ -355,6 +376,11 @@ void BacklightController::setVisibleBacklightOnAtPower(size_t visible_backlight,
 void BacklightController::setVisibleBacklightOff(size_t visible_backlight)
 {
   setChannelOff(visibleBacklightToDigitalChannel(visible_backlight));
+}
+
+void BacklightController::toggleVisibleBacklight(size_t visible_backlight)
+{
+  toggleChannel(visibleBacklightToDigitalChannel(visible_backlight));
 }
 
 long BacklightController::getVisibleBacklightPowerWhenOn(size_t visible_backlight)
@@ -408,6 +434,11 @@ void BacklightController::setHighVoltageOff(size_t high_voltage)
   setChannelOff(highVoltageToDigitalChannel(high_voltage));
 }
 
+void BacklightController::toggleHighVoltage(size_t high_voltage)
+{
+  toggleChannel(highVoltageToDigitalChannel(high_voltage));
+}
+
 long BacklightController::getHighVoltagePowerWhenOn(size_t high_voltage)
 {
   return getPowerWhenOn(highVoltageToDigitalChannel(high_voltage));
@@ -457,6 +488,11 @@ void BacklightController::setLowVoltageOnAtPower(size_t low_voltage,
 void BacklightController::setLowVoltageOff(size_t low_voltage)
 {
   setChannelOff(lowVoltageToDigitalChannel(low_voltage));
+}
+
+void BacklightController::toggleLowVoltage(size_t low_voltage)
+{
+  toggleChannel(lowVoltageToDigitalChannel(low_voltage));
 }
 
 long BacklightController::getLowVoltagePowerWhenOn(size_t low_voltage)
@@ -689,6 +725,14 @@ void BacklightController::setIrBacklightOffHandler()
   setIrBacklightOff(ir_backlight);
 }
 
+void BacklightController::toggleIrBacklightHandler()
+{
+  long ir_backlight;
+  modular_server_.parameter(constants::ir_backlight_parameter_name).getValue(ir_backlight);
+
+  toggleIrBacklight(ir_backlight);
+}
+
 void BacklightController::getIrBacklightPowersWhenOnHandler()
 {
   modular_server_.response().writeResultKey();
@@ -763,6 +807,14 @@ void BacklightController::setVisibleBacklightOffHandler()
   modular_server_.parameter(constants::visible_backlight_parameter_name).getValue(visible_backlight);
 
   setVisibleBacklightOff(visible_backlight);
+}
+
+void BacklightController::toggleVisibleBacklightHandler()
+{
+  long visible_backlight;
+  modular_server_.parameter(constants::visible_backlight_parameter_name).getValue(visible_backlight);
+
+  toggleVisibleBacklight(visible_backlight);
 }
 
 void BacklightController::getVisibleBacklightPowersWhenOnHandler()
@@ -841,6 +893,14 @@ void BacklightController::setHighVoltageOffHandler()
   setHighVoltageOff(high_voltage);
 }
 
+void BacklightController::toggleHighVoltageHandler()
+{
+  long high_voltage;
+  modular_server_.parameter(constants::high_voltage_parameter_name).getValue(high_voltage);
+
+  toggleHighVoltage(high_voltage);
+}
+
 void BacklightController::getHighVoltagePowersWhenOnHandler()
 {
   modular_server_.response().writeResultKey();
@@ -915,6 +975,14 @@ void BacklightController::setLowVoltageOffHandler()
   modular_server_.parameter(constants::low_voltage_parameter_name).getValue(low_voltage);
 
   setLowVoltageOff(low_voltage);
+}
+
+void BacklightController::toggleLowVoltageHandler()
+{
+  long low_voltage;
+  modular_server_.parameter(constants::low_voltage_parameter_name).getValue(low_voltage);
+
+  toggleLowVoltage(low_voltage);
 }
 
 void BacklightController::getLowVoltagePowersWhenOnHandler()

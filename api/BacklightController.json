@@ -32,6 +32,12 @@
         ]
       },
       {
+        "name": "toggleIrBacklight",
+        "parameters": [
+          "ir_backlight"
+        ]
+      },
+      {
         "name": "getIrBacklightPowersWhenOn",
         "result_info": {
           "type": "array",
@@ -66,6 +72,12 @@
       },
       {
         "name": "setVisibleBacklightOff",
+        "parameters": [
+          "visible_backlight"
+        ]
+      },
+      {
+        "name": "toggleVisibleBacklight",
         "parameters": [
           "visible_backlight"
         ]
@@ -110,6 +122,12 @@
         ]
       },
       {
+        "name": "toggleHighVoltage",
+        "parameters": [
+          "high_voltage"
+        ]
+      },
+      {
         "name": "getHighVoltagePowersWhenOn",
         "result_info": {
           "type": "array",
@@ -144,6 +162,12 @@
       },
       {
         "name": "setLowVoltageOff",
+        "parameters": [
+          "low_voltage"
+        ]
+      },
+      {
+        "name": "toggleLowVoltage",
         "parameters": [
           "low_voltage"
         ]

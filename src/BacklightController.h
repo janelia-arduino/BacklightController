@@ -39,6 +39,7 @@ public:
   void setIrBacklightOnAtPower(size_t ir_backlight,
     long power);
   void setIrBacklightOff(size_t ir_backlight);
+  void toggleIrBacklight(size_t ir_backlight);
   long getIrBacklightPowerWhenOn(size_t ir_backlight);
   long getIrBacklightPower(size_t ir_backlight);
 
@@ -51,6 +52,7 @@ public:
   void setVisibleBacklightOnAtPower(size_t visible_backlight,
     long power);
   void setVisibleBacklightOff(size_t visible_backlight);
+  void toggleVisibleBacklight(size_t visible_backlight);
   long getVisibleBacklightPowerWhenOn(size_t visible_backlight);
   long getVisibleBacklightPower(size_t visible_backlight);
 
@@ -63,6 +65,7 @@ public:
   void setHighVoltageOnAtPower(size_t high_voltage,
     long power);
   void setHighVoltageOff(size_t high_voltage);
+  void toggleHighVoltage(size_t high_voltage);
   long getHighVoltagePowerWhenOn(size_t high_voltage);
   long getHighVoltagePower(size_t high_voltage);
 
@@ -75,6 +78,7 @@ public:
   void setLowVoltageOnAtPower(size_t low_voltage,
     long power);
   void setLowVoltageOff(size_t low_voltage);
+  void toggleLowVoltage(size_t low_voltage);
   long getLowVoltagePowerWhenOn(size_t low_voltage);
   long getLowVoltagePower(size_t low_voltage);
 
@@ -115,6 +119,7 @@ private:
   void setIrBacklightOnHandler();
   void setIrBacklightOnAtPowerHandler();
   void setIrBacklightOffHandler();
+  void toggleIrBacklightHandler();
   void getIrBacklightPowersWhenOnHandler();
   void getIrBacklightPowersHandler();
 
@@ -125,6 +130,7 @@ private:
   void setVisibleBacklightOnHandler();
   void setVisibleBacklightOnAtPowerHandler();
   void setVisibleBacklightOffHandler();
+  void toggleVisibleBacklightHandler();
   void getVisibleBacklightPowersWhenOnHandler();
   void getVisibleBacklightPowersHandler();
 
@@ -135,6 +141,7 @@ private:
   void setHighVoltageOnHandler();
   void setHighVoltageOnAtPowerHandler();
   void setHighVoltageOffHandler();
+  void toggleHighVoltageHandler();
   void getHighVoltagePowersWhenOnHandler();
   void getHighVoltagePowersHandler();
 
@@ -145,6 +152,7 @@ private:
   void setLowVoltageOnHandler();
   void setLowVoltageOnAtPowerHandler();
   void setLowVoltageOffHandler();
+  void toggleLowVoltageHandler();
   void getLowVoltagePowersWhenOnHandler();
   void getLowVoltagePowersHandler();
 
