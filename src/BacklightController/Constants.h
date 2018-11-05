@@ -19,7 +19,7 @@ namespace constants
 enum{PROPERTY_COUNT_MAX=4};
 enum{PARAMETER_COUNT_MAX=4};
 enum{FUNCTION_COUNT_MAX=24};
-enum{CALLBACK_COUNT_MAX=8};
+enum{CALLBACK_COUNT_MAX=12};
 
 extern ConstantString device_name;
 
@@ -89,12 +89,16 @@ extern ConstantString get_low_voltage_powers_function_name;
 // Callbacks
 extern ConstantString set_all_ir_backlights_on_callback_name;
 extern ConstantString set_all_ir_backlights_off_callback_name;
+extern ConstantString toggle_all_ir_backlights_callback_name;
 extern ConstantString set_all_visible_backlights_on_callback_name;
 extern ConstantString set_all_visible_backlights_off_callback_name;
+extern ConstantString toggle_all_visible_backlights_callback_name;
 extern ConstantString set_all_high_voltages_on_callback_name;
 extern ConstantString set_all_high_voltages_off_callback_name;
+extern ConstantString toggle_all_high_voltages_callback_name;
 extern ConstantString set_all_low_voltages_on_callback_name;
 extern ConstantString set_all_low_voltages_off_callback_name;
+extern ConstantString toggle_all_low_voltages_callback_name;
 
 // Errors
 }

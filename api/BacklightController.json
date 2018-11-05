@@ -731,6 +731,37 @@
         ]
       },
       {
+        "name": "toggleAllIrBacklights",
+        "functions": [
+          {
+            "name": "trigger"
+          },
+          {
+            "name": "attachTo",
+            "parameters": [
+              "pin_name",
+              "pin_mode"
+            ]
+          },
+          {
+            "name": "detachFrom",
+            "parameters": [
+              "pin_name"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pin_name",
+            "type": "string"
+          },
+          {
+            "name": "pin_mode",
+            "type": "string"
+          }
+        ]
+      },
+      {
         "name": "setAllVisibleBacklightsOn",
         "functions": [
           {
@@ -763,6 +794,37 @@
       },
       {
         "name": "setAllVisibleBacklightsOff",
+        "functions": [
+          {
+            "name": "trigger"
+          },
+          {
+            "name": "attachTo",
+            "parameters": [
+              "pin_name",
+              "pin_mode"
+            ]
+          },
+          {
+            "name": "detachFrom",
+            "parameters": [
+              "pin_name"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pin_name",
+            "type": "string"
+          },
+          {
+            "name": "pin_mode",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "toggleAllVisibleBacklights",
         "functions": [
           {
             "name": "trigger"
@@ -855,6 +917,37 @@
         ]
       },
       {
+        "name": "toggleAllHighVoltages",
+        "functions": [
+          {
+            "name": "trigger"
+          },
+          {
+            "name": "attachTo",
+            "parameters": [
+              "pin_name",
+              "pin_mode"
+            ]
+          },
+          {
+            "name": "detachFrom",
+            "parameters": [
+              "pin_name"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pin_name",
+            "type": "string"
+          },
+          {
+            "name": "pin_mode",
+            "type": "string"
+          }
+        ]
+      },
+      {
         "name": "setAllLowVoltagesOn",
         "functions": [
           {
@@ -887,6 +980,37 @@
       },
       {
         "name": "setAllLowVoltagesOff",
+        "functions": [
+          {
+            "name": "trigger"
+          },
+          {
+            "name": "attachTo",
+            "parameters": [
+              "pin_name",
+              "pin_mode"
+            ]
+          },
+          {
+            "name": "detachFrom",
+            "parameters": [
+              "pin_name"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pin_name",
+            "type": "string"
+          },
+          {
+            "name": "pin_mode",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "toggleAllLowVoltages",
         "functions": [
           {
             "name": "trigger"

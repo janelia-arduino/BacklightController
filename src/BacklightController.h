@@ -33,6 +33,7 @@ public:
   void setAllIrBacklightsOnAtPower(long power);
   void setAllIrBacklightsOn();
   void setAllIrBacklightsOff();
+  void toggleAllIrBacklights();
   size_t getIrBacklightCount();
   void setIrBacklightOn(size_t ir_backlight);
   void setIrBacklightOnAtPower(size_t ir_backlight,
@@ -44,6 +45,7 @@ public:
   void setAllVisibleBacklightsOnAtPower(long power);
   void setAllVisibleBacklightsOn();
   void setAllVisibleBacklightsOff();
+  void toggleAllVisibleBacklights();
   size_t getVisibleBacklightCount();
   void setVisibleBacklightOn(size_t visible_backlight);
   void setVisibleBacklightOnAtPower(size_t visible_backlight,
@@ -55,6 +57,7 @@ public:
   void setAllHighVoltagesOnAtPower(long power);
   void setAllHighVoltagesOn();
   void setAllHighVoltagesOff();
+  void toggleAllHighVoltages();
   size_t getHighVoltageCount();
   void setHighVoltageOn(size_t high_voltage);
   void setHighVoltageOnAtPower(size_t high_voltage,
@@ -66,6 +69,7 @@ public:
   void setAllLowVoltagesOnAtPower(long power);
   void setAllLowVoltagesOn();
   void setAllLowVoltagesOff();
+  void toggleAllLowVoltages();
   size_t getLowVoltageCount();
   void setLowVoltageOn(size_t low_voltage);
   void setLowVoltageOnAtPower(size_t low_voltage,
@@ -107,6 +111,7 @@ private:
   void setAllIrBacklightsOnAtPowerHandler();
   void setAllIrBacklightsOnHandler(modular_server::Pin * pin_ptr);
   void setAllIrBacklightsOffHandler(modular_server::Pin * pin_ptr);
+  void toggleAllIrBacklightsHandler(modular_server::Pin * pin_ptr);
   void setIrBacklightOnHandler();
   void setIrBacklightOnAtPowerHandler();
   void setIrBacklightOffHandler();
@@ -116,6 +121,7 @@ private:
   void setAllVisibleBacklightsOnAtPowerHandler();
   void setAllVisibleBacklightsOnHandler(modular_server::Pin * pin_ptr);
   void setAllVisibleBacklightsOffHandler(modular_server::Pin * pin_ptr);
+  void toggleAllVisibleBacklightsHandler(modular_server::Pin * pin_ptr);
   void setVisibleBacklightOnHandler();
   void setVisibleBacklightOnAtPowerHandler();
   void setVisibleBacklightOffHandler();
@@ -125,6 +131,7 @@ private:
   void setAllHighVoltagesOnAtPowerHandler();
   void setAllHighVoltagesOnHandler(modular_server::Pin * pin_ptr);
   void setAllHighVoltagesOffHandler(modular_server::Pin * pin_ptr);
+  void toggleAllHighVoltagesHandler(modular_server::Pin * pin_ptr);
   void setHighVoltageOnHandler();
   void setHighVoltageOnAtPowerHandler();
   void setHighVoltageOffHandler();
@@ -134,6 +141,7 @@ private:
   void setAllLowVoltagesOnAtPowerHandler();
   void setAllLowVoltagesOnHandler(modular_server::Pin * pin_ptr);
   void setAllLowVoltagesOffHandler(modular_server::Pin * pin_ptr);
+  void toggleAllLowVoltagesHandler(modular_server::Pin * pin_ptr);
   void setLowVoltageOnHandler();
   void setLowVoltageOnAtPowerHandler();
   void setLowVoltageOffHandler();

@@ -20,7 +20,7 @@ const modular_server::FirmwareInfo firmware_info =
 {
   .name_ptr=&firmware_name,
   .version_major=2,
-  .version_minor=0,
+  .version_minor=1,
   .version_patch=0,
 };
 
@@ -81,12 +81,16 @@ CONSTANT_STRING(get_low_voltage_powers_function_name,"getLowVoltagePowers");
 // Callbacks
 CONSTANT_STRING(set_all_ir_backlights_on_callback_name,"setAllIrBacklightsOn");
 CONSTANT_STRING(set_all_ir_backlights_off_callback_name,"setAllIrBacklightsOff");
+CONSTANT_STRING(toggle_all_ir_backlights_callback_name,"toggleAllIrBacklights");
 CONSTANT_STRING(set_all_visible_backlights_on_callback_name,"setAllVisibleBacklightsOn");
 CONSTANT_STRING(set_all_visible_backlights_off_callback_name,"setAllVisibleBacklightsOff");
+CONSTANT_STRING(toggle_all_visible_backlights_callback_name,"toggleAllVisibleBacklights");
 CONSTANT_STRING(set_all_high_voltages_on_callback_name,"setAllHighVoltagesOn");
 CONSTANT_STRING(set_all_high_voltages_off_callback_name,"setAllHighVoltagesOff");
+CONSTANT_STRING(toggle_all_high_voltages_callback_name,"toggleAllHighVoltages");
 CONSTANT_STRING(set_all_low_voltages_on_callback_name,"setAllLowVoltagesOn");
 CONSTANT_STRING(set_all_low_voltages_off_callback_name,"setAllLowVoltagesOff");
+CONSTANT_STRING(toggle_all_low_voltages_callback_name,"toggleAllLowVoltages");
 
 // Errors
 }
