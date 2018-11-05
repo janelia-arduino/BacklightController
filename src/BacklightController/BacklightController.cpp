@@ -219,13 +219,13 @@ void BacklightController::setup()
 
   modular_server::Callback & toggle_all_ir_backlights_callback = modular_server_.createCallback(backlight_controller::constants::toggle_all_ir_backlights_callback_name);
   toggle_all_ir_backlights_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::toggleAllIrBacklightsHandler));
+  toggle_all_ir_backlights_callback.attachTo(btn_b_pin,modular_server::constants::pin_mode_interrupt_falling);
 
   modular_server::Callback & set_all_visible_backlights_on_callback = modular_server_.createCallback(backlight_controller::constants::set_all_visible_backlights_on_callback_name);
   set_all_visible_backlights_on_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllVisibleBacklightsOnHandler));
 
   modular_server::Callback & set_all_visible_backlights_off_callback = modular_server_.createCallback(backlight_controller::constants::set_all_visible_backlights_off_callback_name);
   set_all_visible_backlights_off_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllVisibleBacklightsOffHandler));
-  set_all_visible_backlights_off_callback.attachTo(btn_b_pin,modular_server::constants::pin_mode_interrupt_falling);
 
   modular_server::Callback & toggle_all_visible_backlights_callback = modular_server_.createCallback(backlight_controller::constants::toggle_all_visible_backlights_callback_name);
   toggle_all_visible_backlights_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::toggleAllVisibleBacklightsHandler));
