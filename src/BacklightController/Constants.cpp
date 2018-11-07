@@ -43,6 +43,26 @@ const long high_voltage_power_max_element_default = 100;
 CONSTANT_STRING(low_voltage_power_max_property_name,"lowVoltagePowerMax");
 const long low_voltage_power_max_element_default = 100;
 
+CONSTANT_STRING(ir_backlight_switching_frequency_max_property_name,"irBacklightSwitchingFrequencyMax");
+const long ir_backlight_switching_frequency_max_element_min = 48828;
+const long ir_backlight_switching_frequency_max_element_max = 48828;
+const long ir_backlight_switching_frequency_max_element_default = 48828;
+
+CONSTANT_STRING(visible_backlight_switching_frequency_max_property_name,"visibleBacklightSwitchingFrequencyMax");
+const long visible_backlight_switching_frequency_max_element_min = 48828;
+const long visible_backlight_switching_frequency_max_element_max = 48828;
+const long visible_backlight_switching_frequency_max_element_default = 48828;
+
+CONSTANT_STRING(high_voltage_switching_frequency_max_property_name,"highVoltageSwitchingFrequencyMax");
+const long high_voltage_switching_frequency_max_element_min = 1000;
+const long high_voltage_switching_frequency_max_element_max = 12000;
+const long high_voltage_switching_frequency_max_element_default = 12000;
+
+CONSTANT_STRING(low_voltage_switching_frequency_max_property_name,"lowVoltageSwitchingFrequencyMax");
+const long low_voltage_switching_frequency_max_element_min = 1000;
+const long low_voltage_switching_frequency_max_element_max = 48828;
+const long low_voltage_switching_frequency_max_element_default = 48828;
+
 // Parameters
 CONSTANT_STRING(ir_backlight_parameter_name,"ir_backlight");
 

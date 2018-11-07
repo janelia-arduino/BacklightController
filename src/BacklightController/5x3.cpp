@@ -115,6 +115,38 @@ const long low_voltage_power_max_default[LOW_VOLTAGE_COUNT] =
   low_voltage_power_max_element_default,
 };
 
+const long ir_backlight_switching_frequency_max_default[IR_BACKLIGHT_COUNT] =
+{
+  ir_backlight_switching_frequency_max_element_default,
+  ir_backlight_switching_frequency_max_element_default,
+  ir_backlight_switching_frequency_max_element_default,
+  ir_backlight_switching_frequency_max_element_default,
+};
+
+const long visible_backlight_switching_frequency_max_default[VISIBLE_BACKLIGHT_COUNT] =
+{
+  visible_backlight_switching_frequency_max_element_default,
+  visible_backlight_switching_frequency_max_element_default,
+  visible_backlight_switching_frequency_max_element_default,
+  visible_backlight_switching_frequency_max_element_default,
+};
+
+const long high_voltage_switching_frequency_max_default[HIGH_VOLTAGE_COUNT] =
+{
+  high_voltage_switching_frequency_max_element_default,
+  high_voltage_switching_frequency_max_element_default,
+  high_voltage_switching_frequency_max_element_default,
+  high_voltage_switching_frequency_max_element_default,
+};
+
+const long low_voltage_switching_frequency_max_default[LOW_VOLTAGE_COUNT] =
+{
+  low_voltage_switching_frequency_max_element_default,
+  low_voltage_switching_frequency_max_element_default,
+  low_voltage_switching_frequency_max_element_default,
+  low_voltage_switching_frequency_max_element_default,
+};
+
 // Parameters
 
 // Functions

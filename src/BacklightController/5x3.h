@@ -46,6 +46,14 @@ extern const long high_voltage_power_max_default[HIGH_VOLTAGE_COUNT];
 
 extern const long low_voltage_power_max_default[LOW_VOLTAGE_COUNT];
 
+extern const long ir_backlight_switching_frequency_max_default[IR_BACKLIGHT_COUNT];
+
+extern const long visible_backlight_switching_frequency_max_default[VISIBLE_BACKLIGHT_COUNT];
+
+extern const long high_voltage_switching_frequency_max_default[HIGH_VOLTAGE_COUNT];
+
+extern const long low_voltage_switching_frequency_max_default[LOW_VOLTAGE_COUNT];
+
 // Parameters
 
 // Functions

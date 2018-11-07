@@ -16,7 +16,7 @@ namespace backlight_controller
 namespace constants
 {
 //MAX values must be >= 1, >= created/copied count, < RAM limit
-enum{PROPERTY_COUNT_MAX=4};
+enum{PROPERTY_COUNT_MAX=8};
 enum{PARAMETER_COUNT_MAX=4};
 enum{FUNCTION_COUNT_MAX=28};
 enum{CALLBACK_COUNT_MAX=12};
@@ -40,25 +40,45 @@ extern const size_t enable_all_pin;
 // Properties
 // Property values must be long, double, bool, long[], double[], bool[], char[], ConstantString *, (ConstantString *)[]
 extern ConstantString ir_backlight_power_max_property_name;
+extern const long ir_backlight_power_max_element_default;
 
 extern ConstantString visible_backlight_power_max_property_name;
+extern const long visible_backlight_power_max_element_default;
 
 extern ConstantString high_voltage_power_max_property_name;
+extern const long high_voltage_power_max_element_default;
 
 extern ConstantString low_voltage_power_max_property_name;
+extern const long low_voltage_power_max_element_default;
+
+extern ConstantString ir_backlight_switching_frequency_max_property_name;
+extern const long ir_backlight_switching_frequency_max_element_min;
+extern const long ir_backlight_switching_frequency_max_element_max;
+extern const long ir_backlight_switching_frequency_max_element_default;
+
+extern ConstantString visible_backlight_switching_frequency_max_property_name;
+extern const long visible_backlight_switching_frequency_max_element_min;
+extern const long visible_backlight_switching_frequency_max_element_max;
+extern const long visible_backlight_switching_frequency_max_element_default;
+
+extern ConstantString high_voltage_switching_frequency_max_property_name;
+extern const long high_voltage_switching_frequency_max_element_min;
+extern const long high_voltage_switching_frequency_max_element_max;
+extern const long high_voltage_switching_frequency_max_element_default;
+
+extern ConstantString low_voltage_switching_frequency_max_property_name;
+extern const long low_voltage_switching_frequency_max_element_min;
+extern const long low_voltage_switching_frequency_max_element_max;
+extern const long low_voltage_switching_frequency_max_element_default;
 
 // Parameters
 extern ConstantString ir_backlight_parameter_name;
-extern const long ir_backlight_power_max_element_default;
 
 extern ConstantString visible_backlight_parameter_name;
-extern const long visible_backlight_power_max_element_default;
 
 extern ConstantString high_voltage_parameter_name;
-extern const long high_voltage_power_max_element_default;
 
 extern ConstantString low_voltage_parameter_name;
-extern const long low_voltage_power_max_element_default;
 
 // Functions
 extern ConstantString set_all_ir_backlights_on_at_power_function_name;

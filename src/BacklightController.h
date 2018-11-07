@@ -112,6 +112,11 @@ private:
   void setHighVoltagePowerMaxHandler(size_t high_voltage);
   void setLowVoltagePowerMaxHandler(size_t low_voltage);
 
+  void setIrBacklightSwitchingFrequencyMaxHandler(size_t ir_backlight);
+  void setVisibleBacklightSwitchingFrequencyMaxHandler(size_t visible_backlight);
+  void setHighVoltageSwitchingFrequencyMaxHandler(size_t high_voltage);
+  void setLowVoltageSwitchingFrequencyMaxHandler(size_t low_voltage);
+
   void setAllIrBacklightsOnAtPowerHandler();
   void setAllIrBacklightsOnHandler(modular_server::Pin * pin_ptr);
   void setAllIrBacklightsOffHandler(modular_server::Pin * pin_ptr);

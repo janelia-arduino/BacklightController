@@ -78,6 +78,26 @@ void BacklightController::setup()
   low_voltage_power_max_property.setUnits(digital_controller::constants::percent_units);
   low_voltage_power_max_property.attachPostSetElementValueFunctor(makeFunctor((Functor1<size_t> *)0,*this,&BacklightController::setLowVoltagePowerMaxHandler));
 
+  modular_server::Property & ir_backlight_switching_frequency_max_property = modular_server_.createProperty(constants::ir_backlight_switching_frequency_max_property_name,constants::ir_backlight_switching_frequency_max_default);
+  ir_backlight_switching_frequency_max_property.setRange(constants::ir_backlight_switching_frequency_max_element_min,constants::ir_backlight_switching_frequency_max_element_max);
+  ir_backlight_switching_frequency_max_property.setUnits(digital_controller::constants::hz_units);
+  ir_backlight_switching_frequency_max_property.attachPostSetElementValueFunctor(makeFunctor((Functor1<size_t> *)0,*this,&BacklightController::setIrBacklightSwitchingFrequencyMaxHandler));
+
+  modular_server::Property & visible_backlight_switching_frequency_max_property = modular_server_.createProperty(constants::visible_backlight_switching_frequency_max_property_name,constants::visible_backlight_switching_frequency_max_default);
+  visible_backlight_switching_frequency_max_property.setRange(constants::visible_backlight_switching_frequency_max_element_min,constants::visible_backlight_switching_frequency_max_element_max);
+  visible_backlight_switching_frequency_max_property.setUnits(digital_controller::constants::hz_units);
+  visible_backlight_switching_frequency_max_property.attachPostSetElementValueFunctor(makeFunctor((Functor1<size_t> *)0,*this,&BacklightController::setVisibleBacklightSwitchingFrequencyMaxHandler));
+
+  modular_server::Property & high_voltage_switching_frequency_max_property = modular_server_.createProperty(constants::high_voltage_switching_frequency_max_property_name,constants::high_voltage_switching_frequency_max_default);
+  high_voltage_switching_frequency_max_property.setRange(constants::high_voltage_switching_frequency_max_element_min,constants::high_voltage_switching_frequency_max_element_max);
+  high_voltage_switching_frequency_max_property.setUnits(digital_controller::constants::hz_units);
+  high_voltage_switching_frequency_max_property.attachPostSetElementValueFunctor(makeFunctor((Functor1<size_t> *)0,*this,&BacklightController::setHighVoltageSwitchingFrequencyMaxHandler));
+
+  modular_server::Property & low_voltage_switching_frequency_max_property = modular_server_.createProperty(constants::low_voltage_switching_frequency_max_property_name,constants::low_voltage_switching_frequency_max_default);
+  low_voltage_switching_frequency_max_property.setRange(constants::low_voltage_switching_frequency_max_element_max,constants::low_voltage_switching_frequency_max_element_max);
+  low_voltage_switching_frequency_max_property.setUnits(digital_controller::constants::hz_units);
+  low_voltage_switching_frequency_max_property.attachPostSetElementValueFunctor(makeFunctor((Functor1<size_t> *)0,*this,&BacklightController::setLowVoltageSwitchingFrequencyMaxHandler));
+
   // Parameters
   modular_server::Parameter & power_parameter = modular_server_.parameter(digital_controller::constants::power_parameter_name);
 
@@ -673,6 +693,54 @@ void BacklightController::setLowVoltagePowerMaxHandler(size_t low_voltage)
 
   modular_server::Property & power_max_property = modular_server_.property(digital_controller::constants::power_max_property_name);
   power_max_property.setElementValue(digital_channel,power_max);
+}
+
+void BacklightController::setIrBacklightSwitchingFrequencyMaxHandler(size_t ir_backlight)
+{
+  long switching_frequency_max;
+  modular_server::Property & ir_backlight_switching_frequency_max_property = modular_server_.property(constants::ir_backlight_switching_frequency_max_property_name);
+  ir_backlight_switching_frequency_max_property.getElementValue(ir_backlight,switching_frequency_max);
+
+  size_t digital_channel = irBacklightToDigitalChannel(ir_backlight);
+
+  modular_server::Property & switching_frequency_max_property = modular_server_.property(digital_controller::constants::switching_frequency_max_property_name);
+  switching_frequency_max_property.setElementValue(digital_channel,switching_frequency_max);
+}
+
+void BacklightController::setVisibleBacklightSwitchingFrequencyMaxHandler(size_t visible_backlight)
+{
+  long switching_frequency_max;
+  modular_server::Property & visible_backlight_switching_frequency_max_property = modular_server_.property(constants::visible_backlight_switching_frequency_max_property_name);
+  visible_backlight_switching_frequency_max_property.getElementValue(visible_backlight,switching_frequency_max);
+
+  size_t digital_channel = visibleBacklightToDigitalChannel(visible_backlight);
+
+  modular_server::Property & switching_frequency_max_property = modular_server_.property(digital_controller::constants::switching_frequency_max_property_name);
+  switching_frequency_max_property.setElementValue(digital_channel,switching_frequency_max);
+}
+
+void BacklightController::setHighVoltageSwitchingFrequencyMaxHandler(size_t high_voltage)
+{
+  long switching_frequency_max;
+  modular_server::Property & high_voltage_switching_frequency_max_property = modular_server_.property(constants::high_voltage_switching_frequency_max_property_name);
+  high_voltage_switching_frequency_max_property.getElementValue(high_voltage,switching_frequency_max);
+
+  size_t digital_channel = highVoltageToDigitalChannel(high_voltage);
+
+  modular_server::Property & switching_frequency_max_property = modular_server_.property(digital_controller::constants::switching_frequency_max_property_name);
+  switching_frequency_max_property.setElementValue(digital_channel,switching_frequency_max);
+}
+
+void BacklightController::setLowVoltageSwitchingFrequencyMaxHandler(size_t low_voltage)
+{
+  long switching_frequency_max;
+  modular_server::Property & low_voltage_switching_frequency_max_property = modular_server_.property(constants::low_voltage_switching_frequency_max_property_name);
+  low_voltage_switching_frequency_max_property.getElementValue(low_voltage,switching_frequency_max);
+
+  size_t digital_channel = lowVoltageToDigitalChannel(low_voltage);
+
+  modular_server::Property & switching_frequency_max_property = modular_server_.property(digital_controller::constants::switching_frequency_max_property_name);
+  switching_frequency_max_property.setElementValue(digital_channel,switching_frequency_max);
 }
 
 void BacklightController::setAllIrBacklightsOnAtPowerHandler()
