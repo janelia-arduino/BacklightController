@@ -37,13 +37,15 @@ extern const size_t low_voltage_channels[LOW_VOLTAGE_COUNT];
 
 // Properties
 // Property values must be long, double, bool, long[], double[], bool[], char[], ConstantString *, (ConstantString *)[]
-extern const long ir_backlight_power_max_default[IR_BACKLIGHT_COUNT];
+// extern const long switching_frequency_max_default[CHANNEL_COUNT_MAX];
 
-extern const long visible_backlight_power_max_default[VISIBLE_BACKLIGHT_COUNT];
+extern const double ir_backlight_power_max_default[IR_BACKLIGHT_COUNT];
 
-extern const long high_voltage_power_max_default[HIGH_VOLTAGE_COUNT];
+extern const double visible_backlight_power_max_default[VISIBLE_BACKLIGHT_COUNT];
 
-extern const long low_voltage_power_max_default[LOW_VOLTAGE_COUNT];
+extern const double high_voltage_power_max_default[HIGH_VOLTAGE_COUNT];
+
+extern const double low_voltage_power_max_default[LOW_VOLTAGE_COUNT];
 
 extern const long ir_backlight_switching_frequency_max_default[IR_BACKLIGHT_COUNT];
 

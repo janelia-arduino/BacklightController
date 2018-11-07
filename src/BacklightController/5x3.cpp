@@ -83,7 +83,43 @@ const size_t low_voltage_channels[LOW_VOLTAGE_COUNT] =
 // Units
 
 // Properties
-const long ir_backlight_power_max_default[IR_BACKLIGHT_COUNT] =
+// const long switching_frequency_max_default[CHANNEL_COUNT_MAX] =
+// {
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+//   switching_frequency_max,
+// };
+
+const double ir_backlight_power_max_default[IR_BACKLIGHT_COUNT] =
 {
   ir_backlight_power_max_element_default,
   ir_backlight_power_max_element_default,
@@ -91,7 +127,7 @@ const long ir_backlight_power_max_default[IR_BACKLIGHT_COUNT] =
   ir_backlight_power_max_element_default,
 };
 
-const long visible_backlight_power_max_default[VISIBLE_BACKLIGHT_COUNT] =
+const double visible_backlight_power_max_default[VISIBLE_BACKLIGHT_COUNT] =
 {
   visible_backlight_power_max_element_default,
   visible_backlight_power_max_element_default,
@@ -99,7 +135,7 @@ const long visible_backlight_power_max_default[VISIBLE_BACKLIGHT_COUNT] =
   visible_backlight_power_max_element_default,
 };
 
-const long high_voltage_power_max_default[HIGH_VOLTAGE_COUNT] =
+const double high_voltage_power_max_default[HIGH_VOLTAGE_COUNT] =
 {
   high_voltage_power_max_element_default,
   high_voltage_power_max_element_default,
@@ -107,7 +143,7 @@ const long high_voltage_power_max_default[HIGH_VOLTAGE_COUNT] =
   high_voltage_power_max_element_default,
 };
 
-const long low_voltage_power_max_default[LOW_VOLTAGE_COUNT] =
+const double low_voltage_power_max_default[LOW_VOLTAGE_COUNT] =
 {
   low_voltage_power_max_element_default,
   low_voltage_power_max_element_default,

@@ -4,7 +4,7 @@
 
 * Library Information
   - Name :: BacklightController
-  - Version :: 2.1.0
+  - Version :: 3.0.0
   - License :: BSD
   - URL :: https://github.com/janelia-arduino/BacklightController
   - Author :: Peter Polidoro
@@ -32,6 +32,7 @@
           "toggleIrBacklight",
           "getIrBacklightPowersWhenOn",
           "getIrBacklightPowers",
+          "getIrBacklightPowerBounds",
           "setAllVisibleBacklightsOnAtPower",
           "setVisibleBacklightOn",
           "setVisibleBacklightOnAtPower",
@@ -39,6 +40,7 @@
           "toggleVisibleBacklight",
           "getVisibleBacklightPowersWhenOn",
           "getVisibleBacklightPowers",
+          "getVisibleBacklightPowerBounds",
           "setAllHighVoltagesOnAtPower",
           "setHighVoltageOn",
           "setHighVoltageOnAtPower",
@@ -46,13 +48,15 @@
           "toggleHighVoltage",
           "getHighVoltagePowersWhenOn",
           "getHighVoltagePowers",
+          "getHighVoltagePowerBounds",
           "setAllLowVoltagesOnAtPower",
           "setLowVoltageOn",
           "setLowVoltageOnAtPower",
           "setLowVoltageOff",
           "toggleLowVoltage",
           "getLowVoltagePowersWhenOn",
-          "getLowVoltagePowers"
+          "getLowVoltagePowers",
+          "getLowVoltagePowerBounds"
         ],
         "parameters": [
           "ir_backlight",
@@ -64,7 +68,11 @@
           "irBacklightPowerMax",
           "visibleBacklightPowerMax",
           "highVoltagePowerMax",
-          "lowVoltagePowerMax"
+          "lowVoltagePowerMax",
+          "irBacklightSwitchingFrequencyMax",
+          "visibleBacklightSwitchingFrequencyMax",
+          "highVoltageSwitchingFrequencyMax",
+          "lowVoltageSwitchingFrequencyMax"
         ],
         "callbacks": [
           "setAllIrBacklightsOn",

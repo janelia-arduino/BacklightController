@@ -41,14 +41,21 @@
         "name": "getIrBacklightPowersWhenOn",
         "result_info": {
           "type": "array",
-          "array_element_type": "long"
+          "array_element_type": "double"
         }
       },
       {
         "name": "getIrBacklightPowers",
         "result_info": {
           "type": "array",
-          "array_element_type": "long"
+          "array_element_type": "double"
+        }
+      },
+      {
+        "name": "getIrBacklightPowerBounds",
+        "result_info": {
+          "type": "array",
+          "array_element_type": "object"
         }
       },
       {
@@ -86,14 +93,21 @@
         "name": "getVisibleBacklightPowersWhenOn",
         "result_info": {
           "type": "array",
-          "array_element_type": "long"
+          "array_element_type": "double"
         }
       },
       {
         "name": "getVisibleBacklightPowers",
         "result_info": {
           "type": "array",
-          "array_element_type": "long"
+          "array_element_type": "double"
+        }
+      },
+      {
+        "name": "getVisibleBacklightPowerBounds",
+        "result_info": {
+          "type": "array",
+          "array_element_type": "object"
         }
       },
       {
@@ -131,14 +145,21 @@
         "name": "getHighVoltagePowersWhenOn",
         "result_info": {
           "type": "array",
-          "array_element_type": "long"
+          "array_element_type": "double"
         }
       },
       {
         "name": "getHighVoltagePowers",
         "result_info": {
           "type": "array",
-          "array_element_type": "long"
+          "array_element_type": "double"
+        }
+      },
+      {
+        "name": "getHighVoltagePowerBounds",
+        "result_info": {
+          "type": "array",
+          "array_element_type": "object"
         }
       },
       {
@@ -176,14 +197,21 @@
         "name": "getLowVoltagePowersWhenOn",
         "result_info": {
           "type": "array",
-          "array_element_type": "long"
+          "array_element_type": "double"
         }
       },
       {
         "name": "getLowVoltagePowers",
         "result_info": {
           "type": "array",
-          "array_element_type": "long"
+          "array_element_type": "double"
+        }
+      },
+      {
+        "name": "getLowVoltagePowerBounds",
+        "result_info": {
+          "type": "array",
+          "array_element_type": "object"
         }
       }
     ],
@@ -209,13 +237,13 @@
       {
         "name": "irBacklightPowerMax",
         "type": "array",
-        "array_element_type": "long",
+        "array_element_type": "double",
         "functions": [
           {
             "name": "getValue",
             "result_info": {
               "type": "array",
-              "array_element_type": "long"
+              "array_element_type": "double"
             }
           },
           {
@@ -225,21 +253,21 @@
             ],
             "result_info": {
               "type": "array",
-              "array_element_type": "long"
+              "array_element_type": "double"
             }
           },
           {
             "name": "getDefaultValue",
             "result_info": {
               "type": "array",
-              "array_element_type": "long"
+              "array_element_type": "double"
             }
           },
           {
             "name": "setValueToDefault",
             "result_info": {
               "type": "array",
-              "array_element_type": "long"
+              "array_element_type": "double"
             }
           },
           {
@@ -248,7 +276,7 @@
               "element_index"
             ],
             "result_info": {
-              "type": "long"
+              "type": "double"
             }
           },
           {
@@ -259,7 +287,7 @@
             ],
             "result_info": {
               "type": "array",
-              "array_element_type": "long"
+              "array_element_type": "double"
             }
           },
           {
@@ -268,7 +296,7 @@
               "element_index"
             ],
             "result_info": {
-              "type": "long"
+              "type": "double"
             }
           },
           {
@@ -278,7 +306,7 @@
             ],
             "result_info": {
               "type": "array",
-              "array_element_type": "long"
+              "array_element_type": "double"
             }
           },
           {
@@ -288,7 +316,7 @@
             ],
             "result_info": {
               "type": "array",
-              "array_element_type": "long"
+              "array_element_type": "double"
             }
           },
           {
@@ -311,7 +339,7 @@
           {
             "name": "value",
             "type": "array",
-            "array_element_type": "long"
+            "array_element_type": "double"
           },
           {
             "name": "element_index",
@@ -319,7 +347,7 @@
           },
           {
             "name": "element_value",
-            "type": "long"
+            "type": "double"
           },
           {
             "name": "array_length",
@@ -330,13 +358,13 @@
       {
         "name": "visibleBacklightPowerMax",
         "type": "array",
-        "array_element_type": "long",
+        "array_element_type": "double",
         "functions": [
           {
             "name": "getValue",
             "result_info": {
               "type": "array",
-              "array_element_type": "long"
+              "array_element_type": "double"
             }
           },
           {
@@ -346,21 +374,21 @@
             ],
             "result_info": {
               "type": "array",
-              "array_element_type": "long"
+              "array_element_type": "double"
             }
           },
           {
             "name": "getDefaultValue",
             "result_info": {
               "type": "array",
-              "array_element_type": "long"
+              "array_element_type": "double"
             }
           },
           {
             "name": "setValueToDefault",
             "result_info": {
               "type": "array",
-              "array_element_type": "long"
+              "array_element_type": "double"
             }
           },
           {
@@ -369,7 +397,7 @@
               "element_index"
             ],
             "result_info": {
-              "type": "long"
+              "type": "double"
             }
           },
           {
@@ -380,7 +408,7 @@
             ],
             "result_info": {
               "type": "array",
-              "array_element_type": "long"
+              "array_element_type": "double"
             }
           },
           {
@@ -389,7 +417,7 @@
               "element_index"
             ],
             "result_info": {
-              "type": "long"
+              "type": "double"
             }
           },
           {
@@ -399,7 +427,7 @@
             ],
             "result_info": {
               "type": "array",
-              "array_element_type": "long"
+              "array_element_type": "double"
             }
           },
           {
@@ -409,7 +437,7 @@
             ],
             "result_info": {
               "type": "array",
-              "array_element_type": "long"
+              "array_element_type": "double"
             }
           },
           {
@@ -432,7 +460,7 @@
           {
             "name": "value",
             "type": "array",
-            "array_element_type": "long"
+            "array_element_type": "double"
           },
           {
             "name": "element_index",
@@ -440,7 +468,7 @@
           },
           {
             "name": "element_value",
-            "type": "long"
+            "type": "double"
           },
           {
             "name": "array_length",
@@ -450,6 +478,248 @@
       },
       {
         "name": "highVoltagePowerMax",
+        "type": "array",
+        "array_element_type": "double",
+        "functions": [
+          {
+            "name": "getValue",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "double"
+            }
+          },
+          {
+            "name": "setValue",
+            "parameters": [
+              "value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "double"
+            }
+          },
+          {
+            "name": "getDefaultValue",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "double"
+            }
+          },
+          {
+            "name": "setValueToDefault",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "double"
+            }
+          },
+          {
+            "name": "getElementValue",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "double"
+            }
+          },
+          {
+            "name": "setElementValue",
+            "parameters": [
+              "element_index",
+              "element_value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "double"
+            }
+          },
+          {
+            "name": "getDefaultElementValue",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "double"
+            }
+          },
+          {
+            "name": "setElementValueToDefault",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "double"
+            }
+          },
+          {
+            "name": "setAllElementValues",
+            "parameters": [
+              "element_value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "double"
+            }
+          },
+          {
+            "name": "getArrayLength",
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setArrayLength",
+            "parameters": [
+              "array_length"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "array",
+            "array_element_type": "double"
+          },
+          {
+            "name": "element_index",
+            "type": "long"
+          },
+          {
+            "name": "element_value",
+            "type": "double"
+          },
+          {
+            "name": "array_length",
+            "type": "long"
+          }
+        ]
+      },
+      {
+        "name": "lowVoltagePowerMax",
+        "type": "array",
+        "array_element_type": "double",
+        "functions": [
+          {
+            "name": "getValue",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "double"
+            }
+          },
+          {
+            "name": "setValue",
+            "parameters": [
+              "value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "double"
+            }
+          },
+          {
+            "name": "getDefaultValue",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "double"
+            }
+          },
+          {
+            "name": "setValueToDefault",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "double"
+            }
+          },
+          {
+            "name": "getElementValue",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "double"
+            }
+          },
+          {
+            "name": "setElementValue",
+            "parameters": [
+              "element_index",
+              "element_value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "double"
+            }
+          },
+          {
+            "name": "getDefaultElementValue",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "double"
+            }
+          },
+          {
+            "name": "setElementValueToDefault",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "double"
+            }
+          },
+          {
+            "name": "setAllElementValues",
+            "parameters": [
+              "element_value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "double"
+            }
+          },
+          {
+            "name": "getArrayLength",
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setArrayLength",
+            "parameters": [
+              "array_length"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "array",
+            "array_element_type": "double"
+          },
+          {
+            "name": "element_index",
+            "type": "long"
+          },
+          {
+            "name": "element_value",
+            "type": "double"
+          },
+          {
+            "name": "array_length",
+            "type": "long"
+          }
+        ]
+      },
+      {
+        "name": "irBacklightSwitchingFrequencyMax",
         "type": "array",
         "array_element_type": "long",
         "functions": [
@@ -570,7 +840,249 @@
         ]
       },
       {
-        "name": "lowVoltagePowerMax",
+        "name": "visibleBacklightSwitchingFrequencyMax",
+        "type": "array",
+        "array_element_type": "long",
+        "functions": [
+          {
+            "name": "getValue",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "setValue",
+            "parameters": [
+              "value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getDefaultValue",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "setValueToDefault",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getElementValue",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setElementValue",
+            "parameters": [
+              "element_index",
+              "element_value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getDefaultElementValue",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setElementValueToDefault",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "setAllElementValues",
+            "parameters": [
+              "element_value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getArrayLength",
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setArrayLength",
+            "parameters": [
+              "array_length"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "array",
+            "array_element_type": "long"
+          },
+          {
+            "name": "element_index",
+            "type": "long"
+          },
+          {
+            "name": "element_value",
+            "type": "long"
+          },
+          {
+            "name": "array_length",
+            "type": "long"
+          }
+        ]
+      },
+      {
+        "name": "highVoltageSwitchingFrequencyMax",
+        "type": "array",
+        "array_element_type": "long",
+        "functions": [
+          {
+            "name": "getValue",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "setValue",
+            "parameters": [
+              "value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getDefaultValue",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "setValueToDefault",
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getElementValue",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setElementValue",
+            "parameters": [
+              "element_index",
+              "element_value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getDefaultElementValue",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setElementValueToDefault",
+            "parameters": [
+              "element_index"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "setAllElementValues",
+            "parameters": [
+              "element_value"
+            ],
+            "result_info": {
+              "type": "array",
+              "array_element_type": "long"
+            }
+          },
+          {
+            "name": "getArrayLength",
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setArrayLength",
+            "parameters": [
+              "array_length"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "array",
+            "array_element_type": "long"
+          },
+          {
+            "name": "element_index",
+            "type": "long"
+          },
+          {
+            "name": "element_value",
+            "type": "long"
+          },
+          {
+            "name": "array_length",
+            "type": "long"
+          }
+        ]
+      },
+      {
+        "name": "lowVoltageSwitchingFrequencyMax",
         "type": "array",
         "array_element_type": "long",
         "functions": [
