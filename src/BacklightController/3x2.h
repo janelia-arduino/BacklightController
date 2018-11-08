@@ -26,6 +26,8 @@ enum {HIGH_VOLTAGE_COUNT=4};
 enum {LOW_VOLTAGE_COUNT=4};
 
 extern const size_t channel_pins[CHANNEL_COUNT];
+extern const bool analog_writeable[CHANNEL_COUNT];
+
 extern const size_t ir_backlight_channels[IR_BACKLIGHT_COUNT];
 extern const size_t visible_backlight_channels[VISIBLE_BACKLIGHT_COUNT];
 extern const size_t high_voltage_channels[HIGH_VOLTAGE_COUNT];

@@ -29,6 +29,14 @@ void BacklightController::setup()
 
   // Pin Setup
   pinMode(constants::enable_all_pin,OUTPUT);
+  analogWriteResolution(constants::analog_write_resolution);
+  for (size_t channel=0; channel<constants::CHANNEL_COUNT; ++channel)
+  {
+    if (constants::analog_writeable[channel])
+    {
+      analogWriteFrequency(constants::channel_pins[channel],constants::analog_write_frequency);
+    }
+  }
 
   for (size_t channel=0; channel<constants::CHANNEL_COUNT; ++channel)
   {
@@ -576,9 +584,9 @@ double BacklightController::getPowerUpperBound(size_t channel)
 double BacklightController::setChannelToPower(size_t channel,
   double power)
 {
-  long analog_write_value = powerToAnalogWriteValue(channel,power);
+  long analog_write_value = powerToAnalogValue(channel,power);
   channelAnalogWrite(channel,analog_write_value);
-  power = ((double)analog_write_value * digital_controller::constants::power_max) / (double)constants::analog_write_resolution;
+  power = ((double)analog_write_value * digital_controller::constants::power_max) / (double)constants::analog_value_max;
   return power;
 }
 
@@ -696,27 +704,50 @@ void BacklightController::updateAllSwitchingFrequencies()
 void BacklightController::channelAnalogWrite(size_t channel,
   long value)
 {
+  if (value == constants::analog_value_min)
+  {
+    digitalWrite(constants::channel_pins[channel],LOW);
+    return;
+  }
+  else if (value == constants::analog_value_max)
+  {
+    digitalWrite(constants::channel_pins[channel],HIGH);
+    return;
+  }
+  if (!constants::analog_writeable[channel])
+  {
+    if (value < (constants::analog_value_max / 2))
+    {
+      digitalWrite(constants::channel_pins[channel],LOW);
+      return;
+    }
+    else
+    {
+      digitalWrite(constants::channel_pins[channel],HIGH);
+      return;
+    }
+  }
   analogWrite(constants::channel_pins[channel],value);
 }
 
-long BacklightController::powerToAnalogWriteValue(size_t channel,
+long BacklightController::powerToAnalogValue(size_t channel,
   double power)
 {
   if (power <= getPowerLowerBound(channel))
   {
-    return constants::duty_cycle_min;
+    return constants::analog_value_min;
   }
   else if (power >= getPowerUpperBound(channel))
   {
-    return constants::analog_write_resolution;
+    return constants::analog_value_max;
   }
 
-  long high_frequency_duty_cycle = map(power,
+  long analog_value = map(power,
     (long)digital_controller::constants::power_min,
     (long)digital_controller::constants::power_max,
-    constants::duty_cycle_min,
-    constants::analog_write_resolution);
-  return high_frequency_duty_cycle;
+    constants::analog_value_min,
+    constants::analog_value_max);
+  return analog_value;
 }
 
 // Handlers must be non-blocking (avoid 'delay')

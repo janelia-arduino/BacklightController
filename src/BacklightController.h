@@ -112,7 +112,7 @@ private:
   void channelAnalogWrite(size_t channel,
     long value);
 
-  long powerToAnalogWriteValue(size_t channel,
+  long powerToAnalogValue(size_t channel,
     double power);
 
   // Handlers

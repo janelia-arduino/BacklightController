@@ -33,9 +33,10 @@ extern const long channel_count;
 
 extern const size_t enable_all_pin;
 
-extern const long duty_cycle_min;
 extern const double analog_write_frequency;
 extern const long analog_write_resolution;
+extern const long analog_value_min;
+extern const long analog_value_max;
 extern const long power_resolution;
 extern const double switching_frequency_max;
 

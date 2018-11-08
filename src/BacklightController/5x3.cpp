@@ -46,6 +46,26 @@ const size_t channel_pins[CHANNEL_COUNT] =
   38,
 };
 
+const bool analog_writeable[CHANNEL_COUNT] =
+{
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  false,
+  false,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+  true,
+};
+
 const size_t ir_backlight_channels[IR_BACKLIGHT_COUNT] =
 {
   8,
