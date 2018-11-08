@@ -26,7 +26,7 @@ const modular_server::FirmwareInfo firmware_info =
 
 CONSTANT_STRING(hardware_name,"backlight_controller");
 
-const double analog_write_frequency = 600.0;
+const double analog_write_frequency = 1200.0;
 const long analog_write_resolution = 8;
 const long analog_value_min = 0;
 const long analog_value_max = 256;
