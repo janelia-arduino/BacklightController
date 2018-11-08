@@ -704,16 +704,6 @@ void BacklightController::updateAllSwitchingFrequencies()
 void BacklightController::channelAnalogWrite(size_t channel,
   long value)
 {
-  if (value == constants::analog_value_min)
-  {
-    digitalWrite(constants::channel_pins[channel],LOW);
-    return;
-  }
-  else if (value == constants::analog_value_max)
-  {
-    digitalWrite(constants::channel_pins[channel],HIGH);
-    return;
-  }
   if (!constants::analog_writeable[channel])
   {
     if (value < (constants::analog_value_max / 2))
