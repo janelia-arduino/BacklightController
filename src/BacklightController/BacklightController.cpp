@@ -60,25 +60,27 @@ void BacklightController::setup()
     callbacks_);
 
   // Properties
-  // modular_server::Property & switching_frequency_max_property = modular_server_.createProperty(constants::switching_frequency_max_property_name,constants::switching_frequency_max_default);
-  // switching_frequency_max_property.setRange(constants::switching_frequency_min,constants::switching_frequency_max);
-  // switching_frequency_max_property.setUnits(constants::hz_units);
-
   modular_server::Property & channel_count_property = modular_server_.property(digital_controller::constants::channel_count_property_name);
   channel_count_property.disableFunctors();
   channel_count_property.setDefaultValue(constants::channel_count);
   channel_count_property.setRange(constants::channel_count,constants::channel_count);
   channel_count_property.reenableFunctors();
 
-  modular_server::Property & ir_backlight_power_max_property = modular_server_.createProperty(constants::ir_backlight_power_max_property_name,constants::ir_backlight_power_max_default);
-  ir_backlight_power_max_property.setRange(digital_controller::constants::power_min,digital_controller::constants::power_max);
-  ir_backlight_power_max_property.setUnits(digital_controller::constants::percent_units);
-  ir_backlight_power_max_property.attachPostSetElementValueFunctor(makeFunctor((Functor1<size_t> *)0,*this,&BacklightController::setIrBacklightPowerMaxHandler));
+  modular_server::Property & ir_backlight_power_to_itensity_ratio_property = modular_server_.createProperty(constants::ir_backlight_power_to_itensity_ratio_property_name,constants::ir_backlight_power_to_itensity_ratio_default);
+  ir_backlight_power_to_itensity_ratio_property.setRange(constants::power_to_intensity_ratio_min,constants::power_to_intensity_ratio_max);
 
-  modular_server::Property & visible_backlight_power_max_property = modular_server_.createProperty(constants::visible_backlight_power_max_property_name,constants::visible_backlight_power_max_default);
-  visible_backlight_power_max_property.setRange(digital_controller::constants::power_min,digital_controller::constants::power_max);
-  visible_backlight_power_max_property.setUnits(digital_controller::constants::percent_units);
-  visible_backlight_power_max_property.attachPostSetElementValueFunctor(makeFunctor((Functor1<size_t> *)0,*this,&BacklightController::setVisibleBacklightPowerMaxHandler));
+  modular_server::Property & ir_backlight_intensity_max_property = modular_server_.createProperty(constants::ir_backlight_intensity_max_property_name,constants::ir_backlight_intensity_max_default);
+  ir_backlight_intensity_max_property.setRange(constants::intensity_min,constants::intensity_max);
+  ir_backlight_intensity_max_property.setUnits(constants::intensity_units);
+  ir_backlight_intensity_max_property.attachPostSetElementValueFunctor(makeFunctor((Functor1<size_t> *)0,*this,&BacklightController::setIrBacklightIntensityMaxHandler));
+
+  modular_server::Property & visible_backlight_power_to_itensity_ratio_property = modular_server_.createProperty(constants::visible_backlight_power_to_itensity_ratio_property_name,constants::visible_backlight_power_to_itensity_ratio_default);
+  visible_backlight_power_to_itensity_ratio_property.setRange(constants::power_to_intensity_ratio_min,constants::power_to_intensity_ratio_max);
+
+  modular_server::Property & visible_backlight_intensity_max_property = modular_server_.createProperty(constants::visible_backlight_intensity_max_property_name,constants::visible_backlight_intensity_max_default);
+  visible_backlight_intensity_max_property.setRange(constants::intensity_min,constants::intensity_max);
+  visible_backlight_intensity_max_property.setUnits(constants::intensity_units);
+  visible_backlight_intensity_max_property.attachPostSetElementValueFunctor(makeFunctor((Functor1<size_t> *)0,*this,&BacklightController::setVisibleBacklightIntensityMaxHandler));
 
   modular_server::Property & high_voltage_power_max_property = modular_server_.createProperty(constants::high_voltage_power_max_property_name,constants::high_voltage_power_max_default);
   high_voltage_power_max_property.setRange(digital_controller::constants::power_min,digital_controller::constants::power_max);
@@ -115,6 +117,9 @@ void BacklightController::setup()
   // Parameters
   modular_server::Parameter & power_parameter = modular_server_.parameter(digital_controller::constants::power_parameter_name);
 
+  modular_server::Parameter & intensity_parameter = modular_server_.createParameter(constants::intensity_parameter_name);
+  intensity_parameter.setRange(constants::intensity_min,constants::intensity_max);
+
   modular_server::Parameter & ir_backlight_parameter = modular_server_.createParameter(constants::ir_backlight_parameter_name);
   ir_backlight_parameter.setRange(digital_controller::constants::channel_min,(long)(constants::IR_BACKLIGHT_COUNT - 1));
 
@@ -134,6 +139,10 @@ void BacklightController::setup()
   set_all_ir_backlights_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setAllIrBacklightsOnAtPowerHandler));
   set_all_ir_backlights_on_at_power_function.addParameter(power_parameter);
 
+  modular_server::Function & set_all_ir_backlights_on_at_intensity_function = modular_server_.createFunction(backlight_controller::constants::set_all_ir_backlights_on_at_intensity_function_name);
+  set_all_ir_backlights_on_at_intensity_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setAllIrBacklightsOnAtIntensityHandler));
+  set_all_ir_backlights_on_at_intensity_function.addParameter(intensity_parameter);
+
   modular_server::Function & set_ir_backlight_on_function = modular_server_.createFunction(backlight_controller::constants::set_ir_backlight_on_function_name);
   set_ir_backlight_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setIrBacklightOnHandler));
   set_ir_backlight_on_function.addParameter(ir_backlight_parameter);
@@ -142,6 +151,11 @@ void BacklightController::setup()
   set_ir_backlight_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setIrBacklightOnAtPowerHandler));
   set_ir_backlight_on_at_power_function.addParameter(ir_backlight_parameter);
   set_ir_backlight_on_at_power_function.addParameter(power_parameter);
+
+  modular_server::Function & set_ir_backlight_on_at_intensity_function = modular_server_.createFunction(backlight_controller::constants::set_ir_backlight_on_at_intensity_function_name);
+  set_ir_backlight_on_at_intensity_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setIrBacklightOnAtIntensityHandler));
+  set_ir_backlight_on_at_intensity_function.addParameter(ir_backlight_parameter);
+  set_ir_backlight_on_at_intensity_function.addParameter(intensity_parameter);
 
   modular_server::Function & set_ir_backlight_off_function = modular_server_.createFunction(backlight_controller::constants::set_ir_backlight_off_function_name);
   set_ir_backlight_off_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setIrBacklightOffHandler));
@@ -156,19 +170,40 @@ void BacklightController::setup()
   get_ir_backlight_powers_when_on_function.setResultTypeArray();
   get_ir_backlight_powers_when_on_function.setResultTypeDouble();
 
+  modular_server::Function & get_ir_backlight_intensities_when_on_function = modular_server_.createFunction(constants::get_ir_backlight_intensities_when_on_function_name);
+  get_ir_backlight_intensities_when_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getIrBacklightIntensitiesWhenOnHandler));
+  get_ir_backlight_intensities_when_on_function.setResultTypeArray();
+  get_ir_backlight_intensities_when_on_function.setResultTypeDouble();
+
   modular_server::Function & get_ir_backlight_powers_function = modular_server_.createFunction(constants::get_ir_backlight_powers_function_name);
   get_ir_backlight_powers_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getIrBacklightPowersHandler));
   get_ir_backlight_powers_function.setResultTypeArray();
   get_ir_backlight_powers_function.setResultTypeDouble();
 
-  modular_server::Function & get_ir_backlight_power_bounds_function = modular_server_.createFunction(constants::get_ir_backlight_power_bounds_function_name);
-  get_ir_backlight_power_bounds_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getIrBacklightPowerBoundsHandler));
-  get_ir_backlight_power_bounds_function.setResultTypeArray();
-  get_ir_backlight_power_bounds_function.setResultTypeObject();
+  modular_server::Function & get_ir_backlight_intensities_function = modular_server_.createFunction(constants::get_ir_backlight_intensities_function_name);
+  get_ir_backlight_intensities_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getIrBacklightIntensitiesHandler));
+  get_ir_backlight_intensities_function.setResultTypeArray();
+  get_ir_backlight_intensities_function.setResultTypeDouble();
+
+  modular_server::Function & ir_backlight_power_to_intensities_function = modular_server_.createFunction(constants::ir_backlight_power_to_intensities_function_name);
+  ir_backlight_power_to_intensities_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::irBacklightPowerToIntensitiesHandler));
+  ir_backlight_power_to_intensities_function.addParameter(power_parameter);
+  ir_backlight_power_to_intensities_function.setResultTypeArray();
+  ir_backlight_power_to_intensities_function.setResultTypeDouble();
+
+  modular_server::Function & ir_backlight_intensity_to_powers_function = modular_server_.createFunction(constants::ir_backlight_intensity_to_powers_function_name);
+  ir_backlight_intensity_to_powers_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::irBacklightIntensityToPowersHandler));
+  ir_backlight_intensity_to_powers_function.addParameter(intensity_parameter);
+  ir_backlight_intensity_to_powers_function.setResultTypeArray();
+  ir_backlight_intensity_to_powers_function.setResultTypeDouble();
 
   modular_server::Function & set_all_visible_backlights_on_at_power_function = modular_server_.createFunction(backlight_controller::constants::set_all_visible_backlights_on_at_power_function_name);
   set_all_visible_backlights_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setAllVisibleBacklightsOnAtPowerHandler));
   set_all_visible_backlights_on_at_power_function.addParameter(power_parameter);
+
+  modular_server::Function & set_all_visible_backlights_on_at_intensity_function = modular_server_.createFunction(backlight_controller::constants::set_all_visible_backlights_on_at_intensity_function_name);
+  set_all_visible_backlights_on_at_intensity_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setAllVisibleBacklightsOnAtIntensityHandler));
+  set_all_visible_backlights_on_at_intensity_function.addParameter(intensity_parameter);
 
   modular_server::Function & set_visible_backlight_on_function = modular_server_.createFunction(backlight_controller::constants::set_visible_backlight_on_function_name);
   set_visible_backlight_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setVisibleBacklightOnHandler));
@@ -178,6 +213,11 @@ void BacklightController::setup()
   set_visible_backlight_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setVisibleBacklightOnAtPowerHandler));
   set_visible_backlight_on_at_power_function.addParameter(visible_backlight_parameter);
   set_visible_backlight_on_at_power_function.addParameter(power_parameter);
+
+  modular_server::Function & set_visible_backlight_on_at_intensity_function = modular_server_.createFunction(backlight_controller::constants::set_visible_backlight_on_at_intensity_function_name);
+  set_visible_backlight_on_at_intensity_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setVisibleBacklightOnAtIntensityHandler));
+  set_visible_backlight_on_at_intensity_function.addParameter(visible_backlight_parameter);
+  set_visible_backlight_on_at_intensity_function.addParameter(intensity_parameter);
 
   modular_server::Function & set_visible_backlight_off_function = modular_server_.createFunction(backlight_controller::constants::set_visible_backlight_off_function_name);
   set_visible_backlight_off_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setVisibleBacklightOffHandler));
@@ -192,15 +232,32 @@ void BacklightController::setup()
   get_visible_backlight_powers_when_on_function.setResultTypeArray();
   get_visible_backlight_powers_when_on_function.setResultTypeDouble();
 
+  modular_server::Function & get_visible_backlight_intensities_when_on_function = modular_server_.createFunction(constants::get_visible_backlight_intensities_when_on_function_name);
+  get_visible_backlight_intensities_when_on_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getVisibleBacklightIntensitiesWhenOnHandler));
+  get_visible_backlight_intensities_when_on_function.setResultTypeArray();
+  get_visible_backlight_intensities_when_on_function.setResultTypeDouble();
+
   modular_server::Function & get_visible_backlight_powers_function = modular_server_.createFunction(constants::get_visible_backlight_powers_function_name);
   get_visible_backlight_powers_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getVisibleBacklightPowersHandler));
   get_visible_backlight_powers_function.setResultTypeArray();
   get_visible_backlight_powers_function.setResultTypeDouble();
 
-  modular_server::Function & get_visible_backlight_power_bounds_function = modular_server_.createFunction(constants::get_visible_backlight_power_bounds_function_name);
-  get_visible_backlight_power_bounds_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getVisibleBacklightPowerBoundsHandler));
-  get_visible_backlight_power_bounds_function.setResultTypeArray();
-  get_visible_backlight_power_bounds_function.setResultTypeObject();
+  modular_server::Function & get_visible_backlight_intensities_function = modular_server_.createFunction(constants::get_visible_backlight_intensities_function_name);
+  get_visible_backlight_intensities_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::getVisibleBacklightIntensitiesHandler));
+  get_visible_backlight_intensities_function.setResultTypeArray();
+  get_visible_backlight_intensities_function.setResultTypeDouble();
+
+  modular_server::Function & visible_backlight_power_to_intensities_function = modular_server_.createFunction(constants::visible_backlight_power_to_intensities_function_name);
+  visible_backlight_power_to_intensities_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::visibleBacklightPowerToIntensitiesHandler));
+  visible_backlight_power_to_intensities_function.addParameter(power_parameter);
+  visible_backlight_power_to_intensities_function.setResultTypeArray();
+  visible_backlight_power_to_intensities_function.setResultTypeDouble();
+
+  modular_server::Function & visible_backlight_intensity_to_powers_function = modular_server_.createFunction(constants::visible_backlight_intensity_to_powers_function_name);
+  visible_backlight_intensity_to_powers_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::visibleBacklightIntensityToPowersHandler));
+  visible_backlight_intensity_to_powers_function.addParameter(intensity_parameter);
+  visible_backlight_intensity_to_powers_function.setResultTypeArray();
+  visible_backlight_intensity_to_powers_function.setResultTypeDouble();
 
   modular_server::Function & set_all_high_voltages_on_at_power_function = modular_server_.createFunction(backlight_controller::constants::set_all_high_voltages_on_at_power_function_name);
   set_all_high_voltages_on_at_power_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&BacklightController::setAllHighVoltagesOnAtPowerHandler));
@@ -340,6 +397,13 @@ void BacklightController::setAllIrBacklightsOnAtPower(double power)
   setChannelsOnAtPower(getIrBacklightDigitalChannels(),power);
 }
 
+void BacklightController::setAllIrBacklightsOnAtIntensity(double intensity)
+{
+  for (size_t ir_backlight=0; ir_backlight<constants::IR_BACKLIGHT_COUNT; ++ir_backlight)
+  {
+  }
+}
+
 void BacklightController::setAllIrBacklightsOn()
 {
   setChannelsOn(getIrBacklightDigitalChannels());
@@ -371,6 +435,12 @@ void BacklightController::setIrBacklightOnAtPower(size_t ir_backlight,
   setChannelOnAtPower(irBacklightToDigitalChannel(ir_backlight),power);
 }
 
+void BacklightController::setIrBacklightOnAtIntensity(size_t ir_backlight,
+  double intensity)
+{
+  setChannelOnAtPower(irBacklightToDigitalChannel(ir_backlight),power);
+}
+
 void BacklightController::setIrBacklightOff(size_t ir_backlight)
 {
   setChannelOff(irBacklightToDigitalChannel(ir_backlight));
@@ -386,12 +456,27 @@ double BacklightController::getIrBacklightPowerWhenOn(size_t ir_backlight)
   return getPowerWhenOn(irBacklightToDigitalChannel(ir_backlight));
 }
 
+double BacklightController::getIrBacklightIntensityWhenOn(size_t ir_backlight)
+{
+  return getPowerWhenOn(irBacklightToDigitalChannel(ir_backlight));
+}
+
 double BacklightController::getIrBacklightPower(size_t ir_backlight)
 {
   return getPower(irBacklightToDigitalChannel(ir_backlight));
 }
 
+double BacklightController::getIrBacklightIntensity(size_t ir_backlight)
+{
+  return getPower(irBacklightToDigitalChannel(ir_backlight));
+}
+
 void BacklightController::setAllVisibleBacklightsOnAtPower(double power)
+{
+  setChannelsOnAtPower(getVisibleBacklightDigitalChannels(),power);
+}
+
+void BacklightController::setAllVisibleBacklightsOnAtIntensity(double intensity)
 {
   setChannelsOnAtPower(getVisibleBacklightDigitalChannels(),power);
 }
@@ -427,6 +512,12 @@ void BacklightController::setVisibleBacklightOnAtPower(size_t visible_backlight,
   setChannelOnAtPower(visibleBacklightToDigitalChannel(visible_backlight),power);
 }
 
+void BacklightController::setVisibleBacklightOnAtIntensity(size_t visible_backlight,
+  double intensity)
+{
+  setChannelOnAtPower(visibleBacklightToDigitalChannel(visible_backlight),power);
+}
+
 void BacklightController::setVisibleBacklightOff(size_t visible_backlight)
 {
   setChannelOff(visibleBacklightToDigitalChannel(visible_backlight));
@@ -442,7 +533,17 @@ double BacklightController::getVisibleBacklightPowerWhenOn(size_t visible_backli
   return getPowerWhenOn(visibleBacklightToDigitalChannel(visible_backlight));
 }
 
+double BacklightController::getVisibleBacklightIntensityWhenOn(size_t visible_backlight)
+{
+  return getPowerWhenOn(visibleBacklightToDigitalChannel(visible_backlight));
+}
+
 double BacklightController::getVisibleBacklightPower(size_t visible_backlight)
+{
+  return getPower(visibleBacklightToDigitalChannel(visible_backlight));
+}
+
+double BacklightController::getVisibleBacklightIntensity(size_t visible_backlight)
 {
   return getPower(visibleBacklightToDigitalChannel(visible_backlight));
 }
@@ -567,7 +668,19 @@ double BacklightController::getPowerLowerBound(size_t channel)
   }
   double channel_switching_frequency_max = channels_switching_frequency_max_[channel];
 
-  double power_lower_bound = constants::switching_frequency_max / channel_switching_frequency_max;
+  double power_lower_bound;
+  if (channel_switching_frequency_max > 0.0)
+  {
+    power_lower_bound = constants::switching_frequency_max / channel_switching_frequency_max;
+  }
+  else
+  {
+    power_lower_bound = digital_controller::constants::power_mid;
+  }
+  if (power_lower_bound > digital_controller::constants::power_mid)
+  {
+    power_lower_bound = digital_controller::constants::power_mid;
+  }
   return power_lower_bound;
 }
 
@@ -678,6 +791,48 @@ uint32_t BacklightController::getLowVoltageDigitalChannels()
   return channels;
 }
 
+double BacklightController::irBacklightIntensityToPower(size_t ir_backlight,
+  double intensity)
+{
+  if (ir_backlight >= constants::IR_BACKLIGHT_COUNT)
+  {
+    return intensity;
+  }
+  double ir_backlight_power_to_intensity_ratio;
+  modular_server::Property & ir_backlight_power_to_itensity_ratio_property = modular_server_.property(constants::ir_backlight_power_to_intensity_ratio_property_name);
+  ir_backlight_power_to_itensity_ratio_property.getElementValue(ir_backlight,ir_backlight_power_to_intensity_ratio);
+
+  double power = intensity * ir_backlight_power_to_intensity_ratio;
+  if (power > digital_controller::constants::power_max)
+  {
+    power = digital_controller::constants::power_max;
+  }
+  return power;
+}
+
+double BacklightController::irBacklightPowerToIntensity(size_t ir_backlight,
+  double power)
+{
+  if (ir_backlight >= constants::IR_BACKLIGHT_COUNT)
+  {
+    return power;
+  }
+  double ir_backlight_power_to_intensity_ratio;
+  modular_server::Property & ir_backlight_power_to_itensity_ratio_property = modular_server_.property(constants::ir_backlight_power_to_intensity_ratio_property_name);
+  ir_backlight_power_to_itensity_ratio_property.getElementValue(ir_backlight,ir_backlight_power_to_intensity_ratio);
+
+  double intensity;
+  if (ir_backlight_power_to_intensity_ratio > 0.0)
+  {
+    intensity = power / ir_backlight_power_to_intensity_ratio;
+  }
+  else
+  {
+    intensity = power;
+  }
+  return intensity;
+}
+
 void BacklightController::updateAllSwitchingFrequencies()
 {
   for (size_t ir_backlight=0; ir_backlight<constants::IR_BACKLIGHT_COUNT; ++ir_backlight)
@@ -768,11 +923,11 @@ void BacklightController::disableAllHandler(modular_server::Pin * pin_ptr)
   disableAll();
 }
 
-void BacklightController::setIrBacklightPowerMaxHandler(size_t ir_backlight)
+void BacklightController::setIrBacklightIntensityMaxHandler(size_t ir_backlight)
 {
-  double power_max;
-  modular_server::Property & ir_backlight_power_max_property = modular_server_.property(constants::ir_backlight_power_max_property_name);
-  ir_backlight_power_max_property.getElementValue(ir_backlight,power_max);
+  double intensity_max;
+  modular_server::Property & ir_backlight_intensity_max_property = modular_server_.property(constants::ir_backlight_intensity_max_property_name);
+  ir_backlight_intensity_max_property.getElementValue(ir_backlight,intensity_max);
 
   size_t digital_channel = irBacklightToDigitalChannel(ir_backlight);
 
@@ -780,11 +935,11 @@ void BacklightController::setIrBacklightPowerMaxHandler(size_t ir_backlight)
   power_max_property.setElementValue(digital_channel,power_max);
 }
 
-void BacklightController::setVisibleBacklightPowerMaxHandler(size_t visible_backlight)
+void BacklightController::setVisibleBacklightIntensityMaxHandler(size_t visible_backlight)
 {
-  double power_max;
-  modular_server::Property & visible_backlight_power_max_property = modular_server_.property(constants::visible_backlight_power_max_property_name);
-  visible_backlight_power_max_property.getElementValue(visible_backlight,power_max);
+  double intensity_max;
+  modular_server::Property & visible_backlight_intensity_max_property = modular_server_.property(constants::visible_backlight_intensity_max_property_name);
+  visible_backlight_intensity_max_property.getElementValue(visible_backlight,intensity_max);
 
   size_t digital_channel = visibleBacklightToDigitalChannel(visible_backlight);
 
@@ -860,12 +1015,12 @@ void BacklightController::setLowVoltageSwitchingFrequencyMaxHandler(size_t low_v
   channels_switching_frequency_max_[digital_channel] = switching_frequency_max;
 }
 
-void BacklightController::setAllIrBacklightsOnAtPowerHandler()
+void BacklightController::setAllIrBacklightsOnAtIntensityHandler()
 {
-  double power;
-  modular_server_.parameter(digital_controller::constants::power_parameter_name).getValue(power);
+  double intensity;
+  modular_server_.parameter(constants::intensity_parameter_name).getValue(intensity);
 
-  setAllIrBacklightsOnAtPower(power);
+  setAllIrBacklightsOnAtIntensity(intensity);
 }
 
 void BacklightController::setAllIrBacklightsOnHandler(modular_server::Pin * pin_ptr)
@@ -891,15 +1046,15 @@ void BacklightController::setIrBacklightOnHandler()
   setIrBacklightOn(ir_backlight);
 }
 
-void BacklightController::setIrBacklightOnAtPowerHandler()
+void BacklightController::setIrBacklightOnAtIntensityHandler()
 {
   long ir_backlight;
   modular_server_.parameter(constants::ir_backlight_parameter_name).getValue(ir_backlight);
 
-  double power;
-  modular_server_.parameter(digital_controller::constants::power_parameter_name).getValue(power);
+  double intensity;
+  modular_server_.parameter(constants::intensity_parameter_name).getValue(intensity);
 
-  setIrBacklightOnAtPower(ir_backlight,power);
+  setIrBacklightOnAtIntensity(ir_backlight,intensity);
 }
 
 void BacklightController::setIrBacklightOffHandler()
@@ -918,57 +1073,38 @@ void BacklightController::toggleIrBacklightHandler()
   toggleIrBacklight(ir_backlight);
 }
 
-void BacklightController::getIrBacklightPowersWhenOnHandler()
+void BacklightController::getIrBacklightIntensitiesWhenOnHandler()
 {
   modular_server_.response().writeResultKey();
   modular_server_.response().beginArray();
-  double power;
+  double intensity;
   for (size_t ir_backlight=0; ir_backlight<getIrBacklightCount(); ++ir_backlight)
   {
-    power = getIrBacklightPowerWhenOn(ir_backlight);
-    modular_server_.response().write(power);
+    intensity = getIrBacklightIntensityWhenOn(ir_backlight);
+    modular_server_.response().write(intensity);
   }
   modular_server_.response().endArray();
 }
 
-void BacklightController::getIrBacklightPowersHandler()
+void BacklightController::getIrBacklightIntensitiesHandler()
 {
   modular_server_.response().writeResultKey();
   modular_server_.response().beginArray();
-  double power;
+  double intensity;
   for (size_t ir_backlight=0; ir_backlight<getIrBacklightCount(); ++ir_backlight)
   {
-    power = getIrBacklightPower(ir_backlight);
-    modular_server_.response().write(power);
+    intensity = getIrBacklightIntensity(ir_backlight);
+    modular_server_.response().write(intensity);
   }
   modular_server_.response().endArray();
 }
 
-void BacklightController::getIrBacklightPowerBoundsHandler()
+void BacklightController::setAllVisibleBacklightsOnAtIntensityHandler()
 {
-  modular_server_.response().writeResultKey();
-  modular_server_.response().beginArray();
-  for (size_t ir_backlight=0; ir_backlight<getIrBacklightCount(); ++ir_backlight)
-  {
-    modular_server_.response().beginObject();
+  double intensity;
+  modular_server_.parameter(constants::intensity_parameter_name).getValue(intensity);
 
-    double power_lower_bound = getPowerLowerBound(irBacklightToDigitalChannel(ir_backlight));
-    modular_server_.response().write(digital_controller::constants::power_lower_bound_string,power_lower_bound);
-
-    double power_upper_bound = getPowerUpperBound(irBacklightToDigitalChannel(ir_backlight));
-    modular_server_.response().write(digital_controller::constants::power_upper_bound_string,power_upper_bound);
-
-    modular_server_.response().endObject();
-  }
-  modular_server_.response().endArray();
-}
-
-void BacklightController::setAllVisibleBacklightsOnAtPowerHandler()
-{
-  double power;
-  modular_server_.parameter(digital_controller::constants::power_parameter_name).getValue(power);
-
-  setAllVisibleBacklightsOnAtPower(power);
+  setAllVisibleBacklightsOnAtIntensity(intensity);
 }
 
 void BacklightController::setAllVisibleBacklightsOnHandler(modular_server::Pin * pin_ptr)
@@ -994,15 +1130,15 @@ void BacklightController::setVisibleBacklightOnHandler()
   setVisibleBacklightOn(visible_backlight);
 }
 
-void BacklightController::setVisibleBacklightOnAtPowerHandler()
+void BacklightController::setVisibleBacklightOnAtIntensityHandler()
 {
   long visible_backlight;
   modular_server_.parameter(constants::visible_backlight_parameter_name).getValue(visible_backlight);
 
-  double power;
-  modular_server_.parameter(digital_controller::constants::power_parameter_name).getValue(power);
+  double intensity;
+  modular_server_.parameter(constants::intensity_parameter_name).getValue(intensity);
 
-  setVisibleBacklightOnAtPower(visible_backlight,power);
+  setVisibleBacklightOnAtIntensity(visible_backlight,intensity);
 }
 
 void BacklightController::setVisibleBacklightOffHandler()
@@ -1021,47 +1157,28 @@ void BacklightController::toggleVisibleBacklightHandler()
   toggleVisibleBacklight(visible_backlight);
 }
 
-void BacklightController::getVisibleBacklightPowersWhenOnHandler()
+void BacklightController::getVisibleBacklightIntensitiesWhenOnHandler()
 {
   modular_server_.response().writeResultKey();
   modular_server_.response().beginArray();
-  double power;
+  double intensity;
   for (size_t visible_backlight=0; visible_backlight<getVisibleBacklightCount(); ++visible_backlight)
   {
-    power = getVisibleBacklightPowerWhenOn(visible_backlight);
-    modular_server_.response().write(power);
+    intensity = getVisibleBacklightIntensityWhenOn(visible_backlight);
+    modular_server_.response().write(intensity);
   }
   modular_server_.response().endArray();
 }
 
-void BacklightController::getVisibleBacklightPowersHandler()
+void BacklightController::getVisibleBacklightIntensitiesHandler()
 {
   modular_server_.response().writeResultKey();
   modular_server_.response().beginArray();
-  double power;
+  double intensity;
   for (size_t visible_backlight=0; visible_backlight<getVisibleBacklightCount(); ++visible_backlight)
   {
-    power = getVisibleBacklightPower(visible_backlight);
-    modular_server_.response().write(power);
-  }
-  modular_server_.response().endArray();
-}
-
-void BacklightController::getVisibleBacklightPowerBoundsHandler()
-{
-  modular_server_.response().writeResultKey();
-  modular_server_.response().beginArray();
-  for (size_t visible_backlight=0; visible_backlight<getVisibleBacklightCount(); ++visible_backlight)
-  {
-    modular_server_.response().beginObject();
-
-    double power_lower_bound = getPowerLowerBound(visibleBacklightToDigitalChannel(visible_backlight));
-    modular_server_.response().write(digital_controller::constants::power_lower_bound_string,power_lower_bound);
-
-    double power_upper_bound = getPowerUpperBound(visibleBacklightToDigitalChannel(visible_backlight));
-    modular_server_.response().write(digital_controller::constants::power_upper_bound_string,power_upper_bound);
-
-    modular_server_.response().endObject();
+    intensity = getVisibleBacklightIntensity(visible_backlight);
+    modular_server_.response().write(intensity);
   }
   modular_server_.response().endArray();
 }

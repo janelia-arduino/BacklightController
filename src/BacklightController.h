@@ -31,6 +31,7 @@ public:
   void disableAll();
 
   void setAllIrBacklightsOnAtPower(double power);
+  void setAllIrBacklightsOnAtIntensity(double intensity);
   void setAllIrBacklightsOn();
   void setAllIrBacklightsOff();
   void toggleAllIrBacklights();
@@ -38,12 +39,21 @@ public:
   void setIrBacklightOn(size_t ir_backlight);
   void setIrBacklightOnAtPower(size_t ir_backlight,
     double power);
+  void setIrBacklightOnAtIntensity(size_t ir_backlight,
+    double intensity);
   void setIrBacklightOff(size_t ir_backlight);
   void toggleIrBacklight(size_t ir_backlight);
   double getIrBacklightPowerWhenOn(size_t ir_backlight);
+  double getIrBacklightIntensityWhenOn(size_t ir_backlight);
   double getIrBacklightPower(size_t ir_backlight);
+  double getIrBacklightIntensity(size_t ir_backlight);
+  double irBacklightPowerToIntensity(size_t ir_backlight,
+    double power);
+  double irBacklightIntensityToPower(size_t ir_backlight,
+    double intensity);
 
   void setAllVisibleBacklightsOnAtPower(double power);
+  void setAllVisibleBacklightsOnAtIntensity(double intensity);
   void setAllVisibleBacklightsOn();
   void setAllVisibleBacklightsOff();
   void toggleAllVisibleBacklights();
@@ -51,10 +61,18 @@ public:
   void setVisibleBacklightOn(size_t visible_backlight);
   void setVisibleBacklightOnAtPower(size_t visible_backlight,
     double power);
+  void setVisibleBacklightOnAtIntensity(size_t visible_backlight,
+    double intensity);
   void setVisibleBacklightOff(size_t visible_backlight);
   void toggleVisibleBacklight(size_t visible_backlight);
   double getVisibleBacklightPowerWhenOn(size_t visible_backlight);
+  double getVisibleBacklightIntensityWhenOn(size_t visible_backlight);
   double getVisibleBacklightPower(size_t visible_backlight);
+  double getVisibleBacklightIntensity(size_t visible_backlight);
+  double visibleBacklightPowerToIntensity(size_t visible_backlight,
+    double power);
+  double visibleBacklightIntensityToPower(size_t visible_backlight,
+    double intensity);
 
   void setAllHighVoltagesOnAtPower(double power);
   void setAllHighVoltagesOn();
@@ -119,8 +137,8 @@ private:
   void enableAllHandler(modular_server::Pin * pin_ptr);
   void disableAllHandler(modular_server::Pin * pin_ptr);
 
-  void setIrBacklightPowerMaxHandler(size_t ir_backlight);
-  void setVisibleBacklightPowerMaxHandler(size_t visible_backlight);
+  void setIrBacklightIntensityMaxHandler(size_t ir_backlight);
+  void setVisibleBacklightIntensityMaxHandler(size_t visible_backlight);
   void setHighVoltagePowerMaxHandler(size_t high_voltage);
   void setLowVoltagePowerMaxHandler(size_t low_voltage);
 
@@ -130,28 +148,38 @@ private:
   void setLowVoltageSwitchingFrequencyMaxHandler(size_t low_voltage);
 
   void setAllIrBacklightsOnAtPowerHandler();
+  void setAllIrBacklightsOnAtIntensityHandler();
   void setAllIrBacklightsOnHandler(modular_server::Pin * pin_ptr);
   void setAllIrBacklightsOffHandler(modular_server::Pin * pin_ptr);
   void toggleAllIrBacklightsHandler(modular_server::Pin * pin_ptr);
   void setIrBacklightOnHandler();
   void setIrBacklightOnAtPowerHandler();
+  void setIrBacklightOnAtIntensityHandler();
   void setIrBacklightOffHandler();
   void toggleIrBacklightHandler();
   void getIrBacklightPowersWhenOnHandler();
+  void getIrBacklightIntensitiesWhenOnHandler();
   void getIrBacklightPowersHandler();
-  void getIrBacklightPowerBoundsHandler();
+  void getIrBacklightIntensitiesHandler();
+  void irBacklightIntensityToPowersHandler();
+  void irBacklightPowerToIntensitiesHandler();
 
   void setAllVisibleBacklightsOnAtPowerHandler();
+  void setAllVisibleBacklightsOnAtIntensityHandler();
   void setAllVisibleBacklightsOnHandler(modular_server::Pin * pin_ptr);
   void setAllVisibleBacklightsOffHandler(modular_server::Pin * pin_ptr);
   void toggleAllVisibleBacklightsHandler(modular_server::Pin * pin_ptr);
   void setVisibleBacklightOnHandler();
   void setVisibleBacklightOnAtPowerHandler();
+  void setVisibleBacklightOnAtIntensityHandler();
   void setVisibleBacklightOffHandler();
   void toggleVisibleBacklightHandler();
   void getVisibleBacklightPowersWhenOnHandler();
+  void getVisibleBacklightIntensitiesWhenOnHandler();
   void getVisibleBacklightPowersHandler();
-  void getVisibleBacklightPowerBoundsHandler();
+  void getVisibleBacklightIntensitiesHandler();
+  void visibleBacklightIntensityToPowersHandler();
+  void visibleBacklightPowerToIntensitiesHandler();
 
   void setAllHighVoltagesOnAtPowerHandler();
   void setAllHighVoltagesOnHandler(modular_server::Pin * pin_ptr);

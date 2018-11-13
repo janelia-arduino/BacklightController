@@ -16,9 +16,9 @@ namespace backlight_controller
 namespace constants
 {
 //MAX values must be >= 1, >= created/copied count, < RAM limit
-enum{PROPERTY_COUNT_MAX=8};
-enum{PARAMETER_COUNT_MAX=4};
-enum{FUNCTION_COUNT_MAX=32};
+enum{PROPERTY_COUNT_MAX=10};
+enum{PARAMETER_COUNT_MAX=5};
+enum{FUNCTION_COUNT_MAX=42};
 enum{CALLBACK_COUNT_MAX=12};
 
 extern ConstantString device_name;
@@ -39,19 +39,30 @@ extern const long analog_value_min;
 extern const long analog_value_max;
 extern const long power_resolution;
 extern const double switching_frequency_max;
+extern const double intensity_min;
+extern const double intensity_max;
 
 // Pins
 
 // Units
 extern ConstantString hz_units;
+extern ConstantString intensity_units;
 
 // Properties
 // Property values must be long, double, bool, long[], double[], bool[], char[], ConstantString *, (ConstantString *)[]
-extern ConstantString ir_backlight_power_max_property_name;
-extern const double ir_backlight_power_max_element_default;
+extern ConstantString ir_backlight_power_to_intensity_ratio_property_name;
+extern const double power_to_intensity_ratio_min;
+extern const double power_to_intensity_ratio_max;
+extern const double ir_backlight_power_to_intensity_ratio_element_default;
 
-extern ConstantString visible_backlight_power_max_property_name;
-extern const double visible_backlight_power_max_element_default;
+extern ConstantString ir_backlight_intensity_max_property_name;
+extern const double ir_backlight_intensity_max_element_default;
+
+extern ConstantString visible_backlight_power_to_intensity_ratio_property_name;
+extern const double visible_backlight_power_to_intensity_ratio_element_default;
+
+extern ConstantString visible_backlight_intensity_max_property_name;
+extern const double visible_backlight_intensity_max_element_default;
 
 extern ConstantString high_voltage_power_max_property_name;
 extern const double high_voltage_power_max_element_default;
@@ -80,6 +91,8 @@ extern const long low_voltage_switching_frequency_max_element_max;
 extern const long low_voltage_switching_frequency_max_element_default;
 
 // Parameters
+extern ConstantString intensity_parameter_name;
+
 extern ConstantString ir_backlight_parameter_name;
 
 extern ConstantString visible_backlight_parameter_name;
@@ -90,22 +103,34 @@ extern ConstantString low_voltage_parameter_name;
 
 // Functions
 extern ConstantString set_all_ir_backlights_on_at_power_function_name;
+extern ConstantString set_all_ir_backlights_on_at_intensity_function_name;
 extern ConstantString set_ir_backlight_on_function_name;
 extern ConstantString set_ir_backlight_on_at_power_function_name;
+extern ConstantString set_ir_backlight_on_at_intensity_function_name;
 extern ConstantString set_ir_backlight_off_function_name;
 extern ConstantString toggle_ir_backlight_function_name;
 extern ConstantString get_ir_backlight_powers_when_on_function_name;
+extern ConstantString get_ir_backlight_intensities_when_on_function_name;
 extern ConstantString get_ir_backlight_powers_function_name;
+extern ConstantString get_ir_backlight_intensities_function_name;
 extern ConstantString get_ir_backlight_power_bounds_function_name;
+extern ConstantString ir_backlight_power_to_intensities_function_name;e
+extern ConstantString ir_backlight_intensity_to_powers_function_name;
 
 extern ConstantString set_all_visible_backlights_on_at_power_function_name;
+extern ConstantString set_all_visible_backlights_on_at_intensity_function_name;
 extern ConstantString set_visible_backlight_on_function_name;
 extern ConstantString set_visible_backlight_on_at_power_function_name;
+extern ConstantString set_visible_backlight_on_at_intensity_function_name;
 extern ConstantString set_visible_backlight_off_function_name;
 extern ConstantString toggle_visible_backlight_function_name;
 extern ConstantString get_visible_backlight_powers_when_on_function_name;
+extern ConstantString get_visible_backlight_intensities_when_on_function_name;
 extern ConstantString get_visible_backlight_powers_function_name;
+extern ConstantString get_visible_backlight_intensities_function_name;
 extern ConstantString get_visible_backlight_power_bounds_function_name;
+extern ConstantString visible_backlight_power_to_intensities_function_name;
+extern ConstantString visible_backlight_intensity_to_powers_function_name;
 
 extern ConstantString set_all_high_voltages_on_at_power_function_name;
 extern ConstantString set_high_voltage_on_function_name;

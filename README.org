@@ -4,7 +4,7 @@
 
 * Library Information
   - Name :: BacklightController
-  - Version :: 3.0.1
+  - Version :: 4.0.0
   - License :: BSD
   - URL :: https://github.com/janelia-arduino/BacklightController
   - Author :: Peter Polidoro
@@ -17,79 +17,7 @@
 * API NAMES
 
   #+BEGIN_SRC js
-    {
-      "id": "getApi",
-      "result": {
-        "firmware": [
-          "BacklightController"
-        ],
-        "verbosity": "NAMES",
-        "functions": [
-          "setAllIrBacklightsOnAtPower",
-          "setIrBacklightOn",
-          "setIrBacklightOnAtPower",
-          "setIrBacklightOff",
-          "toggleIrBacklight",
-          "getIrBacklightPowersWhenOn",
-          "getIrBacklightPowers",
-          "getIrBacklightPowerBounds",
-          "setAllVisibleBacklightsOnAtPower",
-          "setVisibleBacklightOn",
-          "setVisibleBacklightOnAtPower",
-          "setVisibleBacklightOff",
-          "toggleVisibleBacklight",
-          "getVisibleBacklightPowersWhenOn",
-          "getVisibleBacklightPowers",
-          "getVisibleBacklightPowerBounds",
-          "setAllHighVoltagesOnAtPower",
-          "setHighVoltageOn",
-          "setHighVoltageOnAtPower",
-          "setHighVoltageOff",
-          "toggleHighVoltage",
-          "getHighVoltagePowersWhenOn",
-          "getHighVoltagePowers",
-          "getHighVoltagePowerBounds",
-          "setAllLowVoltagesOnAtPower",
-          "setLowVoltageOn",
-          "setLowVoltageOnAtPower",
-          "setLowVoltageOff",
-          "toggleLowVoltage",
-          "getLowVoltagePowersWhenOn",
-          "getLowVoltagePowers",
-          "getLowVoltagePowerBounds"
-        ],
-        "parameters": [
-          "ir_backlight",
-          "visible_backlight",
-          "high_voltage",
-          "low_voltage"
-        ],
-        "properties": [
-          "irBacklightPowerMax",
-          "visibleBacklightPowerMax",
-          "highVoltagePowerMax",
-          "lowVoltagePowerMax",
-          "irBacklightSwitchingFrequencyMax",
-          "visibleBacklightSwitchingFrequencyMax",
-          "highVoltageSwitchingFrequencyMax",
-          "lowVoltageSwitchingFrequencyMax"
-        ],
-        "callbacks": [
-          "setAllIrBacklightsOn",
-          "setAllIrBacklightsOff",
-          "toggleAllIrBacklights",
-          "setAllVisibleBacklightsOn",
-          "setAllVisibleBacklightsOff",
-          "toggleAllVisibleBacklights",
-          "setAllHighVoltagesOn",
-          "setAllHighVoltagesOff",
-          "toggleAllHighVoltages",
-          "setAllLowVoltagesOn",
-          "setAllLowVoltagesOff",
-          "toggleAllLowVoltages"
-        ]
-      }
-    }
+
   #+END_SRC
 
 * API GENERAL
