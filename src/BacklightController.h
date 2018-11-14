@@ -137,7 +137,9 @@ private:
   void enableAllHandler(modular_server::Pin * pin_ptr);
   void disableAllHandler(modular_server::Pin * pin_ptr);
 
+  void setIrBacklightPowerToIntensityRatioHandler(size_t ir_backlight);
   void setIrBacklightIntensityMaxHandler(size_t ir_backlight);
+  void setVisibleBacklightPowerToIntensityRatioHandler(size_t visible_backlight);
   void setVisibleBacklightIntensityMaxHandler(size_t visible_backlight);
   void setHighVoltagePowerMaxHandler(size_t high_voltage);
   void setLowVoltagePowerMaxHandler(size_t low_voltage);
@@ -161,8 +163,8 @@ private:
   void getIrBacklightIntensitiesWhenOnHandler();
   void getIrBacklightPowersHandler();
   void getIrBacklightIntensitiesHandler();
-  void irBacklightIntensityToPowersHandler();
   void irBacklightPowerToIntensitiesHandler();
+  void irBacklightIntensityToPowersHandler();
 
   void setAllVisibleBacklightsOnAtPowerHandler();
   void setAllVisibleBacklightsOnAtIntensityHandler();
@@ -178,8 +180,8 @@ private:
   void getVisibleBacklightIntensitiesWhenOnHandler();
   void getVisibleBacklightPowersHandler();
   void getVisibleBacklightIntensitiesHandler();
-  void visibleBacklightIntensityToPowersHandler();
   void visibleBacklightPowerToIntensitiesHandler();
+  void visibleBacklightIntensityToPowersHandler();
 
   void setAllHighVoltagesOnAtPowerHandler();
   void setAllHighVoltagesOnHandler(modular_server::Pin * pin_ptr);

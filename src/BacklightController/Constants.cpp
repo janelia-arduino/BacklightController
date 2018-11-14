@@ -45,13 +45,13 @@ CONSTANT_STRING(intensity_units,"mW/mm^2");
 CONSTANT_STRING(ir_backlight_power_to_intensity_ratio_property_name,"irBacklightPowerToIntensityRatio");
 const double power_to_intensity_ratio_min = 1.0;
 const double power_to_intensity_ratio_max = 50.0;
-const double ir_backlight_power_to_intensity_ratio_element_default = 6.0;
+const double ir_backlight_power_to_intensity_ratio_element_default = 5.6;
 
 CONSTANT_STRING(ir_backlight_intensity_max_property_name,"irBacklightIntensityMax");
 const double ir_backlight_intensity_max_element_default = intensity_max;
 
 CONSTANT_STRING(visible_backlight_power_to_intensity_ratio_property_name,"visibleBacklightPowerToIntensityRatio");
-const double visible_backlight_power_to_intensity_ratio_element_default = 15.0;
+const double visible_backlight_power_to_intensity_ratio_element_default = 14.8;
 
 CONSTANT_STRING(visible_backlight_intensity_max_property_name,"visibleBacklightIntensityMax");
 const double visible_backlight_intensity_max_element_default = intensity_max;
