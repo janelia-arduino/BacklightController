@@ -18,7 +18,7 @@ namespace constants
 //MAX values must be >= 1, >= created/copied count, < RAM limit
 enum{PROPERTY_COUNT_MAX=10};
 enum{PARAMETER_COUNT_MAX=5};
-enum{FUNCTION_COUNT_MAX=42};
+enum{FUNCTION_COUNT_MAX=46};
 enum{CALLBACK_COUNT_MAX=12};
 
 extern ConstantString device_name;
@@ -41,6 +41,9 @@ extern const long power_resolution;
 extern const double switching_frequency_max;
 extern const double intensity_min;
 extern const double intensity_max;
+
+extern ConstantString intensity_lower_bound_string;
+extern ConstantString intensity_upper_bound_string;
 
 // Pins
 
@@ -114,6 +117,7 @@ extern ConstantString get_ir_backlight_intensities_when_on_function_name;
 extern ConstantString get_ir_backlight_powers_function_name;
 extern ConstantString get_ir_backlight_intensities_function_name;
 extern ConstantString get_ir_backlight_power_bounds_function_name;
+extern ConstantString get_ir_backlight_intensity_bounds_function_name;
 extern ConstantString ir_backlight_power_to_intensities_function_name;
 extern ConstantString ir_backlight_intensity_to_powers_function_name;
 
@@ -129,6 +133,7 @@ extern ConstantString get_visible_backlight_intensities_when_on_function_name;
 extern ConstantString get_visible_backlight_powers_function_name;
 extern ConstantString get_visible_backlight_intensities_function_name;
 extern ConstantString get_visible_backlight_power_bounds_function_name;
+extern ConstantString get_visible_backlight_intensity_bounds_function_name;
 extern ConstantString visible_backlight_power_to_intensities_function_name;
 extern ConstantString visible_backlight_intensity_to_powers_function_name;
 

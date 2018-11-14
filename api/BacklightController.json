@@ -79,6 +79,20 @@
         }
       },
       {
+        "name": "getIrBacklightPowerBounds",
+        "result_info": {
+          "type": "array",
+          "array_element_type": "object"
+        }
+      },
+      {
+        "name": "getIrBacklightIntensityBounds",
+        "result_info": {
+          "type": "array",
+          "array_element_type": "object"
+        }
+      },
+      {
         "name": "irBacklightPowerToIntensities",
         "parameters": [
           "power"
@@ -168,6 +182,20 @@
         "result_info": {
           "type": "array",
           "array_element_type": "double"
+        }
+      },
+      {
+        "name": "getVisibleBacklightPowerBounds",
+        "result_info": {
+          "type": "array",
+          "array_element_type": "object"
+        }
+      },
+      {
+        "name": "getVisibleBacklightIntensityBounds",
+        "result_info": {
+          "type": "array",
+          "array_element_type": "object"
         }
       },
       {

@@ -115,6 +115,11 @@ protected:
   size_t lowVoltageToDigitalChannel(size_t low_voltage);
   uint32_t getLowVoltageDigitalChannels();
 
+  double getIrBacklightIntensityLowerBound(size_t ir_backlight);
+  double getIrBacklightIntensityUpperBound(size_t ir_backlight);
+  double getVisibleBacklightIntensityLowerBound(size_t visible_backlight);
+  double getVisibleBacklightIntensityUpperBound(size_t visible_backlight);
+
 private:
   modular_server::Pin pins_[backlight_controller::constants::PIN_COUNT_MAX];
 
@@ -163,6 +168,8 @@ private:
   void getIrBacklightIntensitiesWhenOnHandler();
   void getIrBacklightPowersHandler();
   void getIrBacklightIntensitiesHandler();
+  void getIrBacklightPowerBoundsHandler();
+  void getIrBacklightIntensityBoundsHandler();
   void irBacklightPowerToIntensitiesHandler();
   void irBacklightIntensityToPowersHandler();
 
@@ -180,6 +187,8 @@ private:
   void getVisibleBacklightIntensitiesWhenOnHandler();
   void getVisibleBacklightPowersHandler();
   void getVisibleBacklightIntensitiesHandler();
+  void getVisibleBacklightPowerBoundsHandler();
+  void getVisibleBacklightIntensityBoundsHandler();
   void visibleBacklightPowerToIntensitiesHandler();
   void visibleBacklightIntensityToPowersHandler();
 

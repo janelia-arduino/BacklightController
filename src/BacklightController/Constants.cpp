@@ -35,6 +35,9 @@ const double switching_frequency_max = analog_write_frequency * power_resolution
 const double intensity_min = 0.0;
 const double intensity_max = 50.0;
 
+CONSTANT_STRING(intensity_lower_bound_string,"intensity_lower_bound");
+CONSTANT_STRING(intensity_upper_bound_string,"intensity_upper_bound");
+
 // Pins
 
 // Units
@@ -106,6 +109,7 @@ CONSTANT_STRING(get_ir_backlight_intensities_when_on_function_name,"getIrBacklig
 CONSTANT_STRING(get_ir_backlight_powers_function_name,"getIrBacklightPowers");
 CONSTANT_STRING(get_ir_backlight_intensities_function_name,"getIrBacklightIntensities");
 CONSTANT_STRING(get_ir_backlight_power_bounds_function_name,"getIrBacklightPowerBounds");
+CONSTANT_STRING(get_ir_backlight_intensity_bounds_function_name,"getIrBacklightIntensityBounds");
 CONSTANT_STRING(ir_backlight_power_to_intensities_function_name,"irBacklightPowerToIntensities");
 CONSTANT_STRING(ir_backlight_intensity_to_powers_function_name,"irBacklightIntensityToPowers");
 
@@ -121,6 +125,7 @@ CONSTANT_STRING(get_visible_backlight_intensities_when_on_function_name,"getVisi
 CONSTANT_STRING(get_visible_backlight_powers_function_name,"getVisibleBacklightPowers");
 CONSTANT_STRING(get_visible_backlight_intensities_function_name,"getVisibleBacklightIntensities");
 CONSTANT_STRING(get_visible_backlight_power_bounds_function_name,"getVisibleBacklightPowerBounds");
+CONSTANT_STRING(get_visible_backlight_intensity_bounds_function_name,"getVisibleBacklightIntensityBounds");
 CONSTANT_STRING(visible_backlight_power_to_intensities_function_name,"visibleBacklightPowerToIntensities");
 CONSTANT_STRING(visible_backlight_intensity_to_powers_function_name,"visibleBacklightIntensityToPowers");
 
