@@ -34,7 +34,13 @@ void BacklightController::setup()
   {
     if (constants::analog_writeable[channel])
     {
-      analogWriteFrequency(constants::channel_pins[channel],constants::analog_write_frequency);
+      size_t channel_pin = constants::channel_pins[channel];
+      // Pins 3 and 4 interfere with TimerOne
+      // Crude hack until pcb can be rerouted!
+      if ((channel_pin != 3) && (channel_pin != 4))
+      {
+        analogWriteFrequency(channel_pin,constants::analog_write_frequency);
+      }
     }
   }
 
