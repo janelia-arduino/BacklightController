@@ -995,11 +995,11 @@ void BacklightController::channelAnalogWrite(size_t channel,
 long BacklightController::powerToAnalogValue(size_t channel,
   double power)
 {
-  if (power <= getPowerLowerBound(channel))
+  if (power < getPowerLowerBound(channel))
   {
     return constants::analog_value_min;
   }
-  else if (power >= getPowerUpperBound(channel))
+  else if (power > getPowerUpperBound(channel))
   {
     return constants::analog_value_max;
   }
