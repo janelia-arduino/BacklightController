@@ -43,7 +43,7 @@ extern const double ir_backlight_power_to_intensity_ratio_default[IR_BACKLIGHT_C
 
 extern const double ir_backlight_intensity_max_default[IR_BACKLIGHT_COUNT];
 
-extern const double visible_backlight_power_to_intensity_ratio_default[IR_BACKLIGHT_COUNT];
+extern const double visible_backlight_power_to_intensity_ratio_default[VISIBLE_BACKLIGHT_COUNT];
 
 extern const double visible_backlight_intensity_max_default[VISIBLE_BACKLIGHT_COUNT];
 
