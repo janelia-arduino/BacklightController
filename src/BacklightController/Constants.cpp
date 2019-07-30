@@ -21,12 +21,12 @@ const modular_server::FirmwareInfo firmware_info =
   .name_ptr=&firmware_name,
   .version_major=4,
   .version_minor=0,
-  .version_patch=3,
+  .version_patch=4,
 };
 
 CONSTANT_STRING(hardware_name,"backlight_controller");
 
-const double analog_write_frequency = 1200.0;
+const double analog_write_frequency = 1100.0;
 const long analog_write_resolution = 8;
 const long analog_value_min = 0;
 const long analog_value_max = 256;
