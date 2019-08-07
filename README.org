@@ -4,7 +4,7 @@
 
 * Library Information
   - Name :: BacklightController
-  - Version :: 4.0.4
+  - Version :: 4.0.5
   - License :: BSD
   - URL :: https://github.com/janelia-arduino/BacklightController
   - Author :: Peter Polidoro
