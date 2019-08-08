@@ -410,13 +410,13 @@ void BacklightController::setup()
 
 void BacklightController::enableAll()
 {
-  digitalWrite(constants::enable_all_pin,LOW);
+  digitalWrite(constants::enable_all_pin,HIGH);
   DigitalController::enableAll();
 }
 
 void BacklightController::disableAll()
 {
-  digitalWrite(constants::enable_all_pin,HIGH);
+  digitalWrite(constants::enable_all_pin,LOW);
   DigitalController::disableAll();
 }
 

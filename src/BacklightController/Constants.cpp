@@ -19,9 +19,9 @@ CONSTANT_STRING(firmware_name,"BacklightController");
 const modular_server::FirmwareInfo firmware_info =
 {
   .name_ptr=&firmware_name,
-  .version_major=4,
+  .version_major=5,
   .version_minor=0,
-  .version_patch=5,
+  .version_patch=0,
 };
 
 CONSTANT_STRING(hardware_name,"backlight_controller");

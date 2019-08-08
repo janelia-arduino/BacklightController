@@ -24,26 +24,26 @@ const modular_server::HardwareInfo hardware_info =
 
 const long channel_count = CHANNEL_COUNT;
 
-const size_t enable_all_pin = 52;
+const size_t enable_all_pin = 0;
 
 const size_t channel_pins[CHANNEL_COUNT] =
 {
   2,
-  5,
-  6,
-  29,
-  30,
+  7,
+  8,
   14,
-  18,
-  19,
-  20,
-  21,
-  22,
-  23,
   35,
   36,
   37,
   38,
+  5,
+  6,
+  9,
+  10,
+  20,
+  21,
+  22,
+  23,
 };
 
 const bool analog_writeable[CHANNEL_COUNT] =
@@ -54,8 +54,8 @@ const bool analog_writeable[CHANNEL_COUNT] =
   true,
   true,
   true,
-  false,
-  false,
+  true,
+  true,
   true,
   true,
   true,
