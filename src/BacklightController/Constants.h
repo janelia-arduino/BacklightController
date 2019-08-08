@@ -19,7 +19,7 @@ namespace constants
 enum{PROPERTY_COUNT_MAX=10};
 enum{PARAMETER_COUNT_MAX=5};
 enum{FUNCTION_COUNT_MAX=46};
-enum{CALLBACK_COUNT_MAX=12};
+enum{CALLBACK_COUNT_MAX=14};
 
 extern ConstantString device_name;
 
@@ -46,6 +46,11 @@ extern ConstantString intensity_lower_bound_string;
 extern ConstantString intensity_upper_bound_string;
 
 // Pins
+extern ConstantString btn_enable_pin_name;
+extern const size_t btn_enable_pin_number;
+
+extern ConstantString btn_test_pin_name;
+extern const size_t btn_test_pin_number;
 
 // Units
 extern ConstantString hz_units;
@@ -168,6 +173,7 @@ extern ConstantString toggle_all_high_voltages_callback_name;
 extern ConstantString set_all_low_voltages_on_callback_name;
 extern ConstantString set_all_low_voltages_off_callback_name;
 extern ConstantString toggle_all_low_voltages_callback_name;
+extern ConstantString toggle_enable_all_callback_name;
 
 // Errors
 }

@@ -20,7 +20,7 @@ const modular_server::FirmwareInfo firmware_info =
 {
   .name_ptr=&firmware_name,
   .version_major=5,
-  .version_minor=0,
+  .version_minor=1,
   .version_patch=0,
 };
 
@@ -39,6 +39,9 @@ CONSTANT_STRING(intensity_lower_bound_string,"intensity_lower_bound");
 CONSTANT_STRING(intensity_upper_bound_string,"intensity_upper_bound");
 
 // Pins
+CONSTANT_STRING(btn_enable_pin_name,"btn_enable");
+
+CONSTANT_STRING(btn_test_pin_name,"btn_test");
 
 // Units
 CONSTANT_STRING(hz_units,"Hz");
@@ -160,6 +163,7 @@ CONSTANT_STRING(toggle_all_high_voltages_callback_name,"toggleAllHighVoltages");
 CONSTANT_STRING(set_all_low_voltages_on_callback_name,"setAllLowVoltagesOn");
 CONSTANT_STRING(set_all_low_voltages_off_callback_name,"setAllLowVoltagesOff");
 CONSTANT_STRING(toggle_all_low_voltages_callback_name,"toggleAllLowVoltages");
+CONSTANT_STRING(toggle_enable_all_callback_name,"toggleEnableAll");
 
 // Errors
 }

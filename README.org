@@ -4,7 +4,7 @@
 
 * Library Information
   - Name :: BacklightController
-  - Version :: 5.0.0
+  - Version :: 5.1.0
   - License :: BSD
   - URL :: https://github.com/janelia-arduino/BacklightController
   - Author :: Peter Polidoro
@@ -17,96 +17,7 @@
 * API NAMES
 
   #+BEGIN_SRC js
-    {
-      "id": "getApi",
-      "result": {
-        "firmware": [
-          "BacklightController"
-        ],
-        "verbosity": "NAMES",
-        "functions": [
-          "setAllIrBacklightsOnAtPower",
-          "setAllIrBacklightsOnAtIntensity",
-          "setIrBacklightOn",
-          "setIrBacklightOnAtPower",
-          "setIrBacklightOnAtIntensity",
-          "setIrBacklightOff",
-          "toggleIrBacklight",
-          "getIrBacklightPowersWhenOn",
-          "getIrBacklightIntensitiesWhenOn",
-          "getIrBacklightPowers",
-          "getIrBacklightIntensities",
-          "getIrBacklightPowerBounds",
-          "getIrBacklightIntensityBounds",
-          "irBacklightPowerToIntensities",
-          "irBacklightIntensityToPowers",
-          "setAllVisibleBacklightsOnAtPower",
-          "setAllVisibleBacklightsOnAtIntensity",
-          "setVisibleBacklightOn",
-          "setVisibleBacklightOnAtPower",
-          "setVisibleBacklightOnAtIntensity",
-          "setVisibleBacklightOff",
-          "toggleVisibleBacklight",
-          "getVisibleBacklightPowersWhenOn",
-          "getVisibleBacklightIntensitiesWhenOn",
-          "getVisibleBacklightPowers",
-          "getVisibleBacklightIntensities",
-          "getVisibleBacklightPowerBounds",
-          "getVisibleBacklightIntensityBounds",
-          "visibleBacklightPowerToIntensities",
-          "visibleBacklightIntensityToPowers",
-          "setAllHighVoltagesOnAtPower",
-          "setHighVoltageOn",
-          "setHighVoltageOnAtPower",
-          "setHighVoltageOff",
-          "toggleHighVoltage",
-          "getHighVoltagePowersWhenOn",
-          "getHighVoltagePowers",
-          "getHighVoltagePowerBounds",
-          "setAllLowVoltagesOnAtPower",
-          "setLowVoltageOn",
-          "setLowVoltageOnAtPower",
-          "setLowVoltageOff",
-          "toggleLowVoltage",
-          "getLowVoltagePowersWhenOn",
-          "getLowVoltagePowers",
-          "getLowVoltagePowerBounds"
-        ],
-        "parameters": [
-          "intensity",
-          "ir_backlight",
-          "visible_backlight",
-          "high_voltage",
-          "low_voltage"
-        ],
-        "properties": [
-          "irBacklightPowerToIntensityRatio",
-          "irBacklightIntensityMax",
-          "visibleBacklightPowerToIntensityRatio",
-          "visibleBacklightIntensityMax",
-          "highVoltagePowerMax",
-          "lowVoltagePowerMax",
-          "irBacklightSwitchingFrequencyMax",
-          "visibleBacklightSwitchingFrequencyMax",
-          "highVoltageSwitchingFrequencyMax",
-          "lowVoltageSwitchingFrequencyMax"
-        ],
-        "callbacks": [
-          "setAllIrBacklightsOn",
-          "setAllIrBacklightsOff",
-          "toggleAllIrBacklights",
-          "setAllVisibleBacklightsOn",
-          "setAllVisibleBacklightsOff",
-          "toggleAllVisibleBacklights",
-          "setAllHighVoltagesOn",
-          "setAllHighVoltagesOff",
-          "toggleAllHighVoltages",
-          "setAllLowVoltagesOn",
-          "setAllLowVoltagesOff",
-          "toggleAllLowVoltages"
-        ]
-      }
-    }
+
   #+END_SRC
 
 * API GENERAL

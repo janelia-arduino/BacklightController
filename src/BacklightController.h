@@ -29,6 +29,7 @@ public:
 
   void enableAll();
   void disableAll();
+  void toggleEnableAll();
 
   void setAllIrBacklightsOnAtPower(double power);
   void setAllIrBacklightsOnAtIntensity(double intensity);
@@ -215,6 +216,7 @@ private:
   void getLowVoltagePowersWhenOnHandler();
   void getLowVoltagePowersHandler();
   void getLowVoltagePowerBoundsHandler();
+  void toggleEnableAllHandler(modular_server::Pin * pin_ptr);
 
 };
 

@@ -49,14 +49,16 @@ void BacklightController::setup()
     pinMode(constants::channel_pins[channel],OUTPUT);
   }
 
-  // Pins
-  modular_server::Pin & btn_a_pin = modular_server_.pin(modular_device_base::constants::btn_a_pin_name);
-
-  modular_server::Pin & btn_b_pin = modular_server_.pin(modular_device_base::constants::btn_b_pin_name);
-
   // Add Hardware
   modular_server_.addHardware(constants::hardware_info,
     pins_);
+
+  // Pins
+  modular_server::Pin & btn_enable_pin = modular_server_.createPin(constants::btn_enable_pin_name,
+    constants::btn_enable_pin_number);
+
+  modular_server::Pin & btn_test_pin = modular_server_.createPin(constants::btn_test_pin_name,
+    constants::btn_test_pin_number);
 
   // Add Firmware
   modular_server_.addFirmware(constants::firmware_info,
@@ -374,7 +376,6 @@ void BacklightController::setup()
 
   modular_server::Callback & toggle_all_ir_backlights_callback = modular_server_.createCallback(backlight_controller::constants::toggle_all_ir_backlights_callback_name);
   toggle_all_ir_backlights_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::toggleAllIrBacklightsHandler));
-  toggle_all_ir_backlights_callback.attachTo(btn_b_pin,modular_server::constants::pin_mode_interrupt_falling);
 
   modular_server::Callback & set_all_visible_backlights_on_callback = modular_server_.createCallback(backlight_controller::constants::set_all_visible_backlights_on_callback_name);
   set_all_visible_backlights_on_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllVisibleBacklightsOnHandler));
@@ -384,7 +385,6 @@ void BacklightController::setup()
 
   modular_server::Callback & toggle_all_visible_backlights_callback = modular_server_.createCallback(backlight_controller::constants::toggle_all_visible_backlights_callback_name);
   toggle_all_visible_backlights_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::toggleAllVisibleBacklightsHandler));
-  toggle_all_visible_backlights_callback.attachTo(btn_a_pin,modular_server::constants::pin_mode_interrupt_falling);
 
   modular_server::Callback & set_all_high_voltages_on_callback = modular_server_.createCallback(backlight_controller::constants::set_all_high_voltages_on_callback_name);
   set_all_high_voltages_on_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::setAllHighVoltagesOnHandler));
@@ -404,6 +404,10 @@ void BacklightController::setup()
   modular_server::Callback & toggle_all_low_voltages_callback = modular_server_.createCallback(backlight_controller::constants::toggle_all_low_voltages_callback_name);
   toggle_all_low_voltages_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::toggleAllLowVoltagesHandler));
 
+  modular_server::Callback & toggle_enable_all_callback = modular_server_.createCallback(backlight_controller::constants::toggle_enable_all_callback_name);
+  toggle_enable_all_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::toggleEnableAllHandler));
+  toggle_enable_all_callback.attachTo(btn_enable_pin,modular_server::constants::pin_mode_interrupt_falling);
+
   enableAll();
   setAllChannelsOff();
 }
@@ -418,6 +422,18 @@ void BacklightController::disableAll()
 {
   digitalWrite(constants::enable_all_pin,LOW);
   DigitalController::disableAll();
+}
+
+void BacklightController::toggleEnableAll()
+{
+  if (allEnabled())
+  {
+    disableAll();
+  }
+  else
+  {
+    enableAll();
+  }
 }
 
 void BacklightController::setAllIrBacklightsOnAtPower(double power)
@@ -1790,4 +1806,9 @@ void BacklightController::getLowVoltagePowerBoundsHandler()
     modular_server_.response().endObject();
   }
   modular_server_.response().endArray();
+}
+
+void BacklightController::toggleEnableAllHandler(modular_server::Pin * pin_ptr)
+{
+  toggleEnableAll();
 }

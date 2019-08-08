@@ -99,6 +99,9 @@ const size_t low_voltage_channels[LOW_VOLTAGE_COUNT] =
 };
 
 // Pins
+const size_t btn_enable_pin_number = 3;
+
+const size_t btn_test_pin_number = 4;
 
 // Units
 
