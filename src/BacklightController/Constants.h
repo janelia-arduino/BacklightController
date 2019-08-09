@@ -19,7 +19,7 @@ namespace constants
 enum{PROPERTY_COUNT_MAX=10};
 enum{PARAMETER_COUNT_MAX=5};
 enum{FUNCTION_COUNT_MAX=46};
-enum{CALLBACK_COUNT_MAX=14};
+enum{CALLBACK_COUNT_MAX=13};
 
 extern ConstantString device_name;
 

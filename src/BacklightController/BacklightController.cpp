@@ -362,6 +362,9 @@ void BacklightController::setup()
   get_low_voltage_power_bounds_function.setResultTypeObject();
 
   // Callbacks
+  modular_server::Callback & toggle_all_channels_callback = modular_server_.callback(digital_controller::constants::toggle_all_channels_callback_name);
+  toggle_all_channels_callback.attachTo(btn_test_pin,modular_server::constants::pin_mode_interrupt_falling);
+
   modular_server::Callback & enable_all_callback = modular_server_.callback(digital_controller::constants::enable_all_callback_name);
   enable_all_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::enableAllHandler));
 
