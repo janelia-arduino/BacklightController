@@ -54,11 +54,13 @@ void BacklightController::setup()
     pins_);
 
   // Pins
+#if defined(__MK64FX512__)
   modular_server::Pin & btn_enable_pin = modular_server_.createPin(constants::btn_enable_pin_name,
     constants::btn_enable_pin_number);
 
   modular_server::Pin & btn_test_pin = modular_server_.createPin(constants::btn_test_pin_name,
     constants::btn_test_pin_number);
+#endif
 
   // Add Firmware
   modular_server_.addFirmware(constants::firmware_info,
@@ -363,7 +365,9 @@ void BacklightController::setup()
 
   // Callbacks
   modular_server::Callback & toggle_all_channels_callback = modular_server_.callback(digital_controller::constants::toggle_all_channels_callback_name);
+#if defined(__MK64FX512__)
   toggle_all_channels_callback.attachTo(btn_test_pin,modular_server::constants::pin_mode_interrupt_falling);
+#endif
 
   modular_server::Callback & enable_all_callback = modular_server_.callback(digital_controller::constants::enable_all_callback_name);
   enable_all_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::enableAllHandler));
@@ -409,7 +413,9 @@ void BacklightController::setup()
 
   modular_server::Callback & toggle_enable_all_callback = modular_server_.createCallback(backlight_controller::constants::toggle_enable_all_callback_name);
   toggle_enable_all_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&BacklightController::toggleEnableAllHandler));
+#if defined(__MK64FX512__)
   toggle_enable_all_callback.attachTo(btn_enable_pin,modular_server::constants::pin_mode_interrupt_falling);
+#endif
 
   enableAll();
   setAllChannelsOff();
@@ -417,13 +423,13 @@ void BacklightController::setup()
 
 void BacklightController::enableAll()
 {
-  digitalWrite(constants::enable_all_pin,HIGH);
+  digitalWrite(constants::enable_all_pin,LOW);
   DigitalController::enableAll();
 }
 
 void BacklightController::disableAll()
 {
-  digitalWrite(constants::enable_all_pin,LOW);
+  digitalWrite(constants::enable_all_pin,HIGH);
   DigitalController::disableAll();
 }
 
